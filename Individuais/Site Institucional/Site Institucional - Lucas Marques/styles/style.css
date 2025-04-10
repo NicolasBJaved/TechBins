@@ -1,0 +1,264 @@
+
+*{
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    font-family: "Barlow", Arial, Helvetica, sans-serif;
+
+}
+body{
+    background-color: #f7ede1;
+    margin: 0;
+    
+}
+
+
+
+
+/* HOME */
+.container{
+    width: 80%;
+    margin: auto;
+    display: flex; 
+}
+
+.header .container{
+    justify-content: space-between;
+}
+
+.header{
+    background-color: #155c3a;
+    
+}
+
+
+.header .container .titulo{
+    color: white;
+}
+
+.header .navbar{
+    color: white;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-evenly;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    
+}
+
+
+
+/* IMAGEM CAMINHAO */
+.fotoLixo img{
+    width: 50%;
+    display: flex;
+    align-self: center;
+    padding-left: 380px;
+}
+.fotoLixo{
+    background-color: #f7ede1;
+}
+
+
+
+
+
+/* Banner */
+.banner{
+    height: 300px;
+    background-color: #f7ede1;
+}
+
+.banner .container p{
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    width: 100%;
+    padding: 50px;
+}
+
+.banner .container{
+    height: 100%;
+    justify-content: center;
+}
+
+.banner .container p span{
+    font-weight: 600;
+}
+
+.social{
+    padding-top: 60px;
+    background: #f7ede1;
+}
+
+.boxes{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.box{
+    color: black;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.box img{
+    width: 50%;
+}
+
+.container .box h4{
+    color: red;
+}
+/* Rodapé */
+.footer{
+    background-color: #69ad6e;
+}
+
+.footer .container h4{
+    color: white;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.footer .container span{
+    color: white;
+}
+
+
+
+
+
+
+/* Página de login */
+.login{
+    height: 600px;
+    background-color: #f7ede1;
+}
+
+.login .container{
+    justify-content: center;
+}
+
+.login .container .formulario{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.login .container .card{
+   
+    border-radius: 15px;
+    background-color: white;
+    width: 60%;
+    margin: 70px auto;
+    padding: 8px;
+    align-items: center;
+    text-align: center;
+   
+}
+
+
+
+
+/* Página de cadastro */
+.container .card input{
+    border: #69ad6e solid 2px;
+    border-radius: 15px;
+    justify-content: center;
+    text-align: center;
+    margin: 8px;
+    height: 30px;
+    width: 580px;
+   
+}
+
+.container .card h2{
+    color: #416b44;
+    text-align: center;
+    
+}
+
+.formulario .campo span{
+    display: flex;
+    color: #416b44;
+    font-size: 15px;
+    font-weight: bold;
+    flex-direction: row;
+    text-align: left;
+    
+}
+
+.botao{
+    width: 100px;
+    height: 30px;
+    border: solid #416b44 1px;
+    border-radius: 3px;
+    background-color: #416b44;
+    color: white;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+
+
+
+/* SIMULADOR FINANCEIRO */
+a{
+    text-decoration: none;
+}
+
+.div_conteudo input {
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+}
+
+.div_conteudo button {
+    margin: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    background-color: #416B44;
+}
+
+.Outrocontainer{
+    margin-top: 130px;
+    margin-bottom: 130px;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: Segoe UI;
+}
+
+.div_conteudo {
+    width: 1000px;
+    height: fit-content;
+    text-align: center;
+    background-color: #267652a0;
+    border-radius: 10px;
+}
+
+#div_resultado {
+    margin: 5px 30px 30px 30px;
+    width: 940px;
+    font-size: large;
+}
+
+.result_positivo {
+    color: greenyellow;
+    font-weight: bold;
+}
