@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+*{
+    margin: 0;
+}
+
+body{
+    font-family: "Inter";
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #155C3A;
+    height: 80px;
+    width: 100%;
+}
+
+.nav ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    width: 550px;
+    padding: 30px;
+}
+
+.nav li a{
+    color: white;
+}
+
+.logo img{
+    width: 200px;
+}
+
+/* BANNER PRINCIPAL */
+
+.banner-principal{
+    height: 600px;
+    background-color: #F7EDE1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.banner-principal .texto{
+    background-color: #F7EDE1;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.banner-principal .texto h1{
+    font-size: 50px;
+    width: 700px;
+}
+
+.banner-principal .texto h3{
+    width: 600px;
+}
+
+.banner-principal .texto button{
+    background-color: #69AD6E;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+}
+
+.banner-principal .texto button a{
+    color: white;
+}
+
+/* BANNER FUNCIONAMENTO */
+
+.banner-funcionamento{
+    height: 600px;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.banner-funcionamento .texto{
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner-funcionamento .texto h1{
+    font-size: 50px;
+}
+
+.banner-funcionamento .texto h2{
+    color: #69AD6E;
+}
+
+/* BENEFÍCIOS */
+
+.banner-beneficios{
+    height: 700px;
+    background-color: #F7EDE1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-beneficios h1{
+    font-size: 60px;
+    margin-bottom: 50px;
+}
+
+.banner-beneficios h2{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.conteudo-beneficios{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+}
+
+.banner-beneficios ul{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.banner-beneficios ul li{
+    padding: 0px;;
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.banner-beneficios ul li .texto{
+    width: 450px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-beneficios ul li img{
+    width: 200px;
+}
+
+
+/* FOOTER */
+.footer{
+    background-color: #155C3A;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.redes-sociais{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+.footer ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 150px;
+}
+
+.footer ul li img{
+    width: 25px;
+}
+
+.footer img{
+    width: 200px;
+}
+
+.contato{
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    justify-content: space-between;
+}
+
+/* LOGIN */
+
+.banner-login{
+    background-color: #F7EDE1;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-login{
+    background-color: #267652a0;
+    border: #AF8F6F 2px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+}
+
+.conteudo-login{
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.conteudo-login h1{
+    color: #F8F4E1;
+    display: flex;
+    justify-content: center;
+}
+
+.conteudo-login h4{
+    color: #F8F4E1;
+}
+
+.conteudo-login .formulario{
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.conteudo-login .formulario input{
+    border: none;
+    outline: none;
+    height: 25px;
+    border: #AF8F6F 2px solid;
+    border-radius: 5px;
+}
+
+.conteudo-login button{
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    height: 30px;
+    background-color: #F8F4E1;
+    border-radius: 10px;
+}
+
+/* CADASTRO */
+
+
+.banner-cadastro{
+    background-color: #F7EDE1;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-cadastro{
+    background-color: #267652a0;
+    border: #AF8F6F 2px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    height: 380px;
+}
+
+.conteudo-cadastro{
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.conteudo-cadastro h1{
+    color: #F8F4E1;
+    display: flex;
+    justify-content: center;
+}
+
+.conteudo-cadastro h4{
+    color: #F8F4E1;
+}
+
+.conteudo-cadastro .formulario{
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.conteudo-cadastro .formulario input{
+    border: none;
+    outline: none;
+    height: 25px;
+    border: #AF8F6F 2px solid;
+    border-radius: 5px;
+}
+
+.conteudo-cadastro button{
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    height: 30px;
+    background-color: #F8F4E1;
+    border-radius: 10px;
+}
+
+/* SIMULADOR FINANCEIRO */
+
+.banner-simulador{
+    background-color: #F7EDE1;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-simulador .div_conteudo {
+    width: 1000px;
+    height: 450px;
+    text-align: center;
+    background-color: #267652a0;
+    border: #AF8F6F 2px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+
+.banner-simulador .div_conteudo .titulo {
+    color: #F8F4E1;
+}
+
+.banner-simulador .div_conteudo p {
+    color: white;
+}
+
+
+
+.banner-simulador .div_conteudo .formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner-simulador .div_conteudo .formulario input {
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+}
+
+.banner-simulador .div_conteudo .formulario button {
+    margin: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    background-color: #416B44;
+}
+
+.container .banner-simulador {
+    margin-top: 130px;
+    margin-bottom: 130px;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: Segoe UI;
+}
+
+.banner-simulador .div_conteudo .formulario #div_resultado {
+    margin: 5px 30px 30px 30px;
+    width: 940px;
+    font-size: large;
+}
+
+.result_positivo {
+    color: greenyellow;
+    font-weight: bold;
+}
+
+/* SOBRE NÓS */
+
+.banner-surgimento{
+    height: 600px;
+    background-color: #F7EDE1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.banner-surgimento .conteudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+    width: 700px;
+}
+
+.banner-surgimento .texto{
+    width: 700px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.banner-surgimento .imagem{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner-surgimento .imagem img{
+    height: 300px;
+    width: 350px;
+}
+
+.banner-missaoVisaoValores{
+    height: 600px;
+    background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.banner-missaoVisaoValores .conteudo{
+    width: 900px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.banner-missaoVisaoValores .texto{
+    width: 600px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.banner-missaoVisaoValores .imagem{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.banner-missaoVisaoValores .imagem img{
+    width: 200px;
+}
