@@ -11,6 +11,7 @@ const borderColorMenorNivel = '#3D3BF3';
 const backgroundColorMenorNivel = '#0D92F4';
 const borderWidth = 2;
 const label = 'Nível do lixo';
+Chart.defaults.color = '#000'; /* --> Cor da fonte */
 
 const options = {
     responsive: true,
