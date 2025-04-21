@@ -1,0 +1,76 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body{
+    background: #F7EDE1;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.header .container{
+
+justify-content: space-between;
+}
+
+.header{
+    background-color: #155C3A;
+}
+.header .navbar a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 850;
+}
+
+
+.header .navbar{
+    text-decoration: none;
+    color: yellow;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+}
+.header .container img{
+    display: flex;
+    width: 13%;
+}
+
+.titulo_principal {
+    position: absolute;
+    margin-top: 6%;
+    margin-left: 13%;
+    font-size: 40px;
+}
+.titulo_principal p{
+    font-weight: 700;
+}
+.titulo_principal button{
+    font-family: "Inter" sans-serif;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
+    padding: 15px;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    background-color: #69AD6E;
+    font-weight: 900;
+    width: 120px;
+}
+
+.img1 {
+    margin-left: 70%;
+    width: 10%;
+    margin-top: 2%;
+}
+
+.img2 {
+    margin-bottom: 1%;
+    margin-left: 65%;
+    width: 30%;
+}
