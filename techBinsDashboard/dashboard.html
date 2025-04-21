@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="maiorNivelTitulo">Pontos com maior nível de lixo nos últimos 7 dias</h1>
+        <div class="conteudo">
+            <div class="chart">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="button">
+                <select oninput="maiorNivelPontoFiltro()" id="filtroMaiorNivelPonto">
+                    <option value="semana">Última semana</option>
+                    <option value="mes">Último mês</option>
+                    <option value="bimestre">Último bimestre</option>
+                    <option value="semestre">Último semestre</option>
+                    <option value="ano">Último ano</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 id="menorNivelTitulo">Pontos com menor nível de lixo nos últimos 7 dias</h1>
+        <div class="conteudo">
+            <div class="chart">
+                <canvas id="myChart2"></canvas>
+            </div>
+            <div class="button">
+                <select oninput="menorNivelPontoFiltro()" id="filtroMenorNivelPonto">
+                    <option value="semana">Última semana</option>
+                    <option value="mes">Último mês</option>
+                    <option value="bimestre">Último bimestre</option>
+                    <option value="semestre">Último semestre</option>
+                    <option value="ano">Último ano</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 id="sensorEspecificoTitulo">Nível de lixo na Rua A no último dia</h1>
+        <div class="conteudo">
+            <div class="chart">
+                <canvas id="myChart3"></canvas>
+            </div>
+            <div class="button">
+                <select id="filtroPontoMediana" oninput="atualizarGraficoMediana()">
+                    <option value="ruaA">Rua A</option>
+                    <option value="ruaB">Rua B</option>
+                    <option value="ruaC">Rua C</option>
+                    <option value="ruaD">Rua D</option>
+                    <option value="ruaE">Rua E</option>
+                </select>
+
+                <select id="filtroPeriodoMediana" oninput="atualizarGraficoMediana()">
+                    <option value="dia">Último dia</option>
+                    <option value="7dias">Últimos 7 dias</option>
+                    <option value="mês">mês</option>
+                    <option value="bimestre">bimestre</option>
+                    <option value="semestre">semestre</option>
+                    <option value="ano">ano</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 id="medianaHorarioTitulo">Mediana do nível de lixo na Rua A nos últimos 7 dias</h1>
+        <div class="conteudo">
+            <div class="chart">
+                <canvas id="myChart4"></canvas>
+            </div>
+            <div class="button">
+                <select id="filtroPontoMedianaHorario" oninput="atualizarGraficoMedianaHorario()">
+                    <option value="ruaA">Rua A</option>
+                    <option value="ruaB">Rua B</option>
+                    <option value="ruaC">Rua C</option>
+                    <option value="ruaD">Rua D</option>
+                    <option value="ruaE">Rua E</option>
+                </select>
+
+                <select id="filtroPeriodoMedianaHorario" oninput="atualizarGraficoMedianaHorario()">
+                    <option value="7dias">Últimos 7 dias</option>
+                    <option value="mês">mês</option>
+                    <option value="bimestre">bimestre</option>
+                    <option value="semestre">semestre</option>
+                    <option value="ano">ano</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+
+</script>
+
+</html>

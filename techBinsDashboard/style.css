@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.conteudo{
+    display: flex;
+    width: 900px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart{
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    width: 80%;
+}
+
+.container .conteudo .button ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+}
+
+.container .conteudo .button{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+}
+
+.container .conteudo .button ul li button{
+    width: 100%;
+}
+
+
