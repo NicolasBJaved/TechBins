@@ -54,12 +54,30 @@ const serial = async (
         console.log(data);
         const valores = data.split(';');
         const sensorDigital = parseFloat(valores[0]);
-        const sensorAnalogico = parseFloat(valores[1]); 
+        const sensorAnalogico = parseFloat(valores[1]);
 
+        let nivelLixo;
+
+        if (sensorAnalogico <= 20) {
+            nivelLixo = 1;
+        } else if (sensorAnalogico <= 40) {
+            nivelLixo = 2;
+        } else if (sensorAnalogico <= 60) {
+            nivelLixo = 3;
+        } else if (sensorAnalogico <= 80) {
+            nivelLixo = 4;
+        } else if (sensorAnalogico <= 100) {
+            nivelLixo = 5;
+        }
+
+        if (sensorAnalogico < 0 || sensorAnalogico > 100) {
+            console.warn("Valor fora do intervalo esperado: ", sensorAnalogico);
+            return;
+        }        
 
         // armazena os valores dos sensores nos arrays correspondentes
-        
-        valoresSensorAnalogico.push(sensorAnalogico); 
+
+        valoresSensorAnalogico.push(nivelLixo);
         valoresSensorDigital.push(sensorDigital);
 
         // insere os dados no banco de dados (se habilitado)
@@ -68,10 +86,9 @@ const serial = async (
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 'INSERT INTO registros (distancia) VALUES (?)',
-                [sensorAnalogico]
+                [nivelLixo]
             );
-            console.log("valores inseridos no banco: ", sensorAnalogico);
-
+            console.log("valores inseridos no banco: ", nivelLixo);
         }
 
     });
