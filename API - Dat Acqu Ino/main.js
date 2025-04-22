@@ -21,9 +21,9 @@
          {
              host: '127.0.0.1',
              user: 'techbins',
-             password: 'Techbins1234!', // MUDAR PARA '1234' QUANDO FOR USAR O MYSQL LOCAL
+             password: '1234', // MUDAR PARA '1234' QUANDO FOR USAR O MYSQL LOCAL ou para 'Techbins1234!' QUANDO FOR NA VM
              database: 'techbins',
-             port: 3307
+             port: 3306
              // MUDAR PORTA PARA 3307 QUANDO FOR USAR O BD DA VM
              // MUDAR PORTA PARA 3306 QUANDO FOR USAR O MYSQL LOCAL
          }
@@ -67,10 +67,10 @@
  
              // este insert irá inserir os dados na tabela "medida"
              await poolBancoDados.execute(
-                 'INSERT INTO registro (idLixeira, idPontoColeta, distancia) VALUES (1, 1, ?)',
-                 [sensorAnalogico]
-             );  // cada lixeira tem um sensor diferente, então o arduino esta captando os valores da Lixeira 1 do Ponto de Coleta 1. 
-             console.log("valores inseridos no banco: ", sensorAnalogico);
+                 'INSERT INTO registro (idLixeira, idPontoColeta, distancia) VALUES (1, 1000, ?)',
+                 [sensorDigital]
+             );  // cada lixeira tem um sensor diferente, então o arduino esta captando os valores da Lixeira 1 do Ponto de Coleta 1000 (Rua A). 
+             console.log("valores inseridos no banco: ", sensorDigital);
  
          }
  
