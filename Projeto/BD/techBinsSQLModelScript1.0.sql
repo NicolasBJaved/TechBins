@@ -4,20 +4,20 @@ USE techBins;
 CREATE TABLE endereco (
     idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     logradouro VARCHAR(100) NOT NULL,
-    numero INT,
+    numero INT NOT NULL,
     complemento VARCHAR(45),
     bairro VARCHAR(45) NOT NULL,
     cidade VARCHAR(45) NOT NULL,
     estado CHAR(2) NOT NULL,
-    cep CHAR(8)
+    cep CHAR(8) NOT NULL
 );
 
 CREATE TABLE empresa (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nomeEmpresa VARCHAR(60) NOT NULL,
-    cnpj CHAR(14),
+    cnpj CHAR(14) NOT NULL,
     email_contato VARCHAR(45) NOT NULL,
-    telefone_contato VARCHAR(45),
+    telefone_contato VARCHAR(45) NOT NULL,
     idEndereco INT NOT NULL,
     CONSTRAINT fk_EmpresaEndereco FOREIGN KEY (idEndereco) REFERENCES endereco(idEndereco)
 );
@@ -39,12 +39,14 @@ CREATE TABLE lixeira (
 );
 
 CREATE TABLE registro (
-    idRegistro INT NOT NULL,
-    idLixeira INT NOT NULL AUTO_INCREMENT,
-    nivel INT NOT NULL,
-    data DATETIME NOT NULL,
-    PRIMARY KEY (idRegistro, idLixeira),
-    CONSTRAINT fk_RegistroLixeira FOREIGN KEY (idLixeira) REFERENCES lixeira(idLixeira)
+    idRegistro INT NOT NULL AUTO_INCREMENT,
+    idLixeira INT,
+    idPontoColeta INT,
+    distancia INT NOT NULL,
+    data DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    PRIMARY KEY (idRegistro, idLixeira, idPontoColeta),
+    CONSTRAINT fk_RegistroLixeira FOREIGN KEY (idLixeira) REFERENCES lixeira(idLixeira),
+    CONSTRAINT fk_RegistroPontoColeta FOREIGN KEY (idPontoColeta) REFERENCES pontoColeta(idPontoColeta)
 );
 
 CREATE TABLE representante (
@@ -62,3 +64,5 @@ CREATE TABLE representante (
     UNIQUE (token_acesso),
     UNIQUE (cpf)
 );
+
+
