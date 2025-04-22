@@ -71,7 +71,7 @@ const serial = async (
         }
 
         if (sensorAnalogico < 0 || sensorAnalogico > 100) {
-            console.warn("Valor fora do intervalo esperado: ", sensorAnalogico);
+            console.log("Valor fora do intervalo esperado: ", sensorAnalogico);
             return;
         }        
 
