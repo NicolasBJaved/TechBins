@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Monitoramento</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="div_nav">
+        <img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav">
+        <ul class="links">
+            <li>
+                <a href="index.html" class="link_nav">Home</a>
+            </li>
+            <li>
+                <a href="sobreNos.html" class="link_nav">Sobre Nós</a>
+            </li>
+            <li>
+                <a href="simulador_financeiro.html" class="link_nav">Simulador Financeiro</a>
+            </li>
+            <li>
+                <a href="login.html" class="link_nav">Login</a>
+            </li>
+        </ul>
+    </div>
+    <div class="containerDASH">
+        <h1>Dashboard Geral</h1>
+        <div class="dash">
+            <div class="grafico1">
+                <h1 id="maiorNivelTitulo">Pontos com maior nível de lixo nos últimos 7 dias</h1>
+                <div class="conteudo">
+                    <div class="chart">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <div class="button">
+                        <select oninput="maiorNivelPontoFiltro()" id="filtroMaiorNivelPonto">
+                            <option value="semana">Última semana</option>
+                            <option value="mês">Último mês</option>
+                            <option value="bimestre">Último bimestre</option>
+                            <option value="semestre">Último semestre</option>
+                            <option value="ano">Último ano</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="grafico2">
+                <h1 id="menorNivelTitulo">Pontos com menor nível de lixo nos últimos 7 dias</h1>
+                <div class="conteudo">
+                    <div class="chart">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                    <div class="button">
+                        <select oninput="menorNivelPontoFiltro()" id="filtroMenorNivelPonto">
+                            <option value="semana">Última semana</option>
+                            <option value="mês">Último mês</option>
+                            <option value="bimestre">Último bimestre</option>
+                            <option value="semestre">Último semestre</option>
+                            <option value="ano">Último ano</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Dashboard Individual</h1>
+        <div class="dash">
+            <h1 id="sensorEspecificoTitulo">Nível de lixo médio por período - Rua A - Último dia</h1>
+            <div class="conteudo">
+                <div class="chart">
+                    <canvas id="myChart3"></canvas>
+                </div>
+                <div class="button">
+                    <select id="filtroPontoMediana" oninput="atualizarGraficoMediana()">
+                        <option value="ruaA">Rua A</option>
+                        <option value="ruaB">Rua B</option>
+                        <option value="ruaC">Rua C</option>
+                        <option value="ruaD">Rua D</option>
+                        <option value="ruaE">Rua E</option>
+                    </select>
+
+                    <select id="filtroPeriodoMediana" oninput="atualizarGraficoMediana()">
+                        <option value="dia">Último dia</option>
+                        <option value="7dias">Últimos 7 dias</option>
+                        <option value="mês">mês</option>
+                        <option value="bimestre">bimestre</option>
+                        <option value="semestre">semestre</option>
+                        <option value="ano">ano</option>
+                    </select>
+                </div>
+            </div>
+            <h1 id="medianaHorarioTitulo">Nível de lixo por horário (mediana) - Rua A - Últimos 7 dias</h1>
+            <div class="conteudo">
+                <div class="chart">
+                    <canvas id="myChart4"></canvas>
+                </div>
+                <div class="button">
+                    <select id="filtroPontoMedianaHorario" oninput="atualizarGraficoMedianaHorario()">
+                        <option value="ruaA">Rua A</option>
+                        <option value="ruaB">Rua B</option>
+                        <option value="ruaC">Rua C</option>
+                        <option value="ruaD">Rua D</option>
+                        <option value="ruaE">Rua E</option>
+                    </select>
+
+                    <select id="filtroPeriodoMedianaHorario" oninput="atualizarGraficoMedianaHorario()">
+                        <option value="7dias">Últimos 7 dias</option>
+                        <option value="mês">mês</option>
+                        <option value="bimestre">bimestre</option>
+                        <option value="semestre">semestre</option>
+                        <option value="ano">ano</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="redes-sociais">
+            <h4>Redes sociais</h4>
+            <ul>
+                <li><img src="imgs/instagram.png" alt=""></li>
+                <li><img src="imgs/youtube.png" alt=""></li>
+                <li><img src="imgs/linkedin-Photoroom.png" alt=""></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <img src="imgs/logo_techbins-removebg-preview.png" alt="">
+        </div>
+        <div class="contato">
+            <h4>Contato</h4>
+            <p>techbins@gmail.com</p>
+            <p>+55 (11) 999999999</p>
+        </div>
+    </div>
+</body>
+
+</html>
