@@ -73,7 +73,7 @@
             respostaLogin.innerHTML = `Token e/ou senha estão incorretos.<br> Tente novamente.`;
             respostaLogin.innerHTML += `Tentativas restantes: ${chances}`;
         } else if (token == 'julia.sptech' && senha == 'julia123' && chances >= 0) {
-            respostaLogin.innerHTML = `Bem-vindo(a) ao site da TechBins!<br>.<a href="dashboard.html">Acesse aqui as Dashboards!</a>`;
+            respostaLogin.innerHTML = `Bem-vindo(a) ao site da TechBins!<br> <a href="dashboard.html">Acesse aqui as Dashboards!</a>`;
             chances = 3;
         }
         if (token != 'julia.sptech' && chances <= 0 || senha != 'julia123' && chances <= 0) {
