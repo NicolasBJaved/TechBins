@@ -1,2 +1,2 @@
 # TechBins
-Repostirório do projeto TechBins
+Repositório do projeto TechBins
