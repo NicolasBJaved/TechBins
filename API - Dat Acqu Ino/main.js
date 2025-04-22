@@ -67,7 +67,7 @@
  
              // este insert irá inserir os dados na tabela "medida"
              await poolBancoDados.execute(
-                 'INSERT INTO registros (distancia) VALUES (?)',
+                 'INSERT INTO registro (idLixeira, idPontoColeta, distancia) VALUES (?, ?, ?)',
                  [sensorAnalogico]
              );
              console.log("valores inseridos no banco: ", sensorAnalogico);
