@@ -117,6 +117,30 @@
                     </select>
                 </div>
             </div>
+            <h1 id="nivelAtualTitulo">Nível de lixo atual Rua A</h1>
+            <div class="conteudo">
+                <div class="chart">
+                    <canvas id="myChart5"></canvas>
+                </div>
+                <div class="button">
+                    <select id="filtroPontoAtual" oninput="atualizarGraficoNivelAtual()">
+                        <option value="ruaA">Rua A</option>
+                        <option value="ruaB">Rua B</option>
+                        <option value="ruaC">Rua C</option>
+                        <option value="ruaD">Rua D</option>
+                        <option value="ruaE">Rua E</option>
+                    </select>
+
+                    <select id="filtroLixeiraAtual" oninput="atualizarGraficoNivelAtual()">
+                        <option value="ponto">ponto</option>
+                        <option value="lixeira1">Lixeira 1</option>
+                        <option value="lixeira2">Lixeira 2</option>
+                        <option value="lixeira3">Lixeira 3</option>
+                        <option value="lixeira4">Lixeira 4</option>
+                        <option value="lixeira5">Lixeira 5</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">

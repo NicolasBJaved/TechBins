@@ -3,6 +3,7 @@ const ctx = document.getElementById('myChart');
 const ctx2 = document.getElementById('myChart2');
 const ctx3 = document.getElementById('myChart3');
 const ctx4 = document.getElementById('myChart4');
+const ctx5 = document.getElementById('myChart5');
 
 // VARIAVÉIS
 const borderColorMaiorNivel = '#F95454';
@@ -184,11 +185,31 @@ var medianaHorarioRuaEbimestre = [3, 2, 4, 3];
 var medianaHorarioRuaEsemestre = [3, 4, 3, 2];
 var medianaHorarioRuaEano = [2, 3, 4, 3];
 
+// NÍVEL ATUAL
+
+var dadosRuaAAtual = {
+    type: 'bar',
+    data: {
+        labels: ["Nível"],
+        datasets: [{
+            label: label,
+            data: [3],
+            borderColor: '#143D60',
+            backgroundColor: '#143D60',
+            borderWidth: 2,
+            tension: 0.4
+        }]
+    },
+    options: options
+};
+
+
 // CRIANDO OS GRÁFICOS INICIAIS
 var graficoAtualCtx1 = new Chart(ctx, dadosRuaAMaiorNivel);
 var graficoAtualCtx2 = new Chart(ctx2, dadosMenorNivel);
 var graficoAtualCtx3 = new Chart(ctx3, dadosRuaAEspecifico);
 var graficoAtualCtx4 = new Chart(ctx4, dadosRuaAMedianaHorario);
+var graficoAtualCtx5 = new Chart(ctx5, dadosRuaAAtual);
 
 // FUNÇÕES DE FILTRO
 function maiorNivelPontoFiltro() {
@@ -222,7 +243,7 @@ function maiorNivelPontoFiltro() {
         type: 'bar',
         data: {
             labels: labels,
-            datasets: [{
+            datasets: [{ 
                 label: 'Nível do lixo',
                 data: dados,
                 borderWidth: borderWidth,
@@ -465,5 +486,54 @@ function atualizarGraficoMedianaHorario() {
     } else if (periodoSelecionado === "ano") {
         titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Último ano`;
     }   
+
+}
+
+function atualizarGraficoNivelAtual() {
+    var pontoSelecionado = document.getElementById('filtroPontoAtual').value;
+    var lixeiraSelecionada = document.getElementById('filtroLixeiraAtual').value;
+
+    var dados = [];
+
+    var valor = Math.random() * 5;
+    console.log(valor)
+    valor = Math.ceil(valor);
+
+    console.log(valor);
+
+    var dados = [valor];
+
+    var config = {
+        type: 'bar',
+        data: {
+            labels: ["Nível"],
+            datasets: [{
+                label: `Mediana - ${pontoSelecionado.replace("rua", "Rua ")}`,
+                data: dados,
+                borderColor: '#143D60',
+                backgroundColor: '#143D60',
+                borderWidth: 2,
+                tension: 0.4
+            }]
+        },
+        options: options
+    };
+
+    if (graficoAtualCtx5) {
+        graficoAtualCtx5.destroy();
+    }
+
+    graficoAtualCtx5 = new Chart(ctx5, config);
+
+    var nomeFormatado = pontoSelecionado.replace("rua", "Rua ");
+    lixeiraSelecionada = lixeiraSelecionada.replace("lixeira", "Lixeira ");
+    var titulo = document.getElementById('nivelAtualTitulo');
+
+    console.log(lixeiraSelecionada);
+    if (lixeiraSelecionada != "ponto") {
+        titulo.innerHTML = `Nível de lixo na ${nomeFormatado} - ${lixeiraSelecionada}`;
+    }else{
+        titulo.innerHTML = `Nível de lixo atual na ${nomeFormatado}`;
+    }
 
 }
