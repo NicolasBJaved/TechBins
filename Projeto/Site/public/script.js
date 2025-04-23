@@ -561,7 +561,7 @@ function atualizarGraficoNivelAtual() {
     console.log(dados)
 
     if(dados == 1 || dados == 2){
-        cor = "green"
+        cor = "#15ff00"
     }else if(dados == 3){
         cor = "yellow"
     }else if(dados == 4){
@@ -601,6 +601,6 @@ function atualizarGraficoNivelAtual() {
     if (lixeiraSelecionada != "ponto") {
         titulo.innerHTML = `Nível de lixo na ${nomeFormatado} - ${lixeiraFormatada}`;
     } else {
-        titulo.innerHTML = `Nível de lixo atual na ${nomeFormatado}`;
+        titulo.innerHTML = `Nível de lixo atual ${nomeFormatado} (Mediana)`;
     }
 }

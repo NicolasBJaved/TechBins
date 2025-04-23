@@ -404,28 +404,29 @@ select {
     width: 100%;
 }
 
-.urgencia5{
+.corUrgencia5{
     margin: 0;
-    font-size: 80px;
+    padding: 0;
+    font-size: 40px;
     color: #ff0000
 }
 
-.urgencia4{
+.corUrgencia4{
     margin: 0;
-    font-size: 80px;
+    font-size: 40px;
     color: #a20808;
 }
 
-.urgencia3{
+.corUrgencia3{
     margin: 0;
-    font-size: 80px;
+    font-size: 40px;
     color: yellow;
 }
 
-.urgencia2{
+.corUrgencia2{
     margin: 0;
-    font-size: 80px;
-    color: green;
+    font-size: 40px;
+    color: #15ff00;
 }
 
 .perfil{
@@ -456,11 +457,83 @@ select {
 
 .containerDASH .dash ul li{
     background-color:#1c7c4e;
-    padding: 20px;
-    padding-top: 0px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     border: 1px solid black;
     border-radius: 20px;
-    height: 200px;
+    height: 90px;
+}
+
+.containerDASH .dash ul{
+    margin: 1px;
+}
+
+.pontosMaiorNivelAtual{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    width: 20%;
+}
+
+.margin0{
+    margin: 0;
+}
+
+.padding0{
+    padding: 0;
+}
+
+.conteudoNivelAtualKPI{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.conteudoGraficoNivelAtual{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.conteudoGraficoNivelAtual .conteudo{
+    width: 100%;
+}
+
+.legendaEGraficoNivelAtual{
+    width: 70%;
+}
+
+.conteudoLegenda{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.retangulo{
+    margin: 0;
+    padding: 0;
+    width: 30px;         
+    height: 10px;        
+}
+
+.legenda{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.legenda .legendaNivel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.legenda .legendaNivel1 p{
+    margin: 0;
+    padding: 0;
 }

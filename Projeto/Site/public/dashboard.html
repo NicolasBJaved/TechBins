@@ -28,81 +28,126 @@
                 <li>
                     <a href="cadastro.htmlx" class="link_nav">Adicionar representante</a>
                 </li>
-                <li >
+                <li>
                     <div class="perfil">
-                        <img src="./imgs/defaultProfile.jpg" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+                        <img src="./imgs/defaultProfile.jpg" alt="foto_perfil" style="border-radius: 30px;"
+                            width="50px">
                         <p class="link_nav">Olá, Julia</p>
                     </div>
-                    
+
                 </li>
             </ul>
         </div>
-        
+
     </div>
 
     <div class="containerDASH">
         <div class="containerKPIS">
             <h1 style="font-size: 60px;">Dados <span style="color: #a20808;"><b>importantes</b></span></h1>
             <div class="dash">
-                <h1>Pontos com maior nível atual (Mediana)</h1>
-                <ul>
-                    <li>
-                        <h1 style="color: white;"><b><i>Rua C</i></b></h1>
-                        <h3>Nível:</h3>
-                        <p class="urgencia5">5</p>
-                    </li>
-                    <li>
-                        <h1 style="color: white;"><b><i>Rua A</i></b></h1>
-                        <h3>Nível:</h3>
-                        <p class="urgencia4">4</p>
-                    </li>
-                    <li>
-                        <h1 style="color: white;"><b><i>Rua E</i></b></h1>
-                        <h3>Nível:</h3>
-                        <p class="urgencia4">4</p>
-                    </li>
-                    <li>
-                        <h1 style="color: white;"><b><i>Rua D</i></b></h1>
-                        <h3>Nível:</h3>
-                        <p class="urgencia3">3</p>
-                    </li>
-                    <li>
-                        <h1 style="color: white;"><b><i>Rua F</i></b></h1>
-                        <h3>Nível:</h3>
-                        <p class="urgencia3">3</p>
-                    </li>
-                    <li>
-                        <h1 style="color: white;"><b><i>Rua B</i></b></h1>
-                        <h3>Nível:</h3>
-                        <p class="urgencia2">2</p>
-                    </li>
-                </ul>
+                <div class="conteudoNivelAtualKPI">
+                    <div class="pontosMaiorNivelAtual">
+                        <h1>Pontos com maior nível atual (Mediana)</h1>
+                        <ul>
+                            <li>
+                                <h3 class="margin0" style="color: white;"><b><i>Rua C</i></b></h3>
+                                <h3 class="margin0">Nível:</h3>
+                                <p class="corUrgencia5">5</p>
+                            </li>
+                            <li>
+                                <h3 class="margin0" style="color: white;"><b><i>Rua A</i></b></h3>
+                                <h3 class="margin0">Nível:</h3>
+                                <p class="corUrgencia4">4</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <h3 class="margin0" style="color: white;"><b><i>Rua E</i></b></h3>
+                                <h3 class="margin0">Nível:</h3>
+                                <p class="corUrgencia4">4</p>
+                            </li>
+                            <li>
+                                <h3 class="margin0" style="color: white;"><b><i>Rua D</i></b></h3>
+                                <h3 class="margin0">Nível:</h3>
+                                <p class="corUrgencia3">3</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <h3 class="margin0" style="color: white;"><b><i>Rua F</i></b></h3>
+                                <h3 class="margin0">Nível:</h3>
+                                <p class="corUrgencia3">3</p>
+                            </li>
+                            <li>
+                                <h3 class="margin0" style="color: white;"><b><i>Rua B</i></b></h3>
+                                <h3 class="margin0">Nível:</h3>
+                                <p class="corUrgencia2">2</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="legendaEGraficoNivelAtual">
+                        <div class="legendaCoresGraficoNivelAtual">
+                            <h1>Legenda</h1>
+                            <div class="conteudoLegenda">
+                                <div class="legenda">
+                                    <div class="legendaNivel">
+                                        <div style="background-color: #15ff00;" class="retangulo"></div>
+                                        <p>-</p>
+                                        <p>Coleta não necessária</p>
+                                    </div>
+                                </div>
+                                <div class="legenda">
+                                    <div class="legendaNivel">
+                                        <div style="background-color: yellow;" class="retangulo"></div>
+                                        <p>-</p>
+                                        <p>Atenção</p>
+                                    </div>
+                                </div>
+                                <div class="legenda">
+                                    <div class="legendaNivel">
+                                        <div style="background-color: #a20808;" class="retangulo"></div>
+                                        <p>-</p>
+                                        <p>Coleta imediata</p>
+                                    </div>
+                                </div>
+                                <div class="legenda">
+                                    <div class="legendaNivel">
+                                        <div style="background-color: #ff0000;" class="retangulo"></div>
+                                        <p>-</p>
+                                        <p>Coleta urgente</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="conteudoGraficoNivelAtual">
+                            <h1 id="nivelAtualTitulo">Nível de lixo atual Rua A (Mediana)</h1>
+                            <div class="conteudo">
+                                <div class="chart">
+                                    <canvas id="myChart5"></canvas>
+                                </div>
+                                <div class="button">
+                                    <select id="filtroPontoAtual" oninput="atualizarGraficoNivelAtual()">
+                                        <option value="ruaA">Rua A</option>
+                                        <option value="ruaB">Rua B</option>
+                                        <option value="ruaC">Rua C</option>
+                                        <option value="ruaD">Rua D</option>
+                                        <option value="ruaE">Rua E</option>
+                                        <option value="ruaF">Rua F</option>
+                                    </select>
     
-                <h1 id="nivelAtualTitulo">Nível de lixo atual Rua A</h1>
-            <div class="conteudo">
-                <div class="chart">
-                    <canvas id="myChart5"></canvas>
+                                    <select id="filtroLixeiraAtual" oninput="atualizarGraficoNivelAtual()">
+                                        <option value="ponto">ponto</option>
+                                        <option value="lixeira1">Lixeira 1</option>
+                                        <option value="lixeira2">Lixeira 2</option>
+                                        <option value="lixeira3">Lixeira 3</option>
+                                        <option value="lixeira4">Lixeira 4</option>
+                                        <option value="lixeira5">Lixeira 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="button">
-                    <select id="filtroPontoAtual" oninput="atualizarGraficoNivelAtual()">
-                        <option value="ruaA">Rua A</option>
-                        <option value="ruaB">Rua B</option>
-                        <option value="ruaC">Rua C</option>
-                        <option value="ruaD">Rua D</option>
-                        <option value="ruaE">Rua E</option>
-                        <option value="ruaF">Rua F</option>
-                    </select>
-
-                    <select id="filtroLixeiraAtual" oninput="atualizarGraficoNivelAtual()">
-                        <option value="ponto">ponto</option>
-                        <option value="lixeira1">Lixeira 1</option>
-                        <option value="lixeira2">Lixeira 2</option>
-                        <option value="lixeira3">Lixeira 3</option>
-                        <option value="lixeira4">Lixeira 4</option>
-                        <option value="lixeira5">Lixeira 5</option>
-                    </select>
-                </div>
-            </div>
             </div>
         </div>
     </div>
@@ -196,7 +241,7 @@
                     </select>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div class="footer">
