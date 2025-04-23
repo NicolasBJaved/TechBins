@@ -417,9 +417,21 @@ select {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90px;
+    height: 80px;
+    padding-top: 5px;
+    margin-top: 5px;
 }
 
 .links_dash {
-    height: 150px;
+    height: 120px;
+}
+
+.links_dash .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 550px;
+    margin-right: -100px;
+    margin-top: 0;
 }
