@@ -404,10 +404,28 @@ select {
     width: 100%;
 }
 
-.numeroUrgencia{
+.urgencia5{
     margin: 0;
     font-size: 80px;
-    color: #FF0000;
+    color: #ff0000
+}
+
+.urgencia4{
+    margin: 0;
+    font-size: 80px;
+    color: #a20808;
+}
+
+.urgencia3{
+    margin: 0;
+    font-size: 80px;
+    color: yellow;
+}
+
+.urgencia2{
+    margin: 0;
+    font-size: 80px;
+    color: green;
 }
 
 .perfil{
@@ -431,7 +449,18 @@ select {
     align-items: center;
     justify-content: space-between;
     list-style-type: none;
-    width: 550px;
-    margin-right: -100px;
+    width: 700px;
+    margin-right: -70px;
     margin-top: 0;
+}
+
+.containerDASH .dash ul li{
+    background-color:#1c7c4e;
+    padding: 20px;
+    padding-top: 0px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 200px;
 }

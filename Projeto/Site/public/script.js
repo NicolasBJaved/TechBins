@@ -1,5 +1,4 @@
 // RECUPERANDO OS CANVAS
-const ctxUrgencia = document.getElementById('myChartUrgencia');
 const ctx = document.getElementById('myChart');
 const ctx2 = document.getElementById('myChart2');
 const ctx3 = document.getElementById('myChart3');
@@ -25,37 +24,6 @@ const options = {
             max: 5,
             ticks: {
                 stepSize: 1
-            }
-        }
-    }
-};
-
-// GRÁFICO DE URGÊNCIA
-var dadosUrgencia = {
-    type: 'bar',
-    data: {
-        labels: ["Rua C", "Rua A", "Rua E"],
-        datasets: [{
-            label: label,
-            data: [5,4,4],
-            borderColor: '#FF0000',
-            backgroundColor: '#FF0000',
-            borderWidth: 2,
-            tension: 0.4
-        }]
-    },
-    options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            x: {
-                beginAtZero: true,
-                min: 0,
-                max: 5,
-                ticks: {
-                    stepSize: 1
-                }
             }
         }
     }
@@ -246,8 +214,8 @@ var dadosRuaAAtual = {
         datasets: [{
             label: label,
             data: [3],
-            borderColor: '#3498db',
-            backgroundColor: '#3498db',
+            borderColor: 'yellow',
+            backgroundColor: 'yellow',
             borderWidth: 2,
             tension: 0.4
         }]
@@ -258,7 +226,6 @@ var dadosRuaAAtual = {
 
 // CRIANDO OS GRÁFICOS INICIAIS
 
-var graficoUrgenciaCtx = new Chart(ctxUrgencia, dadosUrgencia);
 var graficoAtualCtx1 = new Chart(ctx, dadosRuaAMaiorNivel);
 var graficoAtualCtx2 = new Chart(ctx2, dadosMenorNivel);
 var graficoAtualCtx3 = new Chart(ctx3, dadosRuaAEspecifico);
@@ -589,6 +556,22 @@ function atualizarGraficoNivelAtual() {
         else dados = [3];
     }
 
+    var cor = "";
+
+    console.log(dados)
+
+    if(dados == 1 || dados == 2){
+        cor = "green"
+    }else if(dados == 3){
+        cor = "yellow"
+    }else if(dados == 4){
+        cor = "#a20808"
+    }else{
+        cor = "#ff0000"
+    }
+
+    console.log(cor);
+
     var config = {
         type: 'bar',
         data: {
@@ -596,8 +579,8 @@ function atualizarGraficoNivelAtual() {
             datasets: [{
                 label: `Mediana - ${pontoSelecionado.replace("rua", "Rua ")}`,
                 data: dados,
-                borderColor: '#3498db',
-                backgroundColor: '#3498db',
+                borderColor: cor,
+                backgroundColor: cor,
                 borderWidth: 2,
                 tension: 0.4
             }]
