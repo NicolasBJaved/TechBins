@@ -409,3 +409,17 @@ select {
     font-size: 80px;
     color: #FF0000;
 }
+
+.perfil{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90px;
+}
+
+.links_dash {
+    height: 150px;
+}

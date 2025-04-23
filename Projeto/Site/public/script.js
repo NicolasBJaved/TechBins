@@ -331,7 +331,7 @@ function menorNivelPontoFiltro() {
     if (value === "semana") {
         titulo.innerHTML = "Pontos com menor nível de lixo (mediana) na última semana";
         dados = dadosMenorNivelSeteDias;
-        labels = ['Rua A', 'Rua B', 'Rua F'];
+        labels = ['Rua D', 'Rua E', 'Rua F'];
     } else if (value === "mês") {
         titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último mês";
         dados = dadosMenorNivelMes;
