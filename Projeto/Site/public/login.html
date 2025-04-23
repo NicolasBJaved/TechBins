@@ -66,9 +66,13 @@
 <script>
     let chances = 3;
     function login() {
-        chances--;
         let token = (ipt_token.value).toLowerCase();
         let senha = ipt_senha.value;
+        if (token == '' || senha == '') {
+            respostaLogin.innerHTML = `Por favor, preencha todos os campos.`;
+            return;
+        }
+        chances--;
         if (token != 'julia.sptech' && chances > 0 || senha != 'julia123' && chances > 0) {
             respostaLogin.innerHTML = `Token e/ou senha estão incorretos.<br> Tente novamente.`;
             respostaLogin.innerHTML += `Tentativas restantes: ${chances}`;
