@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Bins | Página De Cadastro</title>
+    <link rel="stylesheet" href="./sytle.css">
+</head>
+
+<body>
+    <div class="header">
+      <div class="container">
+        <h1 class="titulo">Tech Bins</h1>
+        <ul class="navbar">
+            <li>
+              <a href="index.html">Inicial</a>
+            </li>
+          <li>
+            <a href="calculadora.html">Calculadora</a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="containerLCS">
+        <div class="box1">
+            <div>
+                <h1>Cadastro</h1>
+            </div>
+            <div class="formulario">
+                <p>Nome do Representante</p>
+                <input type="text" placeholder="Escreva aqui" id="ipt_nome">
+                <p>Email</p>
+                <input type="text" placeholder="Escreva aqui" id="ipt_email">
+                <p>CPF</p>
+                <input type="text" placeholder="Escreva aqui" id="ipt_cpf">
+                <p>Senha</p>
+                <input type="password" placeholder="Escreva aqui" id="ipt_senha1">
+                <p>Confirmar senha</p>
+                <input type="password" placeholder="Escreva aqui" id="ipt_senha2">
+                <button onclick="cadastro()">Cadastrar</button>
+                <div id="cadastroResposta"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
