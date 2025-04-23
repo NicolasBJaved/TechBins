@@ -386,8 +386,8 @@ select {
     flex-direction: column;
     justify-content: space-around;
     justify-content: center;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
     padding: 40px;
     border-radius: 10px;
     background-color: #267652a0;
@@ -556,4 +556,20 @@ select {
     border-radius: 20px;
     height: 90px;
     width: 90px;
+}
+
+.referencias {
+    position: fixed;
+    right: 1300px;
+    top: 255px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    text-align: center;
+}
+
+.referencias .valores {
+    display: flex;
+    justify-content: space-around;
 }
