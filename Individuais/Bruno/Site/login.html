@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Bins | Página De Login</title>
-    <link rel="stylesheet" href="./sytle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Bins | Página De Login</title>
+  <link rel="stylesheet" href="./sytle.css">
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">Tech Bins</h1>
-        <ul class="navbar">
-            <li>
-              <a href="index.html">Inicial</a>
-            </li>
-          <li>
-            <a href="calculadora.html">Calculadora</a>
-          </li>
-        </ul>
+  <div class="header">
+    <div class="container">
+      <h1 class="titulo">Tech Bins</h1>
+      <ul class="navbar">
+        <li>
+          <a href="index.html">Inicial</a>
+        </li>
+        <li>
+          <a href="calculadora.html">Calculadora</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="containerLCS">
+    <div class="box1">
+      <div>
+        <h1>Login</h1>
+      </div>
+      <div class="formulario">
+        <p>Token de Acesso</p>
+        <input type="text" placeholder="Escreva aqui" id="ipt_token">
+        <p>Senha</p>
+        <input type="password" placeholder="Escreva aqui" id="ipt_senha">
+        <button onclick="login()">Entrar</button>
+        <div id="respostaLogin"></div>
+        <p>Não tem uma conta? <a href="cadastro.html" class="corCadastro">Cadastre-se agora</a></p>
       </div>
     </div>
-    
-    <div class="containerLCS">
-        <div class="box1">
-            <div>
-                <h1>Login</h1>
-            </div>
-            <div class="formulario">
-                <p>Token de Acesso</p>
-                <input type="text" placeholder="Escreva aqui" id="ipt_token">
-                <p>Senha</p>
-                <input type="password" placeholder="Escreva aqui" id="ipt_senha">
-                <button onclick="login()">Entrar</button>
-                <div id="respostaLogin"></div>
-                <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se agora</a></p>
-            </div>
-        </div>
-    </div>
+  </div>
 </body>
+<script>
+  var contador = 4
+  function login() {
+    respostaLogin.innerHTML = ``;
+    var token = ipt_token.value;
+    var senha = ipt_senha.value;
+    if (contador > 0) {
+      if (token == '' || senha == '') respostaLogin.innerHTML = `Preencha todos os campos do login corretamente.`
+
+      else if (token == 'bruno.prado' && senha == 'bruno123') {
+        respostaLogin.innerHTML = `Login aprovado!`;
+      } else {
+        contador--;
+        respostaLogin.innerHTML = `Login errado! <br><br> Tentativas restantes ${contador}`;
+      }
+    }
+
+    if (contador <= 0) {
+      respostaLogin.innerHTML = `Acesso bloqueado!`
+    }
+  }
+</script>
+
 </html>

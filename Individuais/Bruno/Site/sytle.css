@@ -7,7 +7,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: black;
+    background: rgb(122, 87, 22);
 }
 
 .container {
@@ -112,7 +112,7 @@ body{
 }
 
 .box h4{
-    color: crimson;
+    color: rgb(40, 178, 30);
 }
 
 .footer{
@@ -147,7 +147,7 @@ body{
     width: 1000px;
     height: fit-content;
     text-align: center;
-    background-color: #89ec75a0;
+    background-color: #155C3A;
     border-radius: 10px;
     border: solid 2px #155C3A;
 }
@@ -157,8 +157,6 @@ body{
     flex-direction: column;
     align-items: center;
 }
-
-/* Resultado da calculadora financeira */
 
 .containerLCS #div_resultado {
     margin: 5px 30px 30px 30px;
@@ -171,7 +169,29 @@ body{
     font-weight: bold;
 }
 
-/* Cadastro */
 .containerLCS #cadastroResposta {
     margin-bottom: 20px;
+}
+
+input {
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    font-family: "Exo 2";
+}
+
+button {
+    margin: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    background-color: #416B44;
+    font-family: "Exo 2";
+    cursor: pointer;
+}
+
+.corCadastro{
+    color: rgb(104, 148, 245);
 }

@@ -47,4 +47,24 @@
         </div>
     </div>
 </body>
+  <script>
+    function cadastro(){
+      var nome = ipt_nome.value;
+      var email = ipt_email.value;
+      var CPF = ipt_cpf.value;
+      var senha1 = ipt_senha1.value;
+      var senha2 = ipt_senha2.value;
+
+      if (nome == '' || email == '' || CPF == '' || senha1 == '' || senha2 == ''){ 
+        cadastroResposta.innerHTML = `Preencha todos os campos de cadastro corretamente`
+      } else if(senha1 != senha2){
+        cadastroResposta.innerHTML = `Confirmação da senha errada!`
+      } else {
+        cadastroResposta.innerHTML = `
+        Cadastro feito ${nome}! <br>
+        <a href="login.html" class="corCadastro">Clique aqui para a pagina de login</a>
+        `
+      }
+    }
+  </script>
 </html>
