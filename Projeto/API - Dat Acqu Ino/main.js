@@ -21,9 +21,9 @@
          {
              host: '127.0.0.1',
              user: 'techbins',
-             password: '1234', // MUDAR PARA '1234' QUANDO FOR USAR O MYSQL LOCAL ou para 'Techbins1234!' QUANDO FOR NA VM
+             password: 'Techbins1234!', // MUDAR PARA '1234' QUANDO FOR USAR O MYSQL LOCAL ou para 'Techbins1234!' QUANDO FOR NA VM
              database: 'techbins',
-             port: 3306
+             port: 3307
              // MUDAR PORTA PARA 3307 QUANDO FOR USAR O BD DA VM
              // MUDAR PORTA PARA 3306 QUANDO FOR USAR O MYSQL LOCAL
          }
