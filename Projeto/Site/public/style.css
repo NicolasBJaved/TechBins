@@ -537,3 +537,23 @@ select {
     margin: 0;
     padding: 0;
 }
+
+.pontoMaiorNívelPeriodo{
+    width: 40%;
+}
+
+.conteudoMaiorNivelPeriodo{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.containerDASH .dash ul .ajustar{
+    background-color:#1c7c4e;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 90px;
+    width: 90px;
+}
