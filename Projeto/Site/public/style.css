@@ -394,3 +394,18 @@ select {
     border: solid 2px #155C3A;
     text-align: center;
 }
+
+.containerDASH .dash ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.numeroUrgencia{
+    margin: 0;
+    font-size: 80px;
+    color: red;
+}
