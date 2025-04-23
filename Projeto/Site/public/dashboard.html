@@ -14,26 +14,62 @@
 <body>
     <div class="div_nav">
         <img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav">
-        <ul class="links">
-            <li>
-                <a href="index.html" class="link_nav">Home</a>
-            </li>
-            <li>
-                <a href="sobreNos.html" class="link_nav">Sobre Nós</a>
-            </li>
-            <li>
-                <a href="simulador_financeiro.html" class="link_nav">Simulador Financeiro</a>
-            </li>
-            <li>
-                <a href="login.html" class="link_nav">Login</a>
-            </li>
-        </ul>
+        <div class="links_dash">
+            <ul class="links">
+                <li>
+                    <a href="index.html" class="link_nav">Home</a>
+                </li>
+                <li>
+                    <a href="sobreNos.html" class="link_nav">Sobre Nós</a>
+                </li>
+                <li>
+                    <a href="simulador_financeiro.html" class="link_nav">Simulador Financeiro</a>
+                </li>
+                <li>
+                    <a href="login.html" class="link_nav">Login</a>
+                </li>
+                <li >
+                    <div class="perfil">
+                        <img src="./imgs/defaultProfile.jpg" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+                        <p class="link_nav">Olá, Julia</p>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+        
     </div>
     <div class="containerDASH">
+
+        <h1>Pontos com urgência de coleta</h1>
+        <div class="dash">
+            <ul>
+                <li>
+                    <h1><b><i>Rua C</i></b></h1>
+                    <h3>Nível</h3>
+                    <p class="numeroUrgencia">5</p>
+                </li>
+                <li>
+                    <h1><b></i>Rua A</i></b></h1>
+                    <h3>Nível</h3>
+                    <p class="numeroUrgencia">4</p>
+                </li>
+                <li>
+                    <h1><b></i>Rua E</i></b></h1>
+                    <h3>Nível</h3>
+                    <p class="numeroUrgencia">4</p>
+                </li>
+            </ul>
+
+            <div class="chart">
+                <canvas id="myChartUrgencia"></canvas>
+            </div>
+        </div>
+
         <h1>Dashboard Geral</h1>
         <div class="dash">
             <div class="grafico1">
-                <h1 id="maiorNivelTitulo">Pontos com maior nível de lixo nos últimos 7 dias</h1>
+                <h1 id="maiorNivelTitulo">Pontos com maior nível de lixo (mediana) nos últimos 7 dias</h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart"></canvas>
@@ -50,7 +86,7 @@
                 </div>
             </div>
             <div class="grafico2">
-                <h1 id="menorNivelTitulo">Pontos com menor nível de lixo nos últimos 7 dias</h1>
+                <h1 id="menorNivelTitulo">Pontos com menor nível de lixo (mediana) nos últimos 7 dias</h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart2"></canvas>
@@ -70,7 +106,7 @@
 
         <h1>Dashboard Individual</h1>
         <div class="dash">
-            <h1 id="sensorEspecificoTitulo">Nível de lixo médio por período - Rua A - Último dia</h1>
+            <h1 id="sensorEspecificoTitulo">Nível de lixo médio por período (mediana) – Rua A – Último mês</h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart3"></canvas>
@@ -82,11 +118,10 @@
                         <option value="ruaC">Rua C</option>
                         <option value="ruaD">Rua D</option>
                         <option value="ruaE">Rua E</option>
+                        <option value="ruaF">Rua F</option>
                     </select>
 
                     <select id="filtroPeriodoMediana" oninput="atualizarGraficoMediana()">
-                        <option value="dia">Último dia</option>
-                        <option value="7dias">Últimos 7 dias</option>
                         <option value="mês">mês</option>
                         <option value="bimestre">bimestre</option>
                         <option value="semestre">semestre</option>
@@ -106,6 +141,8 @@
                         <option value="ruaC">Rua C</option>
                         <option value="ruaD">Rua D</option>
                         <option value="ruaE">Rua E</option>
+                        <option value="ruaF">Rua F</option>
+
                     </select>
 
                     <select id="filtroPeriodoMedianaHorario" oninput="atualizarGraficoMedianaHorario()">
@@ -114,6 +151,31 @@
                         <option value="bimestre">bimestre</option>
                         <option value="semestre">semestre</option>
                         <option value="ano">ano</option>
+                    </select>
+                </div>
+            </div>
+            <h1 id="nivelAtualTitulo">Nível de lixo atual Rua A</h1>
+            <div class="conteudo">
+                <div class="chart">
+                    <canvas id="myChart5"></canvas>
+                </div>
+                <div class="button">
+                    <select id="filtroPontoAtual" oninput="atualizarGraficoNivelAtual()">
+                        <option value="ruaA">Rua A</option>
+                        <option value="ruaB">Rua B</option>
+                        <option value="ruaC">Rua C</option>
+                        <option value="ruaD">Rua D</option>
+                        <option value="ruaE">Rua E</option>
+                        <option value="ruaF">Rua F</option>
+                    </select>
+
+                    <select id="filtroLixeiraAtual" oninput="atualizarGraficoNivelAtual()">
+                        <option value="ponto">ponto</option>
+                        <option value="lixeira1">Lixeira 1</option>
+                        <option value="lixeira2">Lixeira 2</option>
+                        <option value="lixeira3">Lixeira 3</option>
+                        <option value="lixeira4">Lixeira 4</option>
+                        <option value="lixeira5">Lixeira 5</option>
                     </select>
                 </div>
             </div>

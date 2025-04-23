@@ -313,7 +313,7 @@ select {
 }
 
 .containerSN .equipe img {
-    width: 190px;
+    width: 180px;
     height: 199px;
     border-radius: 50px;
     border: solid 2px #155C3A;
@@ -393,4 +393,45 @@ select {
     background-color: #267652a0;
     border: solid 2px #155C3A;
     text-align: center;
+}
+
+.containerDASH .dash ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.numeroUrgencia{
+    margin: 0;
+    font-size: 80px;
+    color: #FF0000;
+}
+
+.perfil{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80px;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.links_dash {
+    height: 120px;
+}
+
+.links_dash .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 550px;
+    margin-right: -100px;
+    margin-top: 0;
 }

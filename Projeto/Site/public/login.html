@@ -39,7 +39,6 @@
                 <input type="password" placeholder="***********" id="ipt_senha">
                 <button onclick="login()">Entrar</button>
                 <div id="respostaLogin"></div>
-                <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se agora</a></p>
             </div>
         </div>
     </div>
@@ -64,17 +63,26 @@
 </body>
 
 <script>
-    let chances = 3;
+    var chances = 3;
     function login() {
-        chances--;
         let token = (ipt_token.value).toLowerCase();
         let senha = ipt_senha.value;
-        if (token != 'julia.sptech' && chances > 0 || senha != 'julia123' && chances > 0) {
-            respostaLogin.innerHTML = `Token e/ou senha estão incorretos.<br> Tente novamente.`;
-            respostaLogin.innerHTML += `Tentativas restantes: ${chances}`;
-        } else if (token == 'julia.sptech' && senha == 'julia123' && chances >= 0) {
-            respostaLogin.innerHTML = `Bem-vindo(a) ao site da TechBins!<br>.<a href="dashboard.html">Acesse aqui as Dashboards!</a>`;
-            chances = 3;
+        if (token == '' || senha == '') {
+            respostaLogin.innerHTML = `Por favor, preencha todos os campos.`;
+            return;
+        }
+        while (chances > 0) {
+            chances--;
+            if (token != 'julia.sptech' && chances > 0 || senha != 'julia123' && chances > 0) {
+                respostaLogin.innerHTML = `Token e/ou senha estão incorretos.<br> Tente novamente. `;
+                respostaLogin.innerHTML += `Tentativas restantes: ${chances}`;
+                break;
+            }
+            if (token == 'julia.sptech' && senha == 'julia123' && chances >= 0) {
+                respostaLogin.innerHTML = `Bem-vindo(a) ao site da TechBins!<br> <a href="dashboard.html">Acesse aqui as Dashboards!</a>`;
+                chances = 3;
+                break;
+            }
         }
         if (token != 'julia.sptech' && chances <= 0 || senha != 'julia123' && chances <= 0) {
             respostaLogin.innerHTML = `Você não tem mais tentativas restantes.`
