@@ -85,10 +85,11 @@ VALUES
 -- Inserindo empresas com idEnderecoEmpresa já referenciado (100 a 103)
 INSERT INTO empresa (nomeEmpresa, cnpj, email_contato, telefone_contato, idEnderecoEmpresa)
 VALUES 
-('EcoUrbis Ambiental S/A', '12345678000100', 'contato@ecourbis.com.br', '(11) 4002-8922', 100),
+('Eco SPTech', '12345678000100', 'contato@ecosptech.com.br', '(11) 4002-8922', 100),
 ('Loga - Logística Ambiental', '23456789000111', 'contato@loga.com.br', '(11) 3003-2100', 101),
 ('Sustentare Saneamento S/A', '34567890000122', 'contato@sustentare.com.br', '(11) 3500-1500', 102),
 ('Corpus Saneamento e Obras Ltda', '45678901000133', 'sac@corpus.com.br', '(11) 3111-6200', 103);
+
 
 
 INSERT INTO pontoColeta (idEmpresa, logradouro, numero, complemento, bairro, cidade, estado, cep)
@@ -109,11 +110,12 @@ VALUES
 (1002),
 (1003);
 
--- EcoUrbis (empresa 1)
+-- Eco SPTech (empresa 1)
 INSERT INTO representante (idEmpresa, nomeRepresentante, token_acesso, senha, cpf, podeAdicionarRepresentantes, idRepresentantePai)
 VALUES 
-(1, 'Marcos Silva', 'token_eco123', 'senha123', '12345678901', 'S', NULL), -- id 1
-(1, 'Ana Souza', 'token_eco456', 'senha456', '12345678902', 'N', 1);
+(1, 'Julia Lima', 'julia.sptech', 'julia123', '12345678901', 'S', NULL), -- id 1
+(1, 'Fernando Brandão', 'brandao.sptech', 'brandao123', '12345678902', 'N', 1);
+
 
 -- Loga (empresa 2)
 INSERT INTO representante (idEmpresa, nomeRepresentante, token_acesso, senha, cpf, podeAdicionarRepresentantes, idRepresentantePai)
@@ -134,6 +136,7 @@ VALUES
 (4, 'Fernando Reis', 'token_corp456', 'senha456', '45678901235', 'N', 7);
 
 
+
 select reg.*, pto.idEmpresa as 'Identificador da Empresa', pto.logradouro as 'Logradouro', pto.numero as 'Número', pto.cidade as 'Cidade',
 case
 when distancia <= 18 then '5'
@@ -146,5 +149,5 @@ end as 'Nível do Lixo'
 from registro reg
 inner join pontoColeta pto on pto.idPontoColeta = reg.idPontoColeta;
 
-truncate registro;
+select * from empresa;
 
