@@ -407,5 +407,5 @@ select {
 .numeroUrgencia{
     margin: 0;
     font-size: 80px;
-    color: red;
+    color: #FF0000;
 }

@@ -7,10 +7,10 @@ const ctx4 = document.getElementById('myChart4');
 const ctx5 = document.getElementById('myChart5');
 
 // VARIAVÉIS
-const borderColorMaiorNivel = '#F95454';
-const backgroundColorMaiorNivel = '#EF5A6F';
-const borderColorMenorNivel = '#3D3BF3';
-const backgroundColorMenorNivel = '#0D92F4';
+const borderColorMaiorNivel = '#f1c40f';
+const backgroundColorMaiorNivel = '#f1c40f';
+const borderColorMenorNivel = '#2ecc71';
+const backgroundColorMenorNivel = '#2ecc71';
 const borderWidth = 2;
 const label = 'Nível do lixo';
 Chart.defaults.color = '#000'; /* --> Cor da fonte */
@@ -38,8 +38,8 @@ var dadosUrgencia = {
         datasets: [{
             label: label,
             data: [5,4,4],
-            borderColor: 'red',
-            backgroundColor: 'red',
+            borderColor: '#FF0000',
+            backgroundColor: '#FF0000',
             borderWidth: 2,
             tension: 0.4
         }]
@@ -114,8 +114,8 @@ var dadosRuaAEspecifico = {
         datasets: [{
             label: label,
             data: [2, 3, 4, 3],
-            borderColor: '#FFA500',
-            backgroundColor: '#FFD580',
+            borderColor: '#8e44ad',
+            backgroundColor: '#8e44ad',
             borderWidth: 2,
             tension: 0.4
         }]
@@ -174,8 +174,8 @@ var dadosRuaAMedianaHorario = {
         datasets: [{
             label: label,
             data: [3, 4, 3, 2],
-            borderColor: '#2C5F34',
-            backgroundColor: '#2C5F34',
+            borderColor: '#ecf0f1',
+            backgroundColor: '#ecf0f1',
             borderWidth: 2,
             tension: 0.4
         }]
@@ -252,8 +252,8 @@ var dadosRuaAAtual = {
         datasets: [{
             label: label,
             data: [3],
-            borderColor: '#143D60',
-            backgroundColor: '#143D60',
+            borderColor: '#3498db',
+            backgroundColor: '#3498db',
             borderWidth: 2,
             tension: 0.4
         }]
@@ -438,8 +438,8 @@ function atualizarGraficoMediana() {
             datasets: [{
                 label: `Mediana - ${pontoSelecionado.replace("rua", "Rua ")}`,
                 data: dados,
-                borderColor: '#FFA500',
-                backgroundColor: '#FFD580',
+                borderColor: '#8e44ad',
+                backgroundColor: '#8e44ad',
                 borderWidth: 2,
                 tension: 0.4
             }]
@@ -521,8 +521,8 @@ function atualizarGraficoMedianaHorario() {
             datasets: [{
                 label: `Mediana - ${pontoSelecionado.replace("rua", "Rua ")}`,
                 data: dados,
-                borderColor: '#2C5F34',
-                backgroundColor: '#2C5F34',
+                borderColor: '#ecf0f1',
+                backgroundColor: '#ecf0f1',
                 borderWidth: 2,
                 tension: 0.4
             }]
@@ -612,8 +612,8 @@ function atualizarGraficoNivelAtual() {
             datasets: [{
                 label: `Mediana - ${pontoSelecionado.replace("rua", "Rua ")}`,
                 data: dados,
-                borderColor: '#143D60',
-                backgroundColor: '#143D60',
+                borderColor: '#3498db',
+                backgroundColor: '#3498db',
                 borderWidth: 2,
                 tension: 0.4
             }]
