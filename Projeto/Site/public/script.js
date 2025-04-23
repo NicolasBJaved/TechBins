@@ -110,10 +110,10 @@ var dadosMenorNivelAno = [1, 2, 1];
 var dadosRuaAEspecifico = {
     type: 'line',
     data: {
-        labels: ["06:00", "12:00", "18:00", "00:00"],
+        labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
         datasets: [{
             label: label,
-            data: [2, 3, 4, 3],
+            data: [3, 4, 4, 3],
             borderColor: '#8e44ad',
             backgroundColor: '#8e44ad',
             borderWidth: 2,
@@ -124,49 +124,43 @@ var dadosRuaAEspecifico = {
 };
 
 // Rua A
-var medianaRuaA7dias = [3, 3, 4, 3, 3, 4, 3];
 var medianaRuaAmes = [3, 4, 4, 3];
 var medianaRuaAbimestre = [4, 4, 3, 4, 3, 4, 3, 4];
 var medianaRuaAsemestre = [3, 4, 4, 4, 3, 4];
 var medianaRuaAano = [4, 4, 4, 3, 3, 4];
 
 // Rua B
-var medianaRuaB7dias = [2, 2, 3, 2, 3, 3, 2];
 var medianaRuaBmes = [2, 3, 3, 2];
 var medianaRuaBbimestre = [2, 2, 3, 3, 2, 2, 3, 3];
 var medianaRuaBsemestre = [3, 3, 2, 3, 2, 2];
 var medianaRuaBano = [2, 2, 3, 3, 2, 3];
 
 // Rua C
-var medianaRuaC7dias = [3, 3, 4, 3, 3, 3, 2];
 var medianaRuaCmes = [3, 3, 4, 3];
 var medianaRuaCbimestre = [4, 4, 3, 3, 3, 3, 4, 4];
 var medianaRuaCsemestre = [3, 3, 4, 4, 3, 3];
 var medianaRuaCano = [4, 3, 3, 4, 3, 3];
 
 // Rua D
-var medianaRuaD7dias = [4, 4, 3, 3, 2, 3, 4];
-var medianaRuaDmes = [3, 3, 4, 3];
+var medianaRuaDmes = [3, 2, 3, 1];
 var medianaRuaDbimestre = [4, 4, 4, 3, 3, 3, 4, 3];
 var medianaRuaDsemestre = [3, 4, 4, 3, 3, 4];
 var medianaRuaDano = [4, 4, 4, 3, 3, 3];
 
 // Rua E
-var medianaRuaE7dias = [2, 3, 3, 4, 3, 2, 3];
 var medianaRuaEmes = [3, 3, 2, 4];
 var medianaRuaEbimestre = [3, 2, 4, 3, 3, 2, 4, 3];
 var medianaRuaEsemestre = [3, 4, 3, 2, 4, 3];
 var medianaRuaEano = [2, 3, 3, 4, 3, 3];
 
 // Rua F
-var medianaRuaF7dias = [3, 3, 4, 3, 2, 3, 3];
 var medianaRuaFmes = [4, 3, 3, 4];
 var medianaRuaFbimestre = [3, 3, 4, 4, 3, 4, 2, 3];
 var medianaRuaFsemestre = [2, 3, 3, 3, 2, 3];
 var medianaRuaFano = [3, 2, 2, 3, 3, 3];
 
 
-// MEDIANDA HORÁRIO 
+// MEDIANA HORÁRIO 
 var dadosRuaAMedianaHorario = {
     type: 'line',
     data: {
@@ -335,19 +329,19 @@ function menorNivelPontoFiltro() {
     } else if (value === "mês") {
         titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último mês";
         dados = dadosMenorNivelMes;
-        labels = ['Rua B', 'Rua E', 'Rua F'];
+        labels = ['Rua B', 'Rua E', 'Rua A'];
     } else if (value === "bimestre") {
         titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último bimestre";
         dados = dadosMenorNivelBimestre;
-        labels = ['Rua A', 'Rua C', 'Rua F'];
+        labels = ['Rua D', 'Rua C', 'Rua B'];
     } else if (value === "semestre") {
         titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último semestre";
         dados = dadosMenorNivelSemestre;
-        labels = ['Rua B', 'Rua D', 'Rua F'];
+        labels = ['Rua C', 'Rua D', 'Rua E'];
     } else if (value === "ano") {
         titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último ano";
         dados = dadosMenorNivelAno;
-        labels = ['Rua C', 'Rua F', 'Rua E'];
+        labels = ['Rua B', 'Rua A', 'Rua E'];
     }
 
     var config = {
@@ -379,47 +373,39 @@ function atualizarGraficoMediana() {
     var dados = [];
 
     if (pontoSelecionado === 'ruaA') {
-        if (periodoSelecionado === '7dias') dados = medianaRuaA7dias;
-        else if (periodoSelecionado === 'mês') dados = medianaRuaAmes;
+        if (periodoSelecionado === 'mês') dados = medianaRuaAmes;
         else if (periodoSelecionado === 'bimestre') dados = medianaRuaAbimestre;
         else if (periodoSelecionado === 'semestre') dados = medianaRuaAsemestre;
         else if (periodoSelecionado === 'ano') dados = medianaRuaAano;
     } else if (pontoSelecionado === 'ruaB') {
-        if (periodoSelecionado === '7dias') dados = medianaRuaB7dias;
-        else if (periodoSelecionado === 'mês') dados = medianaRuaBmes;
+        if (periodoSelecionado === 'mês') dados = medianaRuaBmes;
         else if (periodoSelecionado === 'bimestre') dados = medianaRuaBbimestre;
         else if (periodoSelecionado === 'semestre') dados = medianaRuaBsemestre;
         else if (periodoSelecionado === 'ano') dados = medianaRuaBano;
     } else if (pontoSelecionado === 'ruaC') {
-        if (periodoSelecionado === '7dias') dados = medianaRuaC7dias;
-        else if (periodoSelecionado === 'mês') dados = medianaRuaCmes;
+        if (periodoSelecionado === 'mês') dados = medianaRuaCmes;
         else if (periodoSelecionado === 'bimestre') dados = medianaRuaCbimestre;
         else if (periodoSelecionado === 'semestre') dados = medianaRuaCsemestre;
         else if (periodoSelecionado === 'ano') dados = medianaRuaCano;
     } else if (pontoSelecionado === 'ruaD') {
-        if (periodoSelecionado === '7dias') dados = medianaRuaD7dias;
-        else if (periodoSelecionado === 'mês') dados = medianaRuaDmes;
+        if (periodoSelecionado === 'mês') dados = medianaRuaDmes;
         else if (periodoSelecionado === 'bimestre') dados = medianaRuaDbimestre;
         else if (periodoSelecionado === 'semestre') dados = medianaRuaDsemestre;
         else if (periodoSelecionado === 'ano') dados = medianaRuaDano;
     } else if (pontoSelecionado === 'ruaE') {
-        if (periodoSelecionado === '7dias') dados = medianaRuaE7dias;
-        else if (periodoSelecionado === 'mês') dados = medianaRuaEmes;
+        if (periodoSelecionado === 'mês') dados = medianaRuaEmes;
         else if (periodoSelecionado === 'bimestre') dados = medianaRuaEbimestre;
         else if (periodoSelecionado === 'semestre') dados = medianaRuaEsemestre;
         else if (periodoSelecionado === 'ano') dados = medianaRuaEano;
     }else if (pontoSelecionado === 'ruaF') {
-        if (periodoSelecionado === '7dias') dados = medianaRuaF7dias;
-        else if (periodoSelecionado === 'mês') dados = medianaRuaFmes;
+        if (periodoSelecionado === 'mês') dados = medianaRuaFmes;
         else if (periodoSelecionado === 'bimestre') dados = medianaRuaFbimestre;
         else if (periodoSelecionado === 'semestre') dados = medianaRuaFsemestre;
         else if (periodoSelecionado === 'ano') dados = medianaRuaFano;
     }    
 
     var labels = [];
-    if (periodoSelecionado === '7dias') {
-        labels = ["Dia 1", "Dia 2", "Dia 3", "Dia 4", "Dia 5", "Dia 6", "Dia 7"];
-    } else if (periodoSelecionado === 'mês') {
+    if (periodoSelecionado === 'mês') {
         labels = ["Semana 1", "Semana 2", "Semana 3", "Semana 4"];
     } else if (periodoSelecionado === 'bimestre') {
         labels = ["Semana 1", "Semana 2", "Semana 3", "Semana 4", "Semana 5", "Semana 6", "Semana 7", "Semana 8"];
@@ -456,9 +442,7 @@ function atualizarGraficoMediana() {
     var nomeFormatado = pontoSelecionado.replace("rua", "Rua ");
     var titulo = document.getElementById('sensorEspecificoTitulo');
 
-    if (periodoSelecionado === "7dias") {
-        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Últimos 7 dias`;
-    } else if (periodoSelecionado === "mês") {
+    if (periodoSelecionado === "mês") {
         titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Último mês`;
     } else if (periodoSelecionado === "bimestre") {
         titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Último bimestre`;
