@@ -299,6 +299,21 @@ select {
     border-bottom: solid 7px #155C3A;
 }
 
+.containerSN .MVV .MVVConteudo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 70%;
+}
+
+.containerSN .MVV .div_texto{
+    width: 600px;
+}
+
+
 .containerSN .MVV p {
     font-size: 20px;
 }
@@ -333,11 +348,14 @@ select {
     justify-content: space-around;
 }
 
+.SN1{
+    margin-top: 170px;
+}
+
 /* Conteúdo da página - Login, Cadastro e Simulador */
 
 .containerLCS {
     margin-top: 130px;
-    margin-bottom: 130px;
     display: flex;
     justify-content: center;
     padding: 110px;
