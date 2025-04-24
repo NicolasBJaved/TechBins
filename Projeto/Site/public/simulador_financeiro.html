@@ -66,10 +66,14 @@
         var reducaoGastoCombustivelMax = gastoCombustivel * 0.2;
         var reducaoGastoManutencao = gastoManutencao * 0.15;
         div_resultado.innerHTML = 'Resultado:<br><br>'
-        div_resultado.innerHTML += `• Com nossas lixeiras inteligentes, o custo de combustíveis será reduzido em 16% até 20%, o que, de acordo com o valor 
-        informado, equivale a <span class='result_positivo'>R$${reducaoGastoCombustivelMin.toFixed(2)}</span> e <span class='result_positivo'>R$${reducaoGastoCombustivelMax.toFixed(2)}</span>.<br><br>`
-        div_resultado.innerHTML += `• O gasto com a manutenção dos caminhões será reduzido em aproximadamente 15%, o que representa 
-        <span class='result_positivo'>R$${reducaoGastoManutencao.toFixed(2)}</span>.`
+        div_resultado.innerHTML += `• Com nossas lixeiras inteligentes, o custo de combustíveis será 
+        reduzido em 16% até 20% anualmente,<br> 
+        o que, de acordo com o valor informado, equivale a 
+        <span class='result_positivo'>R$${reducaoGastoCombustivelMin.toFixed(2)}</span> 
+        até <span class='result_positivo'>R$${reducaoGastoCombustivelMax.toFixed(2)}</span>.<br><br>`
+        div_resultado.innerHTML += `• O gasto com a manutenção dos caminhões será reduzido em 
+        aproximadamente 15%,<br> 
+        o que representa <span class='result_positivo'>R$${reducaoGastoManutencao.toFixed(2)}</span> no ano.`
     }
 </script>
 
