@@ -474,7 +474,7 @@ select {
     display: flex;
     flex-direction: column;
     width: fit-content;
-    height: fit-content;
+    height: 430px;
     width: 20%;
     background-color: #F7EDE1;
     border: solid 2px #155C3A;
@@ -590,4 +590,17 @@ select {
 .referencias .valores {
     display: flex;
     justify-content: space-around;
+}
+
+.distancia{
+    display: flex;
+    flex-direction: column;
+}
+
+.distancia p{
+    margin-top: 15px;
+}
+
+.distancia h5{
+    margin-bottom: 10px;
 }
