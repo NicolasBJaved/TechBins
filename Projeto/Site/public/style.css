@@ -474,6 +474,12 @@ select {
     width: fit-content;
     height: fit-content;
     width: 20%;
+    background-color: #F7EDE1;
+    border: solid 2px #155C3A;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
 }
 
 .margin0{
@@ -539,13 +545,21 @@ select {
 }
 
 .pontoMaiorNívelPeriodo{
-    width: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .conteudoMaiorNivelPeriodo{
     display: flex;
     flex-direction: column;
     width: fit-content;
+    background-color: #F7EDE1;
+    border: solid 2px #155C3A;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
 }
 
 .containerDASH .dash ul .ajustar{
@@ -554,8 +568,9 @@ select {
     padding-right: 40px;
     border: 1px solid black;
     border-radius: 20px;
-    height: 90px;
-    width: 90px;
+    height: 118px;
+    width: 130px;
+    margin-bottom: 10px;
 }
 
 .referencias {

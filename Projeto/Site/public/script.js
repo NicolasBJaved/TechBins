@@ -604,3 +604,54 @@ function atualizarGraficoNivelAtual() {
         titulo.innerHTML = `Nível de lixo atual ${nomeFormatado} (Mediana)`;
     }
 }
+
+function atualizarKpiHorario() {
+    var periodoSelecionado = document.getElementById('filtroPeriodoKpiHorario').value;
+
+    if (periodoSelecionado === '7dias') {
+        nomeRua00.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, C, F</h3>`;
+        nivelLixo00.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua06.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas B, E, F</h3>`;
+        nivelLixo06.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua12.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, C, D, E</h3>`;
+        nivelLixo12.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua18.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, C, D, F</h3>`;
+        nivelLixo18.innerHTML = `<p class="corUrgencia2" id="nivelLixo06">2</p>`;
+    } else if (periodoSelecionado === 'mês') {
+        nomeRua00.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, E, F</h3>`;
+        nivelLixo00.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua06.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, C, E</h3>`;
+        nivelLixo06.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua12.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas D e F</h3>`;
+        nivelLixo12.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua18.innerHTML = `<h3 class="margin0" id="nomeRua00">Rua F</h3>`;
+        nivelLixo18.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+    } else if (periodoSelecionado === 'bimestre') {
+        nomeRua00.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, D, E</h3>`;
+        nivelLixo00.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua06.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas C e F</h3>`;
+        nivelLixo06.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua12.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, C, F</h3>`;
+        nivelLixo12.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua18.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, E</h3>`;
+        nivelLixo18.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+    } else if (periodoSelecionado === 'semestre') {
+        nomeRua00.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, C, E, F</h3>`;
+        nivelLixo00.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua06.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, D, F</h3>`;
+        nivelLixo06.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua12.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas B, C, D, F</h3>`;
+        nivelLixo12.innerHTML = `<p class="corUrgencia2" id="nivelLixo06">2</p>`;
+        nomeRua18.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, C, F</h3>`;
+        nivelLixo18.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+    } else if (periodoSelecionado === 'ano') {
+        nomeRua00.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A e F</h3>`;;
+        nivelLixo00.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua06.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas B, C, E, F</h3>`;;
+        nivelLixo06.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+        nomeRua12.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, B, E</h3>`;;
+        nivelLixo12.innerHTML = `<p class="corUrgencia4" id="nivelLixo06">4</p>`;
+        nomeRua18.innerHTML = `<h3 class="margin0" id="nomeRua00">Ruas A, C, E</h3>`;;
+        nivelLixo18.innerHTML = `<p class="corUrgencia3" id="nivelLixo06">3</p>`;
+    }
+}
