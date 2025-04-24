@@ -205,15 +205,6 @@
                     </div>
                     <div class="conteudoMaiorNivelPeriodo">
                         <h2>Pontos com maior nível de lixo por horário (Mediana) - Filtro por período</h2>
-                        <div class="button">
-                            <select id="filtroPeriodoKpiHorario" oninput="atualizarKpiHorario()">
-                                <option value="7dias">Últimos 7 dias</option>
-                                <option value="mês">Mês</option>
-                                <option value="bimestre">Bimestre</option>
-                                <option value="semestre">Semestre</option>
-                                <option value="ano">Ano</option>
-                            </select>
-                        </div>
                         <ul>
                             <li class="ajustar">
                                 <h3 class="margin0" style="color: white;"><b><i>00:00</i></b></h3>
@@ -238,6 +229,15 @@
                                 <p class="corUrgencia2" id="nivelLixo18">2</p>
                             </li>
                         </ul>
+                        <div class="button">
+                            <select id="filtroPeriodoKpiHorario" oninput="atualizarKpiHorario()">
+                                <option value="7dias">Últimos 7 dias</option>
+                                <option value="mês">Mês</option>
+                                <option value="bimestre">Bimestre</option>
+                                <option value="semestre">Semestre</option>
+                                <option value="ano">Ano</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

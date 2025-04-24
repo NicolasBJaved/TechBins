@@ -240,23 +240,23 @@ function maiorNivelPontoFiltro() {
     var value = filtroMaiorNivelPonto.value;
 
     if (value === "semana") {
-        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) na última semana";
+        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) nos últimos 7 dias";
         dados = dadosMaiorNivelSeteDias;
         labels = ['Rua A', 'Rua B', 'Rua C'];
     } else if (value === "mês") {
-        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) no último mês";
+        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) nos últimos 30 dias";
         dados = dadosMaiorNivelMes;
         labels = ['Rua C', 'Rua D', 'Rua F'];
     } else if (value === "bimestre") {
-        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) no último bimestre";
+        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) nos últimos 2 meses";
         dados = dadosMaiorNivelBimestre;
         labels = ['Rua A', 'Rua F', 'Rua E'];
     } else if (value === "semestre") {
-        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) no último semestre";
+        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) nos últimos 6 meses";
         dados = dadosMaiorNivelSemestre;
         labels = ['Rua A', 'Rua B', 'Rua F'];
     } else if (value === "ano") {
-        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) no último ano";
+        titulo.innerHTML = "Pontos com maior nível de lixo (mediana) nos últimos 12 meses";
         dados = dadosMaiorNivelAno;
         labels = ['Rua D', 'Rua F', 'Rua C'];
     }
@@ -290,23 +290,23 @@ function menorNivelPontoFiltro() {
     var value = filtroMenorNivelPonto.value;
 
     if (value === "semana") {
-        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) na última semana";
+        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) nos últimos 7 dias";
         dados = dadosMenorNivelSeteDias;
         labels = ['Rua D', 'Rua E', 'Rua F'];
     } else if (value === "mês") {
-        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último mês";
+        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) nos últimos 30 dias";
         dados = dadosMenorNivelMes;
         labels = ['Rua B', 'Rua E', 'Rua A'];
     } else if (value === "bimestre") {
-        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último bimestre";
+        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) nos últimos 2 meses";
         dados = dadosMenorNivelBimestre;
         labels = ['Rua D', 'Rua C', 'Rua B'];
     } else if (value === "semestre") {
-        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último semestre";
+        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) nos últimos 6 meses";
         dados = dadosMenorNivelSemestre;
         labels = ['Rua C', 'Rua D', 'Rua E'];
     } else if (value === "ano") {
-        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) no último ano";
+        titulo.innerHTML = "Pontos com menor nível de lixo (mediana) nos últimos 12 meses";
         dados = dadosMenorNivelAno;
         labels = ['Rua B', 'Rua A', 'Rua E'];
     }
