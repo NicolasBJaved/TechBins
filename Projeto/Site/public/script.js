@@ -410,13 +410,13 @@ function atualizarGraficoMediana() {
     var titulo = document.getElementById('sensorEspecificoTitulo');
 
     if (periodoSelecionado === "mês") {
-        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Último mês`;
+        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Últimos 30 dias`;
     } else if (periodoSelecionado === "bimestre") {
-        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Último bimestre`;
+        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Últimos 2 meses`;
     } else if (periodoSelecionado === "semestre") {
-        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Último semestre`;
+        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Últimos 6 meses`;
     } else if (periodoSelecionado === "ano") {
-        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Último ano`;
+        titulo.innerHTML = `Nível de lixo médio por período (mediana) – ${nomeFormatado} – Últimos 12 meses `;
     }   
 
 }
@@ -492,16 +492,14 @@ function atualizarGraficoMedianaHorario() {
 
     if (periodoSelecionado === "7dias") {
         titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Últimos 7 dias`;
-    } else if (periodoSelecionado === "dia") {
-        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Último dia`;
     } else if (periodoSelecionado === "mês") {
-        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Último mês`;
+        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Últimos 30 dias`;
     } else if (periodoSelecionado === "bimestre") {
-        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Último bimestre`;
+        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Últimos 2 meses`;
     } else if (periodoSelecionado === "semestre") {
-        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Último semestre`;
+        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Últimos 6 meses`;
     } else if (periodoSelecionado === "ano") {
-        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Último ano`;
+        titulo.innerHTML = `Nível de lixo por horário (mediana) – ${nomeFormatado} – Últimos 12 meses`;
     }   
 
 }
