@@ -12,6 +12,7 @@ CREATE TABLE enderecoEmpresa (
     cep CHAR(8) NOT NULL
 )AUTO_INCREMENT = 100;
 
+
 CREATE TABLE empresa (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nomeEmpresa VARCHAR(60) NOT NULL,
@@ -21,6 +22,8 @@ CREATE TABLE empresa (
     idEnderecoEmpresa INT NOT NULL,
     CONSTRAINT fk_EmpresaEndereco FOREIGN KEY (idEnderecoEmpresa) REFERENCES enderecoEmpresa(idEnderecoEmpresa)
 );
+ CREATE UNIQUE INDEX ix_idEnderecoEmpresa_Empresa ON empresa(idEnderecoEmpresa);
+
 
 CREATE TABLE pontoColeta (
     idPontoColeta INT AUTO_INCREMENT,
