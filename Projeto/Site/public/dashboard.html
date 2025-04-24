@@ -30,8 +30,7 @@
                 </li>
                 <li>
                     <div class="perfil">
-                        <img src="./imgs/julia.jpg" alt="foto_perfil" style="border-radius: 30px;"
-                            width="50px">
+                        <img src="./imgs/julia.jpg" alt="foto_perfil" style="border-radius: 30px;" width="50px">
                         <p class="link_nav">Olá, Julia</p>
                     </div>
 
@@ -55,22 +54,27 @@
             </div>
             <div class="distancia">
                 <h5>Distância (cm)</h5>
-                <p><= 18</p>
-                <p><= 36</p>
-                <p><= 54</p>
-                <p><= 72</p>
-                <p><= 90</p>
+                <p>
+                    <= 18</p>
+                        <p>
+                            <= 36</p>
+                                <p>
+                                    <= 54</p>
+                                        <p>
+                                            <= 72</p>
+                                                <p>
+                                                    <= 90</p>
             </div>
         </div>
     </div>
-    
+
     <div class="containerDASH">
         <div class="containerKPIS">
             <h1 style="font-size: 60px;">Dados <span style="color: #a20808;"><b>importantes</b></span></h1>
             <div class="dash">
                 <div class="conteudoNivelAtualKPI">
                     <div class="pontosMaiorNivelAtual">
-                        <h1>Nível dos pontos na última coleta de dados (Mediana)</h1>
+                        <h2>Nível dos pontos na última coleta de dados (Mediana)</h2>
                         <ul>
                             <li>
                                 <h3 class="margin0" style="color: white;"><b><i>Rua C</i></b></h3>
@@ -156,9 +160,9 @@
                                         <option value="ruaE">Rua E</option>
                                         <option value="ruaF">Rua F</option>
                                     </select>
-    
+
                                     <select id="filtroLixeiraAtual" oninput="atualizarGraficoNivelAtual()">
-                                        <option value="ponto">ponto</option>
+                                        <option value="ponto">Ponto</option>
                                         <option value="lixeira1">Lixeira 1</option>
                                         <option value="lixeira2">Lixeira 2</option>
                                         <option value="lixeira3">Lixeira 3</option>
@@ -172,13 +176,13 @@
                 </div>
 
                 <div class="pontoMaiorNívelPeriodo">
-                    <h1>Ponto com maior nível de lixo por período de tempo (Mediana)</h1>
                     <div class="conteudoMaiorNivelPeriodo">
+                        <h2>Ponto com maior nível de lixo por período de tempo (Mediana)</h2>
                         <ul>
                             <li class="ajustar">
                                 <h3 class="margin0" style="color: white;"><b><i>Mês</i></b></h3>
                                 <h3 class="margin0">Rua F</h3>
-                                <p class="corUrgencia4">F</p>
+                                <p class="corUrgencia4">4</p>
                             </li>
                             <li class="ajustar">
                                 <h3 class="margin0" style="color: white;"><b><i>Bimestre</i></b></h3>
@@ -196,6 +200,42 @@
                                 <h3 class="margin0" style="color: white;"><b><i>Ano</i></b></h3>
                                 <h3 class="margin0">Rua A</h3>
                                 <p class="corUrgencia4">4</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="conteudoMaiorNivelPeriodo">
+                        <h2>Pontos com maior nível de lixo por horário (Mediana) - Filtro por período</h2>
+                        <div class="button">
+                            <select id="filtroPeriodoKpiHorario" oninput="atualizarKpiHorario()">
+                                <option value="7dias">Últimos 7 dias</option>
+                                <option value="mês">Mês</option>
+                                <option value="bimestre">Bimestre</option>
+                                <option value="semestre">Semestre</option>
+                                <option value="ano">Ano</option>
+                            </select>
+                        </div>
+                        <ul>
+                            <li class="ajustar">
+                                <h3 class="margin0" style="color: white;"><b><i>00:00</i></b></h3>
+                                <h3 class="margin0" id="nomeRua00">Ruas A, C, F</h3>
+                                <p class="corUrgencia3" id="nivelLixo00">3</p>
+                            </li>
+                            <li class="ajustar">
+                                <h3 class="margin0" style="color: white;"><b><i>06:00</i></b></h3>
+                                <h3 class="margin0" id="nomeRua06">Ruas B, E, F</h3>
+                                <p class="corUrgencia3" id="nivelLixo06">3</p>
+                            </li>
+                        </ul>
+                        <ul class="margin0">
+                            <li class="ajustar">
+                                <h3 class="margin0" style="color: white;"><b><i>12:00</i></b></h3>
+                                <h3 class="margin0" id="nomeRua12">Ruas A, B, C, D, E</h3>
+                                <p class="corUrgencia3" id="nivelLixo12">3</p>
+                            </li>
+                            <li class="ajustar">
+                                <h3 class="margin0" style="color: white;"><b><i>18:00</i></b></h3>
+                                <h3 class="margin0" id="nomeRua18">Ruas A, B, C, D, F</h3>
+                                <p class="corUrgencia2" id="nivelLixo18">2</p>
                             </li>
                         </ul>
                     </div>
@@ -261,10 +301,10 @@
                     </select>
 
                     <select id="filtroPeriodoMediana" oninput="atualizarGraficoMediana()">
-                        <option value="mês">mês</option>
-                        <option value="bimestre">bimestre</option>
-                        <option value="semestre">semestre</option>
-                        <option value="ano">ano</option>
+                        <option value="mês">Mês</option>
+                        <option value="bimestre">Bimestre</option>
+                        <option value="semestre">Semestre</option>
+                        <option value="ano">Ano</option>
                     </select>
                 </div>
             </div>
@@ -286,10 +326,10 @@
 
                     <select id="filtroPeriodoMedianaHorario" oninput="atualizarGraficoMedianaHorario()">
                         <option value="7dias">Últimos 7 dias</option>
-                        <option value="mês">mês</option>
-                        <option value="bimestre">bimestre</option>
-                        <option value="semestre">semestre</option>
-                        <option value="ano">ano</option>
+                        <option value="mês">Mês</option>
+                        <option value="bimestre">Bimestre</option>
+                        <option value="semestre">Semestre</option>
+                        <option value="ano">Ano</option>
                     </select>
                 </div>
             </div>
