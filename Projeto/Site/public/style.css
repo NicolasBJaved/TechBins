@@ -338,6 +338,7 @@ select {
     margin-bottom: 130px;
     display: flex;
     justify-content: center;
+    padding: 110px;
 }
 
 .containerLCS .box {
