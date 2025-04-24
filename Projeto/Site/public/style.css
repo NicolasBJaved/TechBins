@@ -53,6 +53,8 @@ select {
     align-items: center;
 }
 
+
+
 #img_logo_nav {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -371,6 +373,30 @@ select {
 }
 
 /* Cadastro */
+
+
+.div_nav_cadastro{
+    background-color: #155C3A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.div_nav_cadastro .links{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        list-style-type: none;
+        width: 700px;
+        margin-right: -70px;
+        margin-top: 0;
+}
+
 .containerLCS #cadastroResposta {
     margin-bottom: 20px;
 }
