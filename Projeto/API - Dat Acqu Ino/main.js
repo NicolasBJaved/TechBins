@@ -67,7 +67,7 @@
  
              // este insert irá inserir os dados na tabela "medida"
              await poolBancoDados.execute(
-                 'INSERT INTO registro (idLixeira, idPontoColeta, distancia) VALUES (1, 1000, ?)',
+                 'INSERT INTO registro (idSensor, distancia) VALUES (100000, ?)',
                  [sensorDigital]
              );  // cada lixeira tem um sensor diferente, então o arduino esta captando os valores da Lixeira 1 do Ponto de Coleta 1000 (Rua A). 
              console.log("valores inseridos no banco: ", sensorDigital);
