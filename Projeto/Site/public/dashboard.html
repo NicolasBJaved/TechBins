@@ -76,7 +76,7 @@
             <div class="dash">
                 <div class="conteudoNivelAtualKPI">
                     <div class="pontosMaiorNivelAtual">
-                        <h2>Nível de ocupação atual dos pontos (Mediana)</h2>
+                        <h2>Nível de <span style="color: #ff0000;">ocupação atual</span> dos pontos (Mediana)</h2>
                         <ul>
                             <li>
                                 <h3 class="margin0" style="color: white;"><b><i>Rua C</i></b></h3>
@@ -179,7 +179,8 @@
 
                 <div class="pontoMaiorNívelPeriodo">
                     <div class="conteudoMaiorNivelPeriodo">
-                        <h2>Ponto com maior nível de ocupação por periodo de tempo (Mediana)</h2>
+                        <h2>Ponto com <span style="color: #ff0000;">maior</span> nível de <span style="color: #ff0000;">
+                            ocupação por periodo de tempo</span> (Mediana)</h2>
                         <ul>
                             <li class="ajustar">
                                 <h3 class="margin0" style="color: white;"><b><i>Mês</i></b></h3>
@@ -206,7 +207,8 @@
                         </ul>
                     </div>
                     <div class="conteudoMaiorNivelPeriodo">
-                        <h2>Pontos com maior nível de lixo em cada horário (Mediana)</h2>
+                        <h2>Pontos com <span style="color: #ff0000;">maior</span> nível de
+                             lixo <span style="color: #ff0000;">em cada horário</span> (Mediana)</h2>
                         <ul>
                             <li class="ajustar">
                                 <h3 class="margin0" style="color: white;"><b><i>00:00</i></b></h3>
@@ -231,8 +233,8 @@
                                 <p class="corUrgencia2" id="nivelLixo18">2</p>
                             </li>
                         </ul>
-                        <h2>Filtro por período</h2>
                         <div class="button">
+                            <h2>Filtro por período</h2>
                             <select id="filtroPeriodoKpiHorario" oninput="atualizarKpiHorario()">
                                 <option value="7dias">Últimos 7 dias</option>
                                 <option value="mês">Mês</option>
@@ -248,10 +250,10 @@
     </div>
 
     <div class="containerDASH">
-        <h1 style="font-size: 40px;">Dashboard Geral</h1>
+        <h1 style="font-size: 60px;">Dashboard Geral</h1>
         <div class="dash">
             <div class="grafico1">
-                <h1 id="maiorNivelTitulo">Pontos com maior nível de lixo (mediana) nos últimos 7 dias</h1>
+                <h1 id="maiorNivelTitulo">Pontos com <span style="color: #ff0000;">maior nível</span> de lixo (mediana) nos últimos 7 dias</h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart"></canvas>
@@ -268,7 +270,7 @@
                 </div>
             </div>
             <div class="grafico2">
-                <h1 id="menorNivelTitulo">Pontos com menor nível de lixo (mediana) nos últimos 7 dias</h1>
+                <h1 id="menorNivelTitulo">Pontos com <span style="color: white;">menor nível</span> de lixo (mediana) nos últimos 7 dias</h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart2"></canvas>
@@ -286,9 +288,10 @@
             </div>
         </div>
 
-        <h1 style="font-size: 40px;">Dashboard Individual</h1>
+        <h1 style="font-size: 60px;">Dashboard Individual</h1>
         <div class="dash">
-            <h1 id="sensorEspecificoTitulo">Nível de lixo médio por período (mediana) – Rua A – Últimos 30 dias</h1>
+            <h1 id="sensorEspecificoTitulo">Nível de lixo médio <span style="color: white;">por período</span>
+                 (mediana) – Rua A – Últimos 30 dias</h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart3"></canvas>
@@ -311,7 +314,7 @@
                     </select>
                 </div>
             </div>
-            <h1 id="medianaHorarioTitulo">Nível de lixo por horário (mediana) - Rua A - Últimos 7 dias</h1>
+            <h1 id="medianaHorarioTitulo">Nível de lixo <span style="color: white;">por horário</span> (mediana) - Rua A - Últimos 7 dias</h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart4"></canvas>

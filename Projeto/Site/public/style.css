@@ -30,6 +30,15 @@ button {
     cursor: pointer;
 }
 
+.button {
+    margin-bottom: 10px;
+}
+
+
+.button h2{
+    margin: 0;
+}
+
 select {
     border-radius: 10px;
     width: 150px;
@@ -370,7 +379,6 @@ select {
     align-items: center;
     background-color: #0e3824cc;
     color: white;
-    border: 2px solid black;
 }
 
 .container_conteudo_SN1{
@@ -668,7 +676,7 @@ select {
 .conteudoMaiorNivelPeriodo{
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 50%;
     background-color: #F7EDE1;
     border: solid 2px #155C3A;
     margin-top: 20px;
