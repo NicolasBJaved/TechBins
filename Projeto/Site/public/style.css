@@ -56,12 +56,12 @@ select {
     top: 0;
     left: 0;
     width: 100%;
+    height: 15%;
     color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-
 
 
 #img_logo_nav {
@@ -75,7 +75,17 @@ select {
     align-items: center;
     justify-content: space-around;
     list-style-type: none;
-    width: 500px;
+    width: 600px;
+    margin-left: 450px;
+    margin-right: -100px;
+}
+
+.linksLogin {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+    width: 600px;
     margin-left: 450px;
     margin-right: -100px;
 }
