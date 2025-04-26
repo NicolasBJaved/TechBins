@@ -115,6 +115,11 @@ select {
 
 .sobreNos .div_texto{
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+    text-align: left;
 }
 
 .containerHome .div_texto {
@@ -162,6 +167,39 @@ select {
     margin-bottom: 20px;
 }
 
+.beneficios .beneficio1 .div_texto {
+    padding: 20px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.beneficios .beneficio2 .div_texto {
+    padding: 20px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.beneficios .beneficio3 .div_texto {
+    padding: 20px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .containerHome .beneficiosTitulo h1{
     text-align: center;
     font-size: 50px;
@@ -182,7 +220,6 @@ select {
 }
 
 .containerHome .beneficios img {
-    width: 300px;
     margin-bottom: 40px;
 }
 
