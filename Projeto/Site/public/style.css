@@ -631,8 +631,7 @@ select {
 .pontosMaiorNivelAtual{
     display: flex;
     flex-direction: column;
-    width: fit-content;
-    height: 430px;
+    height: fit-content;
     width: 20%;
     background-color: #F7EDE1;
     border: solid 2px #155C3A;
@@ -640,6 +639,7 @@ select {
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px;
+    padding-bottom: 10px;
 }
 
 .margin0{
@@ -654,6 +654,7 @@ select {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: fit-content;
 }
 
 .conteudoGraficoNivelAtual{
