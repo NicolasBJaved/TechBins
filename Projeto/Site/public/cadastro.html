@@ -45,7 +45,7 @@
                 <p>Email</p>
                 <input type="text" placeholder="representante@email.com" id="ipt_email">
                 <p>CPF</p>
-                <input type="text" placeholder="XXX.XXX.XXX-XX" id="ipt_cpf">
+                <input type="text" placeholder="XXXXXXXXXXX" id="ipt_cpf">
                 <p>Senha</p>
                 <input type="password" placeholder="***********" id="ipt_senha1">
                 <p>Confirmar senha</p>
@@ -86,6 +86,7 @@
         let emailTemArroba = email.includes('@');
         let senhaTemEspaco = senha.includes(' ');
         let confirmarSenhaTemEspaco = confirmarSenha.includes(' ');
+
         if (nome == '' || email == '' || cpf == '' || senha == '' || confirmarSenha == '') {
             cadastroResposta.innerHTML = `Por favor, preencha todos os campos.`
         } else if (emailTemArroba == false) {
@@ -94,7 +95,9 @@
             cadastroResposta.innerHTML = `Certifique-se de que preencheu os campos 'Senha' e 'Confirmar senha' corretamente.`;
         } else if (senhaTemEspaco || confirmarSenhaTemEspaco) {
             cadastroResposta.innerHTML = `A senha não pode conter espaços.`
-        } else {
+        }else if(cpf.length != 14){
+            cadastroResposta.innerHTML = `O CPF deve conter 11 dígitos.`
+        }else {
             cadastroResposta.innerHTML = `
             Cadastro realizado com sucesso!<br>
             Confira o e-mail informado no cadastro para receber o token de acesso.<br> 

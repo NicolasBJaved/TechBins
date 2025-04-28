@@ -240,23 +240,23 @@ function maiorNivelPontoFiltro() {
     var value = filtroMaiorNivelPonto.value;
 
     if (value === "semana") {
-        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo (mediana) nos últimos 7 dias";
+        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo nos últimos 7 dias";
         dados = dadosMaiorNivelSeteDias;
         labels = ['Rua A', 'Rua B', 'Rua C'];
     } else if (value === "mês") {
-        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo (mediana) nos últimos 30 dias";
+        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo nos últimos 30 dias";
         dados = dadosMaiorNivelMes;
         labels = ['Rua C', 'Rua D', 'Rua F'];
     } else if (value === "bimestre") {
-        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo (mediana) nos últimos 2 meses";
+        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo nos últimos 2 meses";
         dados = dadosMaiorNivelBimestre;
         labels = ['Rua A', 'Rua F', 'Rua E'];
     } else if (value === "semestre") {
-        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo (mediana) nos últimos 6 meses";
+        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo nos últimos 6 meses";
         dados = dadosMaiorNivelSemestre;
         labels = ['Rua A', 'Rua B', 'Rua F'];
     } else if (value === "ano") {
-        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo (mediana) nos últimos 12 meses";
+        titulo.innerHTML = "Pontos com <span style='color: #ff0000;'>maior nível</span> de lixo nos últimos 12 meses";
         dados = dadosMaiorNivelAno;
         labels = ['Rua D', 'Rua F', 'Rua C'];
     }
@@ -290,23 +290,23 @@ function menorNivelPontoFiltro() {
     var value = filtroMenorNivelPonto.value;
 
     if (value === "semana") {
-        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo (mediana) nos últimos 7 dias";
+        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo nos últimos 7 dias";
         dados = dadosMenorNivelSeteDias;
         labels = ['Rua D', 'Rua E', 'Rua F'];
     } else if (value === "mês") {
-        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo (mediana) nos últimos 30 dias";
+        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo nos últimos 30 dias";
         dados = dadosMenorNivelMes;
         labels = ['Rua B', 'Rua E', 'Rua A'];
     } else if (value === "bimestre") {
-        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo (mediana) nos últimos 2 meses";
+        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo nos últimos 2 meses";
         dados = dadosMenorNivelBimestre;
         labels = ['Rua D', 'Rua C', 'Rua B'];
     } else if (value === "semestre") {
-        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo (mediana) nos últimos 6 meses";
+        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo nos últimos 6 meses";
         dados = dadosMenorNivelSemestre;
         labels = ['Rua C', 'Rua D', 'Rua E'];
     } else if (value === "ano") {
-        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo (mediana) nos últimos 12 meses";
+        titulo.innerHTML = "Pontos com <span style='color: white;'>menor nível</span> de lixo nos últimos 12 meses";
         dados = dadosMenorNivelAno;
         labels = ['Rua B', 'Rua A', 'Rua E'];
     }
@@ -410,13 +410,13 @@ function atualizarGraficoMediana() {
     var titulo = document.getElementById('sensorEspecificoTitulo');
 
     if (periodoSelecionado === "mês") {
-        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> (mediana) – ${nomeFormatado} – Últimos 30 dias`;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> – ${nomeFormatado} – Últimos 30 dias`;
     } else if (periodoSelecionado === "bimestre") {
-        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> (mediana) – ${nomeFormatado} – Últimos 2 meses`;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> – ${nomeFormatado} – Últimos 2 meses`;
     } else if (periodoSelecionado === "semestre") {
-        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> (mediana) – ${nomeFormatado} – Últimos 6 meses`;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> – ${nomeFormatado} – Últimos 6 meses`;
     } else if (periodoSelecionado === "ano") {
-        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> (mediana) – ${nomeFormatado} – Últimos 12 meses `;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;"> por período </span> – ${nomeFormatado} – Últimos 12 meses `;
     }   
 
 }
@@ -491,15 +491,15 @@ function atualizarGraficoMedianaHorario() {
     var titulo = document.getElementById('medianaHorarioTitulo');
 
     if (periodoSelecionado === "7dias") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> (mediana) – ${nomeFormatado} – Últimos 7 dias`;
+        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 7 dias`;
     } else if (periodoSelecionado === "mês") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> (mediana) – ${nomeFormatado} – Últimos 30 dias`;
+        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 30 dias`;
     } else if (periodoSelecionado === "bimestre") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> (mediana) – ${nomeFormatado} – Últimos 2 meses`;
+        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 2 meses`;
     } else if (periodoSelecionado === "semestre") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> (mediana) – ${nomeFormatado} – Últimos 6 meses`;
+        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 6 meses`;
     } else if (periodoSelecionado === "ano") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> (mediana) – ${nomeFormatado} – Últimos 12 meses`;
+        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 12 meses`;
     }   
 
 }
@@ -599,7 +599,7 @@ function atualizarGraficoNivelAtual() {
     if (lixeiraSelecionada != "ponto") {
         titulo.innerHTML = `Nível de lixo na ${nomeFormatado} - ${lixeiraFormatada}`;
     } else {
-        titulo.innerHTML = `Nível de lixo atual ${nomeFormatado} (Mediana)`;
+        titulo.innerHTML = `Nível de lixo atual ${nomeFormatado} `;
     }
 }
 
