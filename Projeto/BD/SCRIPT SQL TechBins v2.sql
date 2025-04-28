@@ -212,7 +212,9 @@ when distancia <= 90 then '1'
 else 'Distância acima do previsto'
 end as 'Nível do Lixo'
 from registro reg
-inner join pontoColeta pto on pto.idPontoColeta = reg.idPontoColeta;
+inner join sensor sen on sen.idSensor = reg.idSensor
+inner join lixeira lix on lix.idLixeira = sen.idLixeira
+inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta;
 
 select * from representante;
 
