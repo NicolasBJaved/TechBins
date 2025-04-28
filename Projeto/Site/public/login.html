@@ -60,6 +60,7 @@
             <p>+55 (11) 999999999</p>
         </div>
     </div>
+
 </body>
 
 <script>
@@ -74,8 +75,8 @@
         while (chances > 0) {
             chances--;
             if (token != 'julia.sptech' && chances > 0 || senha != 'julia123' && chances > 0) {
-                respostaLogin.innerHTML = `Token e/ou senha estão incorretos.<br> Tente novamente. `;
-                respostaLogin.innerHTML += `Tentativas restantes: ${chances}`;
+                respostaLogin.innerHTML = `<span style="color: rgb(164, 9, 9);">Token e/ou senha estão incorretos.<br> Tente novamente.</span> `;
+                respostaLogin.innerHTML += `<span style="color: rgb(164, 9, 9);">Tentativas restantes: ${chances}</span>`;
                 break;
             }
             if (token == 'julia.sptech' && senha == 'julia123' && chances >= 0) {
