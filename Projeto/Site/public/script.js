@@ -491,15 +491,15 @@ function atualizarGraficoMedianaHorario() {
     var titulo = document.getElementById('medianaHorarioTitulo');
 
     if (periodoSelecionado === "7dias") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 7 dias`;
+        titulo.innerHTML = `Nível de lixo  médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 7 dias`;
     } else if (periodoSelecionado === "mês") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 30 dias`;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 30 dias`;
     } else if (periodoSelecionado === "bimestre") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 2 meses`;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 2 meses`;
     } else if (periodoSelecionado === "semestre") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 6 meses`;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 6 meses`;
     } else if (periodoSelecionado === "ano") {
-        titulo.innerHTML = `Nível de lixo <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 12 meses`;
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 12 meses`;
     }   
 
 }
