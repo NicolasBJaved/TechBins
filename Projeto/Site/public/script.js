@@ -491,7 +491,9 @@ function atualizarGraficoMedianaHorario() {
     var titulo = document.getElementById('medianaHorarioTitulo');
 
     if (periodoSelecionado === "7dias") {
-        titulo.innerHTML = `Nível de lixo  médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 7 dias`;
+
+        titulo.innerHTML = `Nível de lixo médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 7 dias`;
+
     } else if (periodoSelecionado === "mês") {
         titulo.innerHTML = `Nível de lixo médio <span style="color: white;">por horário</span> – ${nomeFormatado} – Últimos 30 dias`;
     } else if (periodoSelecionado === "bimestre") {
