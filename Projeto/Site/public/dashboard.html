@@ -19,7 +19,7 @@
                 <li>
 
 
-                    
+
                     <a href="homeLogin.html" class="link_nav">Home</a>
                 </li>
                 <li>
@@ -46,8 +46,10 @@
     <div class="referencias">
         <h1>Legenda</h1>
         <p>Distância do lixo ao sensor</p>
-        <p style="color: #ff0000;">(5 = maior nível de ocupação)</p>
-        <p style="color: #15ff00;">(1 = menor nível de ocupação)</p>
+        <div class="explicacaoCores">
+            <p style="color: #ff0000;">(5 = maior nível de ocupação)</p>
+            <p style="color: #15ff00;">(1 = menor nível de ocupação)</p>
+        </div>
         <div class="valores">
             <div class="nivel">
                 <h5>Nível</h5>
@@ -62,13 +64,13 @@
                 <p>
                     <= 18</p>
                         <p>
-                           >18 e <= 36</p>
+                            >18 e <= 36</p>
                                 <p>
                                     >36 e <= 54</p>
                                         <p>
-                                           >54 e <= 72</p>
+                                            >54 e <= 72</p>
                                                 <p>
-                                                   >72 e <= 90</p>
+                                                    >72 e <= 90</p>
             </div>
         </div>
     </div>
@@ -80,7 +82,7 @@
                 <div class="conteudoNivelAtualKPI">
                     <div class="pontosMaiorNivelAtual">
                         <h2>Nível de <span style="color: #ff0000;">ocupação atual</span> dos pontos
-                             - Última coleta de dados: 06:00 30/04/2025</h2>
+                            - Última coleta de dados: 06:00 30/04/2025</h2>
                         <ul>
                             <li>
                                 <h3 class="margin0" style="color: white;"><b><i>Rua C</i></b></h3>
@@ -184,7 +186,7 @@
                 <div class="pontoMaiorNívelPeriodo">
                     <div class="conteudoMaiorNivelPeriodo">
                         <h2>Ponto com <span style="color: #ff0000;">maior</span> nível de <span style="color: #ff0000;">
-                            ocupação por periodo de tempo</span> - Última coleta de dados: 06:00 30/04/2025</h2>
+                                ocupação por periodo de tempo</span> - Última coleta de dados: 06:00 30/04/2025</h2>
                         <ul>
                             <li class="ajustar">
                                 <h3 class="margin0" style="color: white;"><b><i>Mês - Março/25</i></b></h3>
@@ -212,8 +214,8 @@
                     </div>
                     <div class="conteudoMaiorNivelPeriodo">
                         <h2>Pontos com <span style="color: #ff0000;">maior</span> nível de
-                             lixo <span style="color: #ff0000;">em cada horário</span>
-                              - Última coleta de dados: 06:00 30/04/2025</h2>
+                            lixo <span style="color: #ff0000;">em cada horário</span>
+                            - Última coleta de dados: 06:00 30/04/2025</h2>
                         <ul>
                             <li class="ajustar">
                                 <h3 class="margin0" style="color: white;"><b><i>00:00</i></b></h3>
@@ -259,7 +261,8 @@
             Última coleta de dados: 06:00 30/04/2025</h1>
         <div class="dash">
             <div class="grafico1">
-                <h1 id="maiorNivelTitulo">Pontos com <span style="color: #ff0000;">maior nível</span> de lixo nos últimos 7 dias</h1>
+                <h1 id="maiorNivelTitulo">Pontos com <span style="color: #ff0000;">maior nível</span> de lixo nos
+                    últimos 7 dias</h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart"></canvas>
@@ -276,7 +279,8 @@
                 </div>
             </div>
             <div class="grafico2">
-                <h1 id="menorNivelTitulo">Pontos com <span style="color: white;">menor nível</span> de lixo nos últimos 7 dias</h1>
+                <h1 id="menorNivelTitulo">Pontos com <span style="color: white;">menor nível</span> de lixo nos últimos
+                    7 dias</h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart2"></canvas>
@@ -295,10 +299,10 @@
         </div>
 
         <h1><span style="font-size: 60px;">Dados de Ocupação por Ponto</span><br>
-        Última coleta de dados: 06:00 30/04/2025</h1>
+            Última coleta de dados: 06:00 30/04/2025</h1>
         <div class="dash">
             <h1 id="sensorEspecificoTitulo">Nível de lixo médio <span style="color: white;">por período</span>
-                 – Rua A – Últimos 30 dias</h1>
+                – Rua A – Últimos 30 dias</h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart3"></canvas>
@@ -321,7 +325,8 @@
                     </select>
                 </div>
             </div>
-            <h1 id="medianaHorarioTitulo">Nível de lixo médio <span style="color: white;">por horário</span> - Rua A - Últimos 7 dias</h1>
+            <h1 id="medianaHorarioTitulo">Nível de lixo médio <span style="color: white;">por horário</span> - Rua A -
+                Últimos 7 dias</h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart4"></canvas>

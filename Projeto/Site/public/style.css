@@ -761,6 +761,19 @@ select {
     justify-content: space-around;
 }
 
+.referencias .valores .nivel h2{
+    background-color: #1c7c4e;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+.referencias .explicacaoCores p{
+    background-color: #1c7c4e;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
 .distancia{
     display: flex;
     flex-direction: column;
