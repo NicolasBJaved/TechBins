@@ -584,13 +584,13 @@ select {
 .corUrgencia4{
     margin: 0;
     font-size: 40px;
-    color: #a20808;
+    color: yellow;
 }
 
 .corUrgencia3{
     margin: 0;
     font-size: 40px;
-    color: yellow;
+    color: #15ff00;
 }
 
 .corUrgencia2{

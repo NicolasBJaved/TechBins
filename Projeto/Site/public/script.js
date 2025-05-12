@@ -560,12 +560,10 @@ function atualizarGraficoNivelAtual() {
 
     console.log(dados)
 
-    if(dados == 1 || dados == 2){
+    if(dados == 1 || dados == 2 || dados == 3){
         cor = "#15ff00"
-    }else if(dados == 3){
-        cor = "yellow"
     }else if(dados == 4){
-        cor = "#a20808"
+        cor = "yellow"
     }else{
         cor = "#ff0000"
     }
