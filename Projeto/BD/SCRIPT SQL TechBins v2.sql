@@ -73,6 +73,37 @@ CREATE TABLE registro (
     CONSTRAINT fk_RegistroSensor FOREIGN KEY (idSensor) REFERENCES sensor(idSensor)
 );
 
+CREATE TABLE rota (
+    idRota INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT NOT NULL,
+    idRepresentante INT NOT NULL,
+    dataRota DATE NOT NULL,
+    status VARCHAR(20),
+    observacoes TEXT,
+    FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa),
+    FOREIGN KEY (idRepresentante) REFERENCES representante(idRepresentante)
+);
+
+CREATE TABLE rotaPontoColeta (
+    idRota INT NOT NULL,
+    idPontoColeta INT NOT NULL,
+    ordem INT NOT NULL, -- ORDEM DA COLETA
+    PRIMARY KEY (idRota, idPontoColeta),
+    FOREIGN KEY (idRota) REFERENCES rota(idRota),
+    FOREIGN KEY (idPontoColeta) REFERENCES pontoColeta(idPontoColeta)
+);
+
+INSERT INTO rota (idEmpresa, idRepresentante, dataRota, status, observacoes)
+VALUES (1, 1, '2025-05-20', 'Agendada', 'Coleta da região oeste de SP');
+
+INSERT INTO rotaPontoColeta (idRota, idPontoColeta, ordem)
+VALUES 
+(5000, 1000, 1),
+(5000, 1001, 2),
+(5000, 1002, 3);
+
+
+
 -- Inserindo empresas com idEnderecoEmpresa já referenciado (100 a 103)
 INSERT INTO empresa (nomeEmpresa, cnpj, email_contato, telefone_contato)
 VALUES 
