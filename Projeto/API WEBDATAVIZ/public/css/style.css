@@ -1,0 +1,788 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #F7EDE1;
+    font-family: "Exo 2", Segoe UI;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    font-family: "Exo 2", Segoe UI;
+}
+
+button {
+    margin: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    background-color: #416B44;
+    font-family: "Exo 2", Segoe UI;
+    cursor: pointer;
+}
+
+.button {
+    margin-bottom: 10px;
+}
+
+
+.button h2{
+    margin: 0;
+}
+
+select {
+    border-radius: 10px;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-family: "Exo 2", Segoe UI;
+    cursor: pointer;
+}
+
+/* Barra de navegação */
+
+.div_nav {
+    background-color: #155C3A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+#img_logo_nav {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 70px;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+    width: 600px;
+    margin-left: 450px;
+    margin-right: -100px;
+}
+
+.linksLogin {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+    width: 850px;
+    margin-left: 450px;
+    margin-right: -100px;
+}
+
+.link_nav {
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+/* Home */
+
+.bannerHome {
+    width: 100%;
+    height: 300px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #0e3824cc;
+    color: white;
+}
+
+.bannerHome .logo img {
+    width: 250px;
+}
+
+.containerHome .sobreNos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: solid 7px #155C3A;
+}
+
+.sobreNos .div_texto{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+    text-align: left;
+}
+
+.containerHome .div_texto {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.containerHome p {
+    font-size: 20px;
+}
+
+.containerHome .sobreNos .div_imagem img{
+    width: 700px;
+    border-radius: 10px;
+    border: solid 2px #155C3A;
+    margin-bottom: 20px;
+}
+
+.containerHome #solucao {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.containerHome .diagramaNegocio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: solid 7px #155C3A;
+}
+
+.containerHome .diagramaNegocio h1{
+    font-size: 60px;
+}
+
+.containerHome .diagramaNegocio h2{
+    font-size: 30px;
+    color: #69AD6E;
+}
+
+.containerHome .diagramaNegocio img{
+    margin-bottom: 20px;
+}
+
+.beneficios .beneficio1 .div_texto {
+    padding: 20px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.beneficios .beneficio2 .div_texto {
+    padding: 20px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.beneficios .beneficio3 .div_texto {
+    padding: 20px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerHome .beneficiosTitulo h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+.containerHome .beneficios {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: solid 7px #155C3A;
+}
+
+.containerHome .beneficios p {
+    width: 300px;
+}
+
+.containerHome .beneficios img {
+    margin-bottom: 40px;
+}
+
+.containerHome .sobreSimulador {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.containerHome .sobreSimulador .div_imagem img{
+    width: 700px;
+    border-radius: 10px;
+    border: solid 2px #155C3A;
+    margin-bottom: 20px;
+}
+
+/* Rodapé */
+.footer{
+    color: white;
+    background-color: #155C3A;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.redes-sociais{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 150px;
+}
+
+.footer ul li img{
+    width: 25px;
+}
+
+.footer .logo img{
+    width: 200px;
+}
+
+.footer h4 {
+    margin: 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer .contato{
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    justify-content: space-between;
+}
+
+/* Página Sobre Nós */
+
+.bannerSN {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #0e3824cc;
+}
+
+.bannerSN img{
+    height: 125px;
+}
+
+.containerSN .SN {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom: solid 7px #155C3A;
+}
+
+.containerSN .SN p {
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.containerSN #sustentabilidade{
+    width: 330px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.containerSN .SN .SN_imgs {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.containerSN .SN .SN_imgs img {
+    width: 300px;
+    height: 275px;
+}
+
+.containerSN .MVV {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom: solid 7px #155C3A;
+}
+
+.containerSN .MVV .MVVConteudo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 70%;
+}
+
+.containerSN .MVV .div_texto{
+    width: 600px;
+}
+
+
+.containerSN .MVV p {
+    font-size: 20px;
+}
+
+.containerSN .MVV img {
+    width: 400px;
+}
+
+.containerSN .equipe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 800px;
+}
+
+.containerSN .conteudo_equipe{
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    width: 80%;
+    height: 650px;
+    border-radius: 10px;
+}
+
+.containerSN .equipe img {
+    width: 180px;
+    height: 199px;
+    border-radius: 50px;
+    border: solid 2px #155C3A;
+}
+
+.containerSN .equipe .equipe_parte1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.containerSN .equipe .equipe_parte2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bannerSobreNos{
+    width: 100%;
+    height: 200px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #0e3824cc;
+    color: white;
+}
+
+.container_conteudo_SN1{
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container_conteudo_SN2{
+    width: 100%;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.SN{
+    height: 1100px;
+}
+
+.conteudo_SN1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+}
+
+.conteudo_SN2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.SN_texto{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    padding: 40px;
+}
+
+
+/* Conteúdo da página - Login, Cadastro e Simulador */
+
+.containerLCS {
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+    padding: 110px;
+}
+
+.containerLCS .box {
+    width: 1000px;
+    height: fit-content;
+    text-align: center;
+    background-color: #267652a0;
+    border-radius: 10px;
+    border: solid 2px #155C3A;
+}
+
+.containerLCS .box .formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+/* Resultado da calculadora financeira */
+
+.containerLCS #div_resultado {
+    margin: 5px 30px 30px 30px;
+    width: 940px;
+    font-size: large;
+}
+
+.containerLCS #div_resultado .result_positivo {
+    color: greenyellow;
+    font-weight: bold;
+}
+
+/* Cadastro */
+
+
+.div_nav_cadastro{
+    background-color: #155C3A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.div_nav_cadastro .links{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        list-style-type: none;
+        width: 700px;
+        margin-right: -70px;
+        margin-top: 0;
+}
+
+.containerLCS #cadastroResposta {
+    margin-bottom: 20px;
+}
+
+/* Dashboards */
+.containerDASH {
+    margin: 100px 100px 50px 100px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.containerDASH .dash {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    text-align: center;
+}
+
+.containerDASH .dash ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.corUrgencia5{
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+    color: #ff0000
+}
+
+.corUrgencia4{
+    margin: 0;
+    font-size: 40px;
+    color: yellow;
+}
+
+.corUrgencia3{
+    margin: 0;
+    font-size: 40px;
+    color: #15ff00;
+}
+
+.corUrgencia2{
+    margin: 0;
+    font-size: 40px;
+    color: #15ff00;
+}
+
+.perfil{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80px;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.links_dash {
+    height: 120px;
+}
+
+.links_dash .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 700px;
+    margin-right: -70px;
+    margin-top: 0;
+}
+
+.containerDASH .dash ul li{
+    background-color:#1c7c4e;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 90px;
+}
+
+.containerDASH .dash ul{
+    margin: 1px;
+}
+
+.pontosMaiorNivelAtual{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 20%;
+    background-color: #F7EDE1;
+    border: solid 2px #155C3A;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.margin0{
+    margin: 0;
+}
+
+.padding0{
+    padding: 0;
+}
+
+.conteudoNivelAtualKPI{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: fit-content;
+}
+
+.conteudoGraficoNivelAtual{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.conteudoGraficoNivelAtual .conteudo{
+    width: 100%;
+}
+
+.legendaEGraficoNivelAtual{
+    width: 70%;
+}
+
+.conteudoLegenda{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.retangulo{
+    margin: 0;
+    padding: 0;
+    width: 30px;         
+    height: 10px;        
+}
+
+.legenda{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.legenda .legendaNivel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.legenda .legendaNivel1 p{
+    margin: 0;
+    padding: 0;
+}
+
+.pontoMaiorNívelPeriodo{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.conteudoMaiorNivelPeriodo{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #F7EDE1;
+    border: solid 2px #155C3A;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.containerDASH .dash ul .ajustar{
+    background-color:#1c7c4e;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 118px;
+    width: 130px;
+    margin-bottom: 10px;
+}
+
+.referencias {
+    position: fixed;
+    right: 1300px;
+    top: 255px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #267652a0;
+    border: solid 2px #155C3A;
+    text-align: center;
+    margin-right: 373px;
+}
+
+.referencias .valores {
+    display: flex;
+    justify-content: space-around;
+}
+
+.referencias .valores .nivel h2{
+    background-color: #1c7c4e;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+.referencias .explicacaoCores p{
+    background-color: #1c7c4e;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.distancia{
+    display: flex;
+    flex-direction: column;
+}
+
+.distancia p{
+    margin-top: 15px;
+}
+
+.distancia h5{
+    margin-bottom: 10px;
+}
