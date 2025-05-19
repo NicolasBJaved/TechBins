@@ -584,13 +584,13 @@ select {
 .corUrgencia4{
     margin: 0;
     font-size: 40px;
-    color: yellow;
+    color: #a20808;
 }
 
 .corUrgencia3{
     margin: 0;
     font-size: 40px;
-    color: #15ff00;
+    color: yellow;
 }
 
 .corUrgencia2{
@@ -759,19 +759,6 @@ select {
 .referencias .valores {
     display: flex;
     justify-content: space-around;
-}
-
-.referencias .valores .nivel h2{
-    background-color: #1c7c4e;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-
-.referencias .explicacaoCores p{
-    background-color: #1c7c4e;
-    border: 1px solid black;
-    border-radius: 10px;
 }
 
 .distancia{
