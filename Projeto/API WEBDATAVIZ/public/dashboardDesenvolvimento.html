@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+     <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body onload="buscarDadosRotas()">
+    <div class="containerDashboard">
+        <div id="rotas" class="rotas">
+            <!-- <div class="rota">
+                <div class="tituloENivel">
+                    <h1>Rota 1</h1>
+                    <h2>Nível 5(crítico)</h2>
+                </div>
+                <div class="lixeiras">
+                    <ul>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+             <div class="rota">
+                <div class="tituloENivel">
+                    <h1>Rota 1</h1>
+                    <h2>Nível 5(crítico)</h2>
+                </div>
+                <div class="lixeiras">
+                    <ul>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rota">
+                <div class="tituloENivel">
+                    <h1>Rota 1</h1>
+                    <h2>Nível 5(crítico)</h2>
+                </div>
+                <div class="lixeiras">
+                    <ul>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rota">
+                <div class="tituloENivel">
+                    <h1>Rota 1</h1>
+                    <h2>Nível 5(crítico)</h2>
+                </div>
+                <div class="lixeiras">
+                    <ul>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+        
+    </div>
+</body>
+<script>
+    function buscarDadosRotas(){
+        //var idUsuario = sessionStorage.ID_USUARIO;
+        var idUsuario = 1;
+        fetch("/dashboard/mediaRota",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            }, body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            }),
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(resposta){
+                    for(var i = 0; i < resposta.length; i++){
+                        var mediaGeralNivel = 0;
+                        if(resposta[i].media_geral_rota <= 18){
+                            mediaGeralNivel = 5;
+                        }else if(resposta[i].media_geral_rota <= 36){
+                            mediaGeralNivel = 4;
+                        }else if(resposta[i].media_geral_rota <= 54){
+                            mediaGeralNivel = 3;
+                        }else if(resposta[i].media_geral_rota <= 72){
+                            mediaGeralNivel = 2;
+                        }else if(resposta[i].media_geral_rota <= 90){
+                            mediaGeralNivel = 1;
+                        }
+                        rotas.innerHTML += `
+                            <div class="rota">
+                                <div class="tituloENivel">
+                                    <h1>${resposta[i].nomeRota}/h1>
+                                    <h2>${mediaGeralNivel}</h2>
+                                </div>
+                                <div class="lixeiras">
+                                    <ul>
+                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `
+                    }
+                })
+            }
+        })
+    }
+</script>
+</html>

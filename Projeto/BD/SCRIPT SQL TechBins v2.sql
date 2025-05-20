@@ -77,6 +77,7 @@ CREATE TABLE rota (
     idRota INT PRIMARY KEY AUTO_INCREMENT,
     idEmpresa INT NOT NULL,
     idRepresentante INT NOT NULL,
+    nomeRota VARCHAR(45) NOT NULL,
     dataRota DATE NOT NULL,
     status VARCHAR(20),
     observacoes TEXT,
