@@ -93,14 +93,7 @@ CREATE TABLE rotaPontoColeta (
     FOREIGN KEY (idPontoColeta) REFERENCES pontoColeta(idPontoColeta)
 );
 
-INSERT INTO rota (idEmpresa, idRepresentante, dataRota, status, observacoes)
-VALUES (1, 1, '2025-05-20', 'Agendada', 'Coleta da região oeste de SP');
 
-INSERT INTO rotaPontoColeta (idRota, idPontoColeta, ordem)
-VALUES 
-(5000, 1000, 1),
-(5000, 1001, 2),
-(5000, 1002, 3);
 
 
 
@@ -232,6 +225,14 @@ VALUES
 (4, 'Patrícia Lima', 'token_corp123', 'patricia.lima@corpus.com.br', 'senha123', '45678901234', 'S', NULL), -- id 7
 (4, 'Fernando Reis', 'token_corp456', 'fernando.reis@corpus.com.br', 'senha456', '45678901235', 'N', 7);
 
+INSERT INTO rota (idEmpresa, idRepresentante, dataRota, status, observacoes)
+VALUES (1, 1, '2025-05-20', 'Agendada', 'Coleta da região oeste de SP');
+
+INSERT INTO rotaPontoColeta (idRota, idPontoColeta, ordem)
+VALUES 
+(1, 1000, 1),
+(1, 1001, 2),
+(1, 1002, 3);
 
 select reg.*, pto.idEmpresa as 'Identificador da Empresa', pto.logradouro as 'Logradouro', pto.numero as 'Número', pto.cidade as 'Cidade',
 case
