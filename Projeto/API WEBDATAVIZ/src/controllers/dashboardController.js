@@ -10,6 +10,17 @@ function mediaRota(req, res){
     })      
 }
 
+function mediaCincoPontos(req, res){
+    var idUsuario = req.body.idUsuarioServer;
+
+    dashboardModel.mediaCincoPontos(idUsuario)
+    .then(function (resultado) {
+        console.log("Resultado do model: ", resultado);
+        res.status(200).json(resultado);
+    })      
+}
+
 module.exports ={
-    mediaRota
+    mediaRota,
+    mediaCincoPontos
 }

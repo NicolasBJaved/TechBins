@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-     <script src="script.js" defer></script>
+    <script src="script.js" defer></script>
     <title>Document</title>
 </head>
+
 <body onload="buscarDadosRotas()">
     <div class="containerDashboard">
         <div id="rotas" class="rotas">
@@ -71,52 +73,90 @@
                 </div>
             </div> -->
         </div>
-        
+
     </div>
 </body>
 <script>
-    function buscarDadosRotas(){
+    function buscarDadosRotas() {
+        rotas.innerHTML = "";
         //var idUsuario = sessionStorage.ID_USUARIO;
         var idUsuario = 1;
-        fetch("/dashboard/mediaRota",{
+        fetch("/dashboard/mediaRota", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             }, body: JSON.stringify({
                 idUsuarioServer: idUsuario
             }),
-        }).then(function(resposta){
-            if(resposta.ok){
-                resposta.json().then(function(resposta){
-                    for(var i = 0; i < resposta.length; i++){
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    for (var i = 0; i < resposta.length; i++) {
                         var mediaGeralNivel = 0;
-                        if(resposta[i].media_geral_rota <= 18){
+                        var cor = null;
+                        if (resposta[i].media_geral_rota <= 18) {
+                            cor = "red";
                             mediaGeralNivel = 5;
-                        }else if(resposta[i].media_geral_rota <= 36){
+                        } else if (resposta[i].media_geral_rota <= 36) {
                             mediaGeralNivel = 4;
-                        }else if(resposta[i].media_geral_rota <= 54){
+                            cor = "yellow";
+                        } else if (resposta[i].media_geral_rota <= 54) {
                             mediaGeralNivel = 3;
-                        }else if(resposta[i].media_geral_rota <= 72){
+                            cor = "green";
+                        } else if (resposta[i].media_geral_rota <= 72) {
                             mediaGeralNivel = 2;
-                        }else if(resposta[i].media_geral_rota <= 90){
+                            cor = "green";
+                        } else if (resposta[i].media_geral_rota <= 90) {
                             mediaGeralNivel = 1;
+                            cor = "green";
                         }
                         rotas.innerHTML += `
                             <div class="rota">
-                                <div class="tituloENivel">
-                                    <h1>${resposta[i].nomeRota}/h1>
-                                    <h2>${mediaGeralNivel}</h2>
+                                <div style="color: ${cor}" class="tituloENivel">
+                                    <h1 style="margin:0">${resposta[i].nomeRota}</h1>
+                                    <h1>${mediaGeralNivel}</h1>
                                 </div>
                                 <div class="lixeiras">
-                                    <ul>
-                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
-                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
-                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
-                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
-                                        <li><img src="./imgs/trash-512.webp" alt=""></li>
+                                    <ul id="lixeira${resposta[i].idRota}">
+                                        
                                     </ul>
                                 </div>
                             </div>
+                        `
+                    }
+                })
+                mediaCincoPontos(idUsuario);
+            }
+        })
+    }
+
+    function mediaCincoPontos(idUsuario) {
+        fetch("/dashboard/mediaCincoPontos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            }, body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            }),
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    for (var i = 0; i < resposta.length; i++) {
+                        var cor = null;
+                        if (resposta[i].media_nivel_lixo <= 18) {
+                            cor = "red";
+                        } else if (resposta[i].media_nivel_lixo <= 36) {
+                            cor = "yellow";
+                        } else if (resposta[i].media_nivel_lixo <= 54) {
+                            cor = "green";
+                        } else if (resposta[i].media_nivel_lixo <= 72) {
+                            cor = "green";
+                        } else if (resposta[i].media_nivel_lixo <= 90) {
+                            cor = "green";
+                        }
+                        var lixeira = document.getElementById("lixeira" + resposta[i].idRota);
+                        lixeira.innerHTML += `
+                            <li style="background-color: ${cor}; border-radius:10%;"><img src="./imgs/trash-512.webp" alt=""></li>
                         `
                     }
                 })
@@ -124,4 +164,5 @@
         })
     }
 </script>
+
 </html>

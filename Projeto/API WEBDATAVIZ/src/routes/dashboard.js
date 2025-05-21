@@ -7,4 +7,10 @@ router.post("/mediaRota", function (req, res) {
     dashboardController.mediaRota(req, res);
 });
 
+router.post("/mediaCincoPontos", function (req, res) {
+    console.log("Entrou na rota /mediaCincoPontos");
+    dashboardController.mediaCincoPontos(req, res);
+}
+);
+
 module.exports = router;

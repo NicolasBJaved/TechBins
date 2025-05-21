@@ -800,6 +800,7 @@ select {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 100px;
 }
 
 .containerDashboard .rota{
@@ -808,7 +809,7 @@ select {
     align-items: center;
     border: 1px solid black;
     width: 25%;
-    height: 250px;
+    height: 220px;
     border-radius: 10px;
 }
 
@@ -834,6 +835,8 @@ select {
     display: flex;
     align-items: center;
     list-style-type: none;
+    width: 70%;
+    justify-content: space-around;
 }
 
 .containerDashboard .lixeiras ul li {
