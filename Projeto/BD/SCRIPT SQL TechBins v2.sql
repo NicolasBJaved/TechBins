@@ -95,9 +95,6 @@ CREATE TABLE rotaPontoColeta (
 );
 
 
-
-
-
 -- Inserindo empresas com idEnderecoEmpresa já referenciado (100 a 103)
 INSERT INTO empresa (nomeEmpresa, cnpj, email_contato, telefone_contato)
 VALUES 
@@ -226,14 +223,38 @@ VALUES
 (4, 'Patrícia Lima', 'token_corp123', 'patricia.lima@corpus.com.br', 'senha123', '45678901234', 'S', NULL), -- id 7
 (4, 'Fernando Reis', 'token_corp456', 'fernando.reis@corpus.com.br', 'senha456', '45678901235', 'N', 7);
 
-INSERT INTO rota (idEmpresa, idRepresentante, dataRota, status, observacoes)
-VALUES (1, 1, '2025-05-20', 'Agendada', 'Coleta da região oeste de SP');
+INSERT INTO rota (idEmpresa, idRepresentante, nomeRota, dataRota, status, observacoes)
+VALUES (1, 1, "Rota Pinheiros", '2025-05-20', 'Agendada', 'Coleta da região oeste de SP');
 
 INSERT INTO rotaPontoColeta (idRota, idPontoColeta, ordem)
 VALUES 
 (1, 1000, 1),
 (1, 1001, 2),
 (1, 1002, 3);
+
+-- Rua A (Ponto 1000, lixeiras 10000 a 10004)[
+INSERT INTO registro (idSensor, distancia, dataHoraMedicao) VALUES
+(100000, 20, '2025-05-20 08:00:00'),
+(100001, 30, '2025-05-20 08:01:00'),
+(100002, 25, '2025-05-20 08:02:00'),
+(100003, 22, '2025-05-20 08:03:00'),
+(100004, 28, '2025-05-20 08:04:00');
+
+-- Rua B (Ponto 1001, lixeiras 10005 a 10009)
+INSERT INTO registro (idSensor, distancia, dataHoraMedicao) VALUES
+(100005, 35, '2025-05-20 08:05:00'),
+(100006, 32, '2025-05-20 08:06:00'),
+(100007, 30, '2025-05-20 08:07:00'),
+(100008, 34, '2025-05-20 08:08:00'),
+(100009, 33, '2025-05-20 08:09:00');
+
+-- Rua C (Ponto 1002, lixeiras 10010 a 10014)
+INSERT INTO registro (idSensor, distancia, dataHoraMedicao) VALUES
+(100010, 18, '2025-05-20 08:10:00'),
+(100011, 20, '2025-05-20 08:11:00'),
+(100012, 22, '2025-05-20 08:12:00'),
+(100013, 19, '2025-05-20 08:13:00'),
+(100014, 21, '2025-05-20 08:14:00');
 
 select reg.*, pto.idEmpresa as 'Identificador da Empresa', pto.logradouro as 'Logradouro', pto.numero as 'Número', pto.cidade as 'Cidade',
 case
@@ -248,6 +269,4 @@ from registro reg
 inner join sensor sen on sen.idSensor = reg.idSensor
 inner join lixeira lix on lix.idLixeira = sen.idLixeira
 inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta;
-
-select * from representante;
 
