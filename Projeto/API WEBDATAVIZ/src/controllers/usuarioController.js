@@ -20,21 +20,14 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                        //     .then((resultadoAquarios) => {
-                        //         if (resultadoAquarios.length > 0) {
-                        //             res.json({
-                        //                 id: resultadoAutenticar[0].id,
-                        //                 email: resultadoAutenticar[0].email,
-                        //                 nome: resultadoAutenticar[0].nome,
-                        //                 cpf: resultadoAutenticar[0].cpf,
-                        //                 senha: resultadoAutenticar[0].senha,
-                        //                 aquarios: resultadoAquarios
-                        //             });
-                        //         } else {
-                        //             res.status(204).json({ aquarios: [] });
-                        //         }
-                        //     })
+                        res.json({
+                            idEmpresa: resultadoAutenticar[0].idEmpresa,
+                            idRepresentante: resultadoAutenticar[0].idRepresentante,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                            senha: resultadoAutenticar[0].senha,
+                            cpf: resultadoAutenticar[0].cpf
+                        });
 
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -79,7 +72,7 @@ function cadastrar(req, res) {
      else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(idEmpresa, nome, email, cpf, senha, idRepresentanteChefe)
+        usuarioModel.cadastrar(idEmpresa, nome, email, senha, cpf, idRepresentanteChefe)
             .then(
                 function (resultado) {
                     res.json(resultado);
