@@ -125,7 +125,7 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idRepresentante;
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
-                    
+                    sessionStorage.PODE_ADICIONAR = json.podeAdicionarRepresentantes;
 
                     setTimeout(function () {
                         window.location.href = "dashboard.html";
@@ -148,6 +148,9 @@
         })
 
         return false;
+
+
+        
     }
 
     // function sumirMensagem() {

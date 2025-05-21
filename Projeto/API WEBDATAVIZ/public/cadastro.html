@@ -146,6 +146,7 @@
     
     var idEmpresaVar = sessionStorage.ID_EMPRESA;
     var idRepresentanteChefeVar = sessionStorage.ID_USUARIO;
+    var podeAdicionarRepresentantesVar = sessionStorage.PODE_ADICIONAR;
     
     let emailTemArroba = emailVar.includes('@');
     let senhaTemEspaco = senhaVar.includes(' ');
@@ -190,7 +191,8 @@
         senhaServer: senhaVar,
         cpfServer: cpfVar,
         idEmpresaServer: idEmpresaVar,
-        idRepresentanteChefeServer: idRepresentanteChefeVar
+        idRepresentanteChefeServer: idRepresentanteChefeVar,
+        podeAdicionarRepresentantesServer: podeAdicionarRepresentantesVar
         
       }),
     })

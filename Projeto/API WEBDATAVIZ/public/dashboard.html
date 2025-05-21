@@ -29,7 +29,7 @@
                     <a href="simulador.html" class="link_nav">Simulador Financeiro</a>
                 </li>
                 <li>
-                    <a href="cadastro.html" class="link_nav">Adicionar representante</a>
+                    <a href="cadastro.html" class="link_nav" id="cadastro">Adicionar representante</a>
                 </li>
                 <li>
                     <div class="perfil">
@@ -368,3 +368,11 @@
 </body>
 
 </html>
+
+<script>
+    var podeAdicionarRepresentantes = sessionStorage.PODE_ADICIONAR;
+// AQUI VERIFICA SE A PESSOA PODE ADICIONAR REPRESENTANTE OU NÃO, SE NÃO PUDER, NÃO TERÁ ACESSO AO CADASTRO DE REPRESENTANTE
+    if(podeAdicionarRepresentantes == 'N'){
+        cadastro.style.display = "none"
+    }
+</script>

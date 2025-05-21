@@ -26,7 +26,8 @@ function autenticar(req, res) {
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
                             senha: resultadoAutenticar[0].senha,
-                            cpf: resultadoAutenticar[0].cpf
+                            cpf: resultadoAutenticar[0].cpf,
+                            podeAdicionarRepresentantes:  resultadoAutenticar[0].podeAdicionarRepresentantes
                         });
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -57,6 +58,7 @@ function cadastrar(req, res) {
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
     var idRepresentanteChefe = req.body.idRepresentanteChefeServer
+    var podeAdicionarRepresentantes = req.body.podeAdicionarRepresentantesServer
     // PODE ADICIONAR REPRESENTANTE SERA DEFAULT 'N'
    
 
