@@ -127,9 +127,15 @@
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
                     sessionStorage.PODE_ADICIONAR = json.podeAdicionarRepresentantes;
 
-                    setTimeout(function () {
-                        window.location.href = "dashboard.html";
+                    if(sessionStorage.ID_EMPRESA == 99999){
+                        setTimeout(function () {
+                        window.location.href = "suporte.html";
                     }, 1000); // apenas para exibir o loading
+                    } else{
+                        setTimeout(function () {
+                            window.location.href = "dashboard.html";
+                        }, 1000); // apenas para exibir o loading
+                    }
 
                 });
 
@@ -150,7 +156,7 @@
         return false;
 
 
-        
+
     }
 
     // function sumirMensagem() {
