@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
   <div class="div_nav_cadastro">
         <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
@@ -129,7 +129,7 @@
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  // let listaEmpresasCadastradas = [];
 
   function cadastrar() {
     // aguardar();
@@ -140,99 +140,40 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
+    // var codigoVar = codigo_input.value;
     var cpfVar = cpf_input.value;
-    var idEmpresaVincular
+    // var idEmpresaVincular;
+    
+    var idEmpresaVar = sessionStorage.ID_EMPRESA;
+    var idRepresentanteChefeVar = sessionStorage.ID_USUARIO;
+    
+    let emailTemArroba = emailVar.includes('@');
+    let senhaTemEspaco = senhaVar.includes(' ');
+    let confirmarSenhaTemEspaco = confirmacaoSenhaVar.includes(' ');
 
 
     
     
 
     // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == "" ||
-      cpfVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+    if (nomeVar == '' || emailVar == '' || cpfVar == '' || senhaVar == '' || confirmacaoSenhaVar == '') {
+        cadastroResposta.innerHTML = `Por favor, preencha todos os campos.`
+    } else if (emailTemArroba == false) {
+        cadastroResposta.innerHTML = `Insira um email válido.`
+    } else if (senhaVar != confirmacaoSenhaVar) {
+        cadastroResposta.innerHTML = `Certifique-se de que preencheu os campos 'Senha' e 'Confirmar senha' corretamente.`;
+    } else if (senhaTemEspaco || confirmarSenhaTemEspaco) {
+        cadastroResposta.innerHTML = `A senha não pode conter espaços.`
+    }else if(cpfVar.length != 11){
+        cadastroResposta.innerHTML = `O CPF deve conter 11 dígitos.`
     }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
+    else {
+        cadastroResposta.innerHTML = `<b>
+        Cadastro realizado com sucesso!</b><br><br>
+        <a href="login.html">Login</a>
+         
+        `
     }
-    
-    // ___________________________________ATIVIDADE 3: VALIDAR OS CAMPOS DO FORMULÁRIO___________________________________
-    if(nomeVar.length > 2){
-      console.log("Nome validado")
-      setInterval(sumirMensagem, 5000);
-    } else{
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para nome inválido)";
-        return;
-        finalizarAguardar();
-    }
-
-    // if(emailvar  2){
-    //   console.log("Nome validado")
-
-    // } else{
-    //   cardErro.style.display = "block";
-    //   mensagem_erro.innerHTML =
-    //     "(Mensagem de erro para nome inválido)";
-    //     return;
-    //     finalizarAguardar();
-    // }
-
-    if(senhaVar.length > 6){
-      console.log("Senha validada")
-      setInterval(sumirMensagem, 5000);
-    } else{
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para senha inválida)";
-        return;
-        finalizarAguardar();
-    }
-
-    if(confirmacaoSenhaVar == senhaVar){
-      console.log("Senha validada")
-      setInterval(sumirMensagem, 5000);
-    } else{
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para confirmação de senha diferente de senha)";
-        return;
-        finalizarAguardar();
-    }
-
-    if(cpfVar.length == 11){
-      console.log("CPF validado")
-      setInterval(sumirMensagem, 5000);
-    } else{
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para CPF inválido)";
-        return;
-        finalizarAguardar();
-    }
-// ___________________________________________________________________________________________________________________
-
 
 
     // Enviando o valor da nova input
@@ -248,16 +189,18 @@
         emailServer: emailVar,
         senhaServer: senhaVar,
         cpfServer: cpfVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        idEmpresaServer: idEmpresaVar,
+        idRepresentanteChefeServer: idRepresentanteChefeVar
+        
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          
 
-          mensagem_erro.innerHTML =
+          cadastroResposta.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
           setTimeout(() => {
@@ -276,29 +219,5 @@
       });
 
     return false;
-  }
-
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
   }
 </script>
