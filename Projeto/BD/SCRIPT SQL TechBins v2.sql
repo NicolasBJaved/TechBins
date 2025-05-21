@@ -26,16 +26,17 @@ CREATE TABLE representante (
     idRepresentante INT PRIMARY KEY AUTO_INCREMENT,
     idEmpresa INT NOT NULL,
     nomeRepresentante VARCHAR(100) NOT NULL,
-    token_acesso VARCHAR(50) UNIQUE NOT NULL,
     email_contato VARCHAR(100) UNIQUE NOT NULL, 
     senha VARCHAR(50) NOT NULL,
     cpf CHAR(11) UNIQUE NOT NULL,
-    podeAdicionarRepresentantes CHAR(1) NOT NULL,
+    podeAdicionarRepresentantes CHAR(1) NOT NULL DEFAULT 'N',
     idRepresentanteChefe INT,
     CONSTRAINT chk_addRepresentante CHECK (podeAdicionarRepresentantes in ('S', 'N')),
     CONSTRAINT fk_RepresentanteEmpresa FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa),
     CONSTRAINT fk_RepresentanteChefe FOREIGN KEY (idRepresentanteChefe) REFERENCES representante(idRepresentante)
 );
+
+
 
 CREATE TABLE pontoColeta (
     idPontoColeta INT PRIMARY KEY AUTO_INCREMENT,
@@ -200,28 +201,28 @@ values
 (10032, 'Inativo');
 
 -- Eco SPTech (empresa 1)
-INSERT INTO representante (idEmpresa, nomeRepresentante, token_acesso, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
+INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
 VALUES 
-(1, 'Julia Lima', 'julia.sptech', 'julia.lima@ecosptech.com.br', 'julia123', '12345678901', 'S', NULL), -- id 1
-(1, 'Fernando Brandão', 'brandao.sptech', 'fernando.brandao@ecosptech.com.br', 'brandao123', '12345678902', 'N', 1);
+(1, 'Julia Lima', 'julia.lima@ecosptech.com.br', 'julia123', '12345678901', 'S', NULL), -- id 1
+(1, 'Fernando Brandão', 'fernando.brandao@ecosptech.com.br', 'brandao123', '12345678902', 'N', 1);
 
 -- Loga (empresa 2)
-INSERT INTO representante (idEmpresa, nomeRepresentante, token_acesso, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
+INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
 VALUES 
-(2, 'Luciana Prado', 'token_loga123', 'luciana.prado@loga.com.br', 'senha123', '23456789012', 'S', NULL), -- id 3
-(2, 'Diego Costa', 'token_loga456', 'diego.costa@loga.com.br', 'senha456', '23456789013', 'N', 3);
+(2, 'Luciana Prado', 'luciana.prado@loga.com.br', 'senha123', '23456789012', 'S', NULL), -- id 3
+(2, 'Diego Costa', 'diego.costa@loga.com.br', 'senha456', '23456789013', 'N', 3);
 
 -- Sustentare (empresa 3)
-INSERT INTO representante (idEmpresa, nomeRepresentante, token_acesso, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
+INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
 VALUES 
-(3, 'Carlos Mendes', 'token_sust123', 'carlos.mendes@sustentare.com.br', 'senha123', '34567890123', 'S', NULL), -- id 5
-(3, 'Juliana Rocha', 'token_sust456', 'juliana.rocha@sustentare.com.br', 'senha456', '34567890124', 'N', 5);
+(3, 'Carlos Mendes', 'carlos.mendes@sustentare.com.br', 'senha123', '34567890123', 'S', NULL), -- id 5
+(3, 'Juliana Rocha', 'juliana.rocha@sustentare.com.br', 'senha456', '34567890124', 'N', 5);
 
 -- Corpus (empresa 4)
-INSERT INTO representante (idEmpresa, nomeRepresentante, token_acesso, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
+INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
 VALUES 
-(4, 'Patrícia Lima', 'token_corp123', 'patricia.lima@corpus.com.br', 'senha123', '45678901234', 'S', NULL), -- id 7
-(4, 'Fernando Reis', 'token_corp456', 'fernando.reis@corpus.com.br', 'senha456', '45678901235', 'N', 7);
+(4, 'Patrícia Lima', 'patricia.lima@corpus.com.br', 'senha123', '45678901234', 'S', NULL), -- id 7
+(4, 'Fernando Reis', 'fernando.reis@corpus.com.br', 'senha456', '45678901235', 'N', 7);
 
 INSERT INTO rota (idEmpresa, idRepresentante, nomeRota, dataRota, status, observacoes)
 VALUES (1, 1, "Rota Pinheiros", '2025-05-20', 'Agendada', 'Coleta da região oeste de SP');
@@ -270,3 +271,5 @@ inner join sensor sen on sen.idSensor = reg.idSensor
 inner join lixeira lix on lix.idLixeira = sen.idLixeira
 inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta;
 
+
+select * from representante;
