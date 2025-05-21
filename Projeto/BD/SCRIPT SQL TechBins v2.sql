@@ -271,5 +271,19 @@ inner join sensor sen on sen.idSensor = reg.idSensor
 inner join lixeira lix on lix.idLixeira = sen.idLixeira
 inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta;
 
+/* FAZENDO INSERT PARA NOSSA EMPRESA PARA REALIZAR SUPORTE*/
+INSERT INTO empresa (idEmpresa, nomeEmpresa, cnpj, email_contato, telefone_contato)
+			values (99999 ,'Suporte TECHBINS', 12349998000100, 'suporte@techbins.com', '11998739090');
+            
+INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, idRepresentanteChefe, podeAdicionarRepresentantes)
+			values (99999, 'Lucas Marques de Aquino', 'lucas.aquino@suporte.com', 'lucas123', '55372499987', null, 'S');
+INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, idRepresentanteChefe, podeAdicionarRepresentantes)
+			values (99999, 'Leonardo Borges Fernandes', 'leo.borges@suporte.com', 'leo123', '58972499987', null, 'S'),
+				   (99999, 'Bruno Prado de Araujo', 'bruno.prado@suporte.com', 'bruno123', '55310099987', null, 'S'),
+                   (99999, 'Guilherme Martins Nascimento', 'gui.martins@suporte.com', 'gui123', '00272499987', null, 'S'),
+                   (99999, 'Fernanda Henckel Hirai de Araújo', 'fer.henckel@suporte.com', 'fer123', '10572888987', null, 'S'),
+                   (99999, 'Nicolas Barboza Javed', 'nicolas.javed@suporte.com', 'nicolas123', '98745699987', null, 'S');
+
+
 
 select * from representante;
