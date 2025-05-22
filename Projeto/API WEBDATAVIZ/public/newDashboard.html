@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/newDash.css">
+</head>
+
+<body>
+    <div class="div_nav">
+        <div class="links_dash">
+            <div class="perfil">
+                <img src="./imgs/julia.jpg" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+                <p class="link_nav">Olá, Julia</p>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="index.html" class="link_nav">Home</a>
+                </li>
+                <li>
+                    <a href="newDashboard.html" class="link_nav">Dashboards</a>
+                </li>
+                <li>
+                    <a href="simulador.html" class="link_nav">Gráficos gerais</a>
+                </li>
+            
+                <li>
+                    <a href="rotas.html" class="link_nav" id="cadastro">Rotas</a>
+                </li>
+                <li>
+                    <a href="cadastro.html" class="link_nav">Adicionar representante</a>
+                </li>
+            </ul>
+            
+        </div>
+
+        <div onclick="sair()">
+            <h1>Sair ></h1>
+        </div>
+       <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
+
+    </div>
+
+</body>
+    <script>
+        function sair() {
+            sessionStorage.clear();
+            window.location = "../index.html";
+        }
+
+    </script>
+
+</html>
