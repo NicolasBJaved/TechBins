@@ -73,7 +73,8 @@
                 <p>CPF</p>
                 <input type="text" placeholder="XXXXXXXXXXX" id="cpf_input">
                 <p>Senha</p>
-                <input type="password" placeholder="***********" id="senha_input">
+                <input type="password" placeholder="***********" id="senha_input" onchange="SenhaConfirmar()">
+                <div id="div_senha"></div>
                 <p>Confirmar senha</p>
                 <input type="password" placeholder="***********" id="confirmacao_senha_input">
                 <button onclick="cadastrar()">Cadastrar</button>
@@ -83,23 +84,13 @@
     </div>
         
         <!-- </div> -->
-
-
         <!-- <div id="div_aguardar" class="loading-div">
           <img src="./assets/circle-loading.gif" id="loading-gif" />
         </div> -->
-
-
-
         <!-- <div id="div_erros_login"></div> -->
-
-
       <!-- </div>
     </div>
   </div> -->
-
-
-
 
   <!--footer inicio-->
   <div class="footer">
@@ -130,6 +121,14 @@
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
   // let listaEmpresasCadastradas = [];
+  function SenhaConfirmar(){
+    var senhaVar = senha_input.value;
+    if(senhaVar.length < 7){
+      div_senha.innerHTML = `<span style="color: rgb(214, 20, 20);">A senha deve possuir pelo menos 7 caracteres.</span>`;
+    }else{
+      div_senha.innerHTML = ``;
+    }
+  }
 
   function cadastrar() {
     // aguardar();
