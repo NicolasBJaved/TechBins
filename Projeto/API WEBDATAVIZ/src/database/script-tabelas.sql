@@ -1,68 +1,98 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE IF NOT EXISTS aquatech;
-
-USE aquatech;
+CREATE DATABASE IF NOT EXISTS techBins;
+USE techBins;
 
 CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
+    idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+    nomeEmpresa VARCHAR(60) NOT NULL,
+    cnpj CHAR(14) NOT NULL,
+    email_contato VARCHAR(100) NOT NULL,
+    telefone_contato VARCHAR(11) NOT NULL
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+CREATE TABLE enderecoEmpresa (
+    idEnderecoEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT UNIQUE NOT NULL,
+    cep CHAR(8) NOT NULL,
+    logradouro VARCHAR(100) NOT NULL,
+    numero INT NOT NULL,
+    complemento VARCHAR(40),
+    bairro VARCHAR(50) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    estado CHAR(2) NOT NULL,
+    CONSTRAINT fk_enderecoEmpresaEmpresa FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa)
+)AUTO_INCREMENT = 100;
+
+CREATE TABLE representante (
+    idRepresentante INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT NOT NULL,
+    nomeRepresentante VARCHAR(100) NOT NULL,
+    email_contato VARCHAR(100) UNIQUE NOT NULL, 
+    senha VARCHAR(50) NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    podeAdicionarRepresentantes CHAR(1) NOT NULL DEFAULT 'N',
+    idRepresentanteChefe INT,
+    CONSTRAINT chk_addRepresentante CHECK (podeAdicionarRepresentantes in ('S', 'N')),
+    CONSTRAINT fk_RepresentanteEmpresa FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa),
+    CONSTRAINT fk_RepresentanteChefe FOREIGN KEY (idRepresentanteChefe) REFERENCES representante(idRepresentante)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+
+
+CREATE TABLE pontoColeta (
+    idPontoColeta INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT NOT NULL,
+    cep CHAR(8) NOT NULL,
+    logradouro VARCHAR(100) NOT NULL,
+    numero INT NOT NULL,
+    complemento VARCHAR(40),
+    bairro VARCHAR(50) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    estado CHAR(2) NOT NULL,
+    CONSTRAINT fk_PontoColetaEmpresa FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa)
+)AUTO_INCREMENT = 1000;
+
+CREATE TABLE lixeira (
+    idLixeira INT PRIMARY KEY AUTO_INCREMENT,
+    idPontoColeta INT NOT NULL,
+    dataUltimaColeta DATE,
+    CONSTRAINT fk_LixeiraPontoColeta FOREIGN KEY (idPontoColeta) REFERENCES pontoColeta(idPontoColeta)
+) AUTO_INCREMENT = 10000;
+
+CREATE TABLE sensor (
+idSensor INT PRIMARY KEY AUTO_INCREMENT,
+idLixeira INT UNIQUE NOT NULL,
+status varchar(7) DEFAULT 'Ativo',
+CONSTRAINT chk_status CHECK (status in('Ativo', 'Inativo')),
+CONSTRAINT fk_SensorLixeira FOREIGN KEY (idLixeira) REFERENCES lixeira(idLixeira)
+) AUTO_INCREMENT = 100000;
+
+CREATE TABLE registro (
+    idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+    idSensor INT NOT NULL,
+    distancia INT NOT NULL,
+    dataHoraMedicao DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    CONSTRAINT fk_RegistroSensor FOREIGN KEY (idSensor) REFERENCES sensor(idSensor)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+CREATE TABLE rota (
+    idRota INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT NOT NULL,
+    idRepresentante INT NOT NULL,
+    nomeRota VARCHAR(45) NOT NULL,
+    dataRota DATE NOT NULL,
+    status VARCHAR(20),
+    observacoes TEXT,
+    FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa),
+    FOREIGN KEY (idRepresentante) REFERENCES representante(idRepresentante)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+CREATE TABLE rotaPontoColeta (
+    idRota INT NOT NULL,
+    idPontoColeta INT NOT NULL,
+    ordem INT NOT NULL, -- ORDEM DA COLETA
+    PRIMARY KEY (idRota, idPontoColeta),
+    FOREIGN KEY (idRota) REFERENCES rota(idRota),
+    FOREIGN KEY (idPontoColeta) REFERENCES pontoColeta(idPontoColeta)
 );
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
 
-
-alter table usuario modify column cpf varchar(14);
-SELECT * from usuario;
-
--- que loucura
