@@ -34,7 +34,7 @@
                 <li>
                     <div class="perfil">
                         <img src="./imgs/julia.jpg" alt="foto_perfil" style="border-radius: 30px;" width="50px">
-                        <p class="link_nav">Olá, Julia</p>
+                        <p class="link_nav">Olá, <span id="b_usuario">usuário</span></p>
                     </div>
 
                 </li>
@@ -370,6 +370,7 @@
 </html>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     var podeAdicionarRepresentantes = sessionStorage.PODE_ADICIONAR;
 // AQUI VERIFICA SE A PESSOA PODE ADICIONAR REPRESENTANTE OU NÃO, SE NÃO PUDER, NÃO TERÁ ACESSO AO CADASTRO DE REPRESENTANTE
     if(podeAdicionarRepresentantes == 'N'){
