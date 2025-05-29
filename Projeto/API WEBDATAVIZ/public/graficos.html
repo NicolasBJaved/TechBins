@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
 </head>
 
-<body onload="addRep()">
+<body onload="addRep(), obterDadosGrafico()">
     <div class="div_nav">
         <div class="links_dash">
             <div class="perfil">
@@ -50,6 +50,95 @@
         <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
 
     </div>
+    <div class="containerDASH">
+        <h1> <span style="font-size: 60px;">Análise Coletiva dos Pontos de Coleta</span> <br>
+            Última coleta de dados: 06:00 30/04/2025</h1>
+        <div class="dash">
+            <div class="grafico1">
+                <h1 id="maiorNivelTitulo">Pontos com <span style="color: #ff0000;">maior nível</span> de lixo nos
+                    últimos 7 dias</h1>
+                <div class="conteudo">
+                    <div class="chart">
+                        <canvas id="myChart1"></canvas>
+                    </div>
+                    <div class="button">
+                        <select oninput="obterDadosGrafico()" id="filtroMaiorNivelPonto">
+                            <option value="atual">Atual</option>
+                            <option value="semana">Última semana</option>
+                            <option value="mês">Último mês</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="grafico2">
+                <h1 id="menorNivelTitulo">Pontos com <span style="color: white;">menor nível</span> de lixo nos últimos
+                    7 dias</h1>
+                <div class="conteudo">
+                    <div class="chart">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                    <div class="button">
+                        <select oninput="obterDadosGrafico()" id="filtroMenorNivelPonto">
+                            <option value="atual">Atual</option>
+                            <option value="semana">Última semana</option>
+                            <option value="mês">Último mês</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1><span style="font-size: 60px;">Dados de Ocupação por Ponto</span><br>
+            Última coleta de dados: 06:00 30/04/2025</h1>
+        <div class="dash">
+            <h1 id="sensorEspecificoTitulo">Nível de lixo médio <span style="color: white;">por período</span>
+                – Rua A – Últimos 30 dias</h1>
+            <div class="conteudo">
+                <div class="chart">
+                    <canvas id="myChart3"></canvas>
+                </div>
+                <div class="button">
+                    <select id="filtroPontoMediana" oninput="obterDadosGrafico()">
+                        <option value="ruaA">Rua A</option>
+                        <option value="ruaB">Rua B</option>
+                        <option value="ruaC">Rua C</option>
+                        <option value="ruaD">Rua D</option>
+                        <option value="ruaE">Rua E</option>
+                        <option value="ruaF">Rua F</option>
+                    </select>
+
+                    <select id="filtroPeriodoMediana" oninput="obterDadosGrafico()">
+                        <option value="7dias">Últimos 7 dias</option>
+                        <option value="mês">Último mês</option>
+                    </select>
+                </div>
+            </div>
+            <h1 id="medianaHorarioTitulo">Nível de lixo médio <span style="color: white;">por horário</span> - Rua A -
+                Últimos 7 dias</h1>
+            <div class="conteudo">
+                <div class="chart">
+                    <canvas id="myChart4"></canvas>
+                </div>
+                <div class="button">
+                    <select id="filtroPontoMedianaHorario" oninput="obterDadosGrafico()">
+                        <option value="ruaA">Rua A</option>
+                        <option value="ruaB">Rua B</option>
+                        <option value="ruaC">Rua C</option>
+                        <option value="ruaD">Rua D</option>
+                        <option value="ruaE">Rua E</option>
+                        <option value="ruaF">Rua F</option>
+
+                    </select>
+
+                    <select id="filtroPeriodoMedianaHorario" oninput="obterDadosGrafico()">
+                        <option value="7dias">Últimos 7 dias</option>
+                        <option value="mês">Último mês</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -63,6 +152,133 @@
         if (sessionStorage.PODE_ADICIONAR == 'N') {
             cadastro.style.display = "none";
         }
+    }
+
+    function obterDadosGrafico() {
+        for (let idGrafico = 1; idGrafico <= 4; idGrafico++) {
+            console.log(idGrafico);
+            fetch(`/graficosDash/ultimas/${idGrafico}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        plotarGrafico(resposta, idGrafico);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+        }
+    }
+
+    function plotarGrafico(resposta, idGrafico) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let legenda = 'Quantidade';
+        let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
+            'rgb(204, 0, 0)',
+            'rgb(255, 102, 102)',
+            'rgb(51, 51, 51)',
+            'rgb(160, 160, 160)',
+            'rgb(240, 240, 240)'];
+        let coresGraficoBarra = ['rgb(204, 0, 0)'];
+        let coresGrafico = [];
+        if (idGrafico == 1) {
+            coresGrafico = coresGraficoDiffBarra;
+        } else if (idGrafico == 2) {
+            coresGrafico = coresGraficoDiffBarra;
+        } else if (idGrafico == 3) {
+            coresGrafico = coresGraficoDiffBarra;
+        } else if (idGrafico == 4) {
+            coresGrafico = coresGraficoDiffBarra;
+        } 
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: legenda,
+                data: [],
+                backgroundColor: coresGrafico,
+                barThickness: 110,
+                borderColor: 'rgb(0, 0, 0)',
+                borderWidth: 4
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        if (idGrafico == 1) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.plano);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } else if (idGrafico == 2) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.regiao);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } else if (idGrafico == 3) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.desempenho);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } else if (idGrafico == 4) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.faixa_idade);
+                dados.datasets[0].data.push(registro.contagem);
+            }
+        } 
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        let tipoGrafico = 'bar';
+        if (idGrafico == 1) {
+            tipoGrafico = 'pie';
+        } else if (idGrafico == 2) {
+            tipoGrafico = 'pie';
+        } else if (idGrafico == 3) {
+            tipoGrafico = 'doughnut';
+        } else if (idGrafico == 4) {
+            tipoGrafico = 'doughnut';
+        } else if (idGrafico == 5) {
+            tipoGrafico = 'bar';
+        }
+
+        const config = {
+            type: tipoGrafico,
+            data: dados,
+        };
+
+        Chart.defaults.color = '#000';
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChart${idGrafico}`),
+            config
+        );
     }
 </script>
 

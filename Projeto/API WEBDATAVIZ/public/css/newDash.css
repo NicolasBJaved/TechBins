@@ -146,3 +146,9 @@ button {
     font-family: "Exo 2", Segoe UI;
     cursor: pointer;
 }
+
+/* Gráficos */
+.containerDASH {
+    margin-left: 350px;
+    text-align: center;
+}
