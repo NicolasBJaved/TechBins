@@ -1,6 +1,6 @@
 /* Sidebar fixa na esquerda */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 main {
@@ -11,7 +11,7 @@ main {
 body {
     background: #F7EDE1;
 background: radial-gradient(circle, rgba(247, 237, 225, 1) 43%, rgba(162, 205, 166, 1) 86%, rgba(130, 186, 133, 1) 100%);
-    font-family: "Inter", sans-serif;
+    font-family: "Exo 2", sans-serif;
 }
 
 
@@ -99,5 +99,50 @@ background: radial-gradient(circle, rgba(247, 237, 225, 1) 43%, rgba(162, 205, 1
 
 .div_nav h1:hover {
     background-color: #333;
+    cursor: pointer;
+}
+
+/* CSS do cadastro */
+
+.containerLCS {
+    margin-top: 20px;
+    margin-left: 300px;
+    display: flex;
+    justify-content: center;
+    padding: 110px;
+}
+
+.containerLCS .box {
+    width: 1000px;
+    height: fit-content;
+    text-align: center;
+    background-color: #267652a0;
+    border-radius: 10px;
+    border: solid 2px #155C3A;
+}
+
+.containerLCS .box .formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+input {
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    font-family: "Exo 2", Segoe UI;
+}
+
+button {
+    margin: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    background-color: #416B44;
+    font-family: "Exo 2", Segoe UI;
     cursor: pointer;
 }
