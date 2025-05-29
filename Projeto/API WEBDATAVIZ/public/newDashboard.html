@@ -13,7 +13,7 @@
     <div class="div_nav">
         <div class="links_dash">
             <div class="perfil">
-                <img src="./imgs/julia.jpg" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+                <img src="./imgs/userimg.png" alt="foto_perfil" style="border-radius: 30px;" width="50px">
                 <div class="hello">
                     <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                 </div>
@@ -53,16 +53,18 @@
 
 </body>
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
     function sair() {
         sessionStorage.clear();
         window.location = "../index.html";
     }
 
     function addRep() {
-    if (sessionStorage.PODE_ADICIONAR == 'N') {
-      cadastro.style.display = "none";
+        if (sessionStorage.PODE_ADICIONAR == 'N') {
+            cadastro.style.display = "none";
+        }
     }
-  }
 
 </script>
 

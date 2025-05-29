@@ -12,7 +12,7 @@
     <div class="div_nav">
         <div class="links_dash">
             <div class="perfil">
-                <img src="./imgs/julia.jpg" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+                <img src="./imgs/userimg.png" alt="foto_perfil" style="border-radius: 30px;" width="50px">
                 <div class="hello">
                     <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                 </div>
@@ -22,28 +22,31 @@
                     <a href="index.html" class="link_nav">Home</a>
                 </li>
                 <li>
-                    <a href="https://sptech-team-vbjwf7te.atlassian.net/jira/servicedesk/projects/SUP/queues/custom/1" target="_blank" class="link_nav">Jira</a>
+                    <a href="https://sptech-team-vbjwf7te.atlassian.net/jira/servicedesk/projects/SUP/queues/custom/1"
+                        target="_blank" class="link_nav">Jira</a>
                 </li>
                 <li>
                     <a href="" class="link_nav">Ferramenta de Suporte</a>
                 </li>
             </ul>
-            
+
         </div>
 
         <div onclick="sair()">
             <h1>Sair ></h1>
         </div>
-       <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
+        <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
 
     </div>
 
 </body>
-    <script>
-        function sair() {
-            sessionStorage.clear();
-            window.location = "../index.html";
-        }
-    </script>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function sair() {
+        sessionStorage.clear();
+        window.location = "../index.html";
+    }
+</script>
 
 </html>
