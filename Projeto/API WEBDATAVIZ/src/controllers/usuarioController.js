@@ -23,8 +23,8 @@ function autenticar(req, res) {
                         res.json({
                             idEmpresa: resultadoAutenticar[0].idEmpresa,
                             idRepresentante: resultadoAutenticar[0].idRepresentante,
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
+                            email: resultadoAutenticar[0].email_contato,
+                            nome: resultadoAutenticar[0].nomeRepresentante,
                             senha: resultadoAutenticar[0].senha,
                             cpf: resultadoAutenticar[0].cpf,
                             podeAdicionarRepresentantes:  resultadoAutenticar[0].podeAdicionarRepresentantes

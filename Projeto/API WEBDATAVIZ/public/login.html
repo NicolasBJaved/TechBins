@@ -118,9 +118,10 @@
             if (resposta.ok) {
                 console.log(resposta);
 
-                resposta.json().then(json => {
+                resposta.json().then(function(json) {
                     console.log(json);
-                    console.log(JSON.stringify(json));
+                    console.log("ENVIO: " + json.email);
+                    console.log("ENVIO: " + json.nome);
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idRepresentante;
