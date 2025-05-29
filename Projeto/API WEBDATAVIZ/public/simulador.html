@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
 </head>
 
-<body>
+<body onload="carregarPerfil()">
     <div class="div_nav">
         <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
         <ul class="links">
@@ -22,7 +22,10 @@
             <li>
                 <a href="simulador.html" class="link_nav">Simulador Financeiro</a>
             </li>
-            <li>
+            <li id="dashboards">
+                <a href="newDashboard.html" class="link_nav">Dashboards</a>
+            </li>
+            <li id="login">
                 <a href="login.html" class="link_nav">Login</a>
             </li>
         </ul>
@@ -59,6 +62,8 @@
     </div>
 </body>
 <script>
+    dashboards.style.display = "none";
+
     function calculo() {
         var gastoCombustivel = Number(ipt_gasto_combustivel.value);
         var gastoManutencao = Number(ipt_gasto_manutencao.value);
@@ -78,6 +83,17 @@
         div_resultado.innerHTML += `• O gasto com a manutenção dos caminhões será reduzido em 
         aproximadamente 15%,<br> 
         o que representa <span class='result_positivo'>R$${reducaoGastoManutencao.toFixed(2)}</span> no ano.`
+        }
+    }
+
+    function carregarPerfil() {
+        if (sessionStorage.ID_USUARIO != null && sessionStorage.ID_USUARIO != undefined) {
+            login.innerHTML = `
+        <img src="./imgs/userimg.png" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        `;
+            dashboards.style.display = "block";
+            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
         }
     }
 </script>
