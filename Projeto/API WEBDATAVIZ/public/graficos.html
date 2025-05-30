@@ -7,6 +7,7 @@
     <title>Gráficos gerais</title>
     <link rel="stylesheet" href="./css/newDash.css">
     <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body onload="addRep(), obterDadosGrafico()">
@@ -62,10 +63,9 @@
                         <canvas id="myChart1"></canvas>
                     </div>
                     <div class="button">
-                        <select oninput="obterDadosGrafico()" id="filtroMaiorNivelPonto">
-                            <option value="atual">Atual</option>
+                        <select oninput="filtrarGrafico(1, this.value)" id="filtroMaiorNivelPonto">
                             <option value="semana">Última semana</option>
-                            <option value="mês">Último mês</option>
+                            <option value="mes">Último mês</option>
                         </select>
                     </div>
                 </div>
@@ -78,8 +78,7 @@
                         <canvas id="myChart2"></canvas>
                     </div>
                     <div class="button">
-                        <select oninput="obterDadosGrafico()" id="filtroMenorNivelPonto">
-                            <option value="atual">Atual</option>
+                        <select oninput="obterDadosGrafico(2)" id="filtroMenorNivelPonto">
                             <option value="semana">Última semana</option>
                             <option value="mês">Último mês</option>
                         </select>
@@ -92,7 +91,7 @@
             Última coleta de dados: 06:00 30/04/2025</h1>
         <div class="dash">
             <h1 id="sensorEspecificoTitulo">Nível de lixo médio <span style="color: white;">por período</span>
-                – Rua A – Últimos 30 dias</h1>
+                – Rua A – Últimos 7 dias</h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart3"></canvas>
@@ -184,7 +183,7 @@
         let labels = [];
 
         // Criando estrutura para plotar gráfico - dados
-        let legenda = 'Quantidade';
+        let legenda = 'Nível do lixo';
         let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
             'rgb(204, 0, 0)',
             'rgb(255, 102, 102)',
@@ -194,14 +193,14 @@
         let coresGraficoBarra = ['rgb(204, 0, 0)'];
         let coresGrafico = [];
         if (idGrafico == 1) {
-            coresGrafico = coresGraficoDiffBarra;
+            coresGrafico = coresGraficoBarra;
         } else if (idGrafico == 2) {
-            coresGrafico = coresGraficoDiffBarra;
+            coresGrafico = coresGraficoBarra;
         } else if (idGrafico == 3) {
-            coresGrafico = coresGraficoDiffBarra;
+            coresGrafico = coresGraficoBarra;
         } else if (idGrafico == 4) {
-            coresGrafico = coresGraficoDiffBarra;
-        } 
+            coresGrafico = coresGraficoBarra;
+        }
 
         let dados = {
             labels: labels,
@@ -223,28 +222,28 @@
         if (idGrafico == 1) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                labels.push(registro.plano);
-                dados.datasets[0].data.push(registro.contagem);
+                labels.push(registro.logradouro);
+                dados.datasets[0].data.push(registro.media);
             }
         } else if (idGrafico == 2) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                labels.push(registro.regiao);
-                dados.datasets[0].data.push(registro.contagem);
+                labels.push(registro.logradouro);
+                dados.datasets[0].data.push(registro.media);
             }
         } else if (idGrafico == 3) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                labels.push(registro.desempenho);
-                dados.datasets[0].data.push(registro.contagem);
+                labels.push(registro.logradouro);
+                dados.datasets[0].data.push(registro.media);
             }
         } else if (idGrafico == 4) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                labels.push(registro.faixa_idade);
-                dados.datasets[0].data.push(registro.contagem);
+                labels.push(registro.horario);
+                dados.datasets[0].data.push(registro.media);
             }
-        } 
+        }
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -256,17 +255,133 @@
 
         // Criando estrutura para plotar gráfico - config
         let tipoGrafico = 'bar';
+        // if (idGrafico == 1) {
+        //     tipoGrafico = 'bar';
+        // } else if (idGrafico == 2) {
+        //     tipoGrafico = 'bar';
+        // } else if (idGrafico == 3) {
+        //     tipoGrafico = 'doughnut';
+        // } else if (idGrafico == 4) {
+        //     tipoGrafico = 'doughnut';
+        // } else if (idGrafico == 5) {
+        //     tipoGrafico = 'bar';
+        // }
+
+        const config = {
+            type: tipoGrafico,
+            data: dados,
+        };
+
+        Chart.defaults.color = '#000';
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChart${idGrafico}`),
+            config
+        );
+    }
+
+
+    function filtrarGrafico(idGrafico, filtro) {
+        console.log(filtro);
+        fetch(`/graficosDash/att/${filtro}/${idGrafico}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    console.log(idGrafico);
+                    plotarAttGrafico(resposta, idGrafico);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+    function plotarAttGrafico(resposta, idGrafico) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let legenda = 'Nível do lixo';
+        let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
+            'rgb(204, 0, 0)',
+            'rgb(255, 102, 102)',
+            'rgb(51, 51, 51)',
+            'rgb(160, 160, 160)',
+            'rgb(240, 240, 240)'];
+        let coresGraficoBarra = ['rgb(204, 0, 0)'];
+        let coresGrafico = [];
         if (idGrafico == 1) {
-            tipoGrafico = 'pie';
+            coresGrafico = coresGraficoBarra;
         } else if (idGrafico == 2) {
-            tipoGrafico = 'pie';
+            coresGrafico = coresGraficoBarra;
         } else if (idGrafico == 3) {
-            tipoGrafico = 'doughnut';
+            coresGrafico = coresGraficoBarra;
         } else if (idGrafico == 4) {
-            tipoGrafico = 'doughnut';
-        } else if (idGrafico == 5) {
-            tipoGrafico = 'bar';
+            coresGrafico = coresGraficoBarra;
         }
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: legenda,
+                data: [],
+                backgroundColor: coresGrafico,
+                barThickness: 110,
+                borderColor: 'rgb(0, 0, 0)',
+                borderWidth: 4
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        if (idGrafico == 1 || idGrafico == 2 || idGrafico == 3) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.logradouro);
+                dados.datasets[0].data.push(registro.media);
+            }
+        } else if (idGrafico == 4) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.horario);
+                dados.datasets[0].data.push(registro.media);
+            }
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        let tipoGrafico = 'bar';
+        // if (idGrafico == 1) {
+        //     tipoGrafico = 'bar';
+        // } else if (idGrafico == 2) {
+        //     tipoGrafico = 'bar';
+        // } else if (idGrafico == 3) {
+        //     tipoGrafico = 'doughnut';
+        // } else if (idGrafico == 4) {
+        //     tipoGrafico = 'doughnut';
+        // } else if (idGrafico == 5) {
+        //     tipoGrafico = 'bar';
+        // }
 
         const config = {
             type: tipoGrafico,
@@ -276,9 +391,9 @@
         Chart.defaults.color = '#000';
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChart${idGrafico}`),
+            document.getElementById(`myChartCanvas${idGrafico}`),
             config
-        );
+        );        
     }
 </script>
 

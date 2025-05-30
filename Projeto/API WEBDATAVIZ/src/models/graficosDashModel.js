@@ -2,46 +2,65 @@ var database = require("../database/config");
 
 function buscarUltimasMedidas(idGrafico) {
     if (idGrafico == 1) {
-        var instrucaoSql = `SELECT pst.nome as plano, count(*) as contagem 
-        FROM usuario usu 
-        INNER JOIN planoST pst on pst.idplanoST = usu.fk_idplanoST 
-        GROUP BY plano`;
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        GROUP BY logradouro
+        ORDER BY media DESC LIMIT 3;`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
     }
 
     if (idGrafico == 2) {
-        var instrucaoSql = `SELECT est.regiao as regiao, count(*) as contagem
-        FROM usuario usu
-        INNER JOIN estado est on est.idestado = usu.fk_idestado
-        GROUP BY regiao`;
-
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7
+        GROUP BY logradouro
+        ORDER BY media ASC LIMIT 3;`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
     }
 
     if (idGrafico == 3) {
-        var instrucaoSql = `SELECT desempenho, count(*) as contagem
-        FROM 
-        (SELECT 
-        CASE 
-            WHEN porcentagemAcertos = 1 THEN '100%'
-            WHEN porcentagemAcertos >= 0.75 THEN 'Entre 75% e 99%'
-            WHEN porcentagemAcertos >= 0.5 THEN 'Entre 50% e 74%'
-            WHEN porcentagemAcertos >= 0.25 THEN 'Entre 25% e 49%'
-            ELSE 'Abaixo de 25%'
-        END AS desempenho
-    FROM tentativaQuiz) as classificacao
-    GROUP BY desempenho;`;
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND logradouro like 'Rua A'
+        GROUP BY logradouro;`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
     }
 
     if (idGrafico == 4) {
-        var instrucaoSql = `SELECT *
-        FROM view_faixaIdade`;
-
+        var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND logradouro like 'Rua A'
+        GROUP BY TIME(dataHoraMedicao)`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
     }
+}
+
+function atualizarGrafico(filtro, idGrafico) {
+    if (filtro == 'semana' && idGrafico == 1) {
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7
+        GROUP BY logradouro
+        ORDER BY media desc limit 3`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (filtro == 'mes' && idGrafico == 1) {
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        GROUP BY logradouro
+        ORDER BY media DESC LIMIT 3;`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+}
+
+module.exports = {
+    buscarUltimasMedidas,
+    atualizarGrafico
 }
