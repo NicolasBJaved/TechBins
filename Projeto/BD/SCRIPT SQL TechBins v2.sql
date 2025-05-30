@@ -284,6 +284,21 @@ INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, c
                    (99999, 'Fernanda Henckel Hirai de Araújo', 'fernada.henckel@suporte.com', 'fer123', '10572888987', null, 'S'),
                    (99999, 'Nicolas Barboza Javed', 'nicolas.javed@suporte.com', 'nicolas123', '98745699987', null, 'S');
 
-
+-- Criando view para fazer os selects da página de gráficos
+create or replace view view_nivelLixo
+as
+select reg.*, pto.idEmpresa as 'Identificador da Empresa', pto.logradouro as logradouro, pto.numero as 'Número', pto.cidade as 'Cidade',
+case
+when distancia <= 18 then '5'
+when distancia <= 36 then '4'
+when distancia <= 54 then '3'
+when distancia <= 72 then '2'
+when distancia <= 90 then '1'
+else 'Distância acima do previsto'
+end as nivel_lixo
+from registro reg
+inner join sensor sen on sen.idSensor = reg.idSensor
+inner join lixeira lix on lix.idLixeira = sen.idLixeira
+inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta;
 
 select * from representante;
