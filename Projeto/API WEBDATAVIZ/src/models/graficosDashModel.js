@@ -1,9 +1,18 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idGrafico) {
+function buscarDataHoraUltimaColeta(idEmpresa) {
+    var instrucaoSql = `SELECT DATE_FORMAT(dataHoraMedicao, '%d/%m/%Y') as dataMedicao, TIME(dataHoraMedicao) as horaMedicao FROM view_nivelLixo
+    WHERE idEmpresa = ${idEmpresa}
+    ORDER BY dataHoraMedicao DESC LIMIT 1;`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarUltimasMedidas(idGrafico, idEmpresa) {
     if (idGrafico == 1) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
+        WHERE idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media DESC LIMIT 3;`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -13,7 +22,7 @@ function buscarUltimasMedidas(idGrafico) {
     if (idGrafico == 2) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
-        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media ASC LIMIT 3;`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -23,7 +32,7 @@ function buscarUltimasMedidas(idGrafico) {
     if (idGrafico == 3) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
-        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND logradouro like 'Rua A'
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND idEmpresa = ${idEmpresa}
         GROUP BY logradouro;`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
@@ -32,18 +41,19 @@ function buscarUltimasMedidas(idGrafico) {
     if (idGrafico == 4) {
         var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
-        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND logradouro like 'Rua A'
-        GROUP BY TIME(dataHoraMedicao)`;
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND idEmpresa = ${idEmpresa}
+        GROUP BY TIME(dataHoraMedicao)
+        ORDER BY horario DESC`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
     }
 }
 
-function atualizarGrafico(filtro, idGrafico) {
+function atualizarGrafico(filtro, idGrafico, idEmpresa) {
     if (filtro == 'semana' && idGrafico == 1) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
-        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 7 AND idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media desc limit 3`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -53,8 +63,67 @@ function atualizarGrafico(filtro, idGrafico) {
     if (filtro == 'mes' && idGrafico == 1) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 30 AND idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media DESC LIMIT 3;`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (filtro == 'semana' && idGrafico == 2) {
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 7 AND idEmpresa = ${idEmpresa}
+        GROUP BY logradouro
+        ORDER BY media ASC limit 3`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (filtro == 'mes' && idGrafico == 2) {
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 30 AND idEmpresa = ${idEmpresa}
+        GROUP BY logradouro
+        ORDER BY media ASC LIMIT 3;`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (filtro == 'semana' && idGrafico == 3) {
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 7 AND idEmpresa = ${idEmpresa}
+        GROUP BY logradouro;`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (filtro == 'mes' && idGrafico == 3) {
+        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 30 AND idEmpresa = ${idEmpresa}
+        GROUP BY logradouro;`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (filtro == 'semana' && idGrafico == 4) {
+        var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 7 AND idEmpresa = ${idEmpresa}
+        GROUP BY TIME(dataHoraMedicao)
+        ORDER BY horario DESC`;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+    }
+
+    if (filtro == 'mes' && idGrafico == 4) {
+        var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
+        FROM view_nivelLixo
+        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= 30 AND idEmpresa = ${idEmpresa}
+        GROUP BY TIME(dataHoraMedicao)
+        ORDER BY horario DESC`;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
     }
@@ -62,5 +131,6 @@ function atualizarGrafico(filtro, idGrafico) {
 
 module.exports = {
     buscarUltimasMedidas,
-    atualizarGrafico
+    atualizarGrafico,
+    buscarDataHoraUltimaColeta
 }

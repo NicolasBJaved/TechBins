@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="addRep(), obterDadosGrafico()">
+<body onload="addRep(), obterDadosGrafico(), ultimaColeta()">
     <div class="div_nav">
         <div class="links_dash">
             <div class="perfil">
@@ -53,85 +53,63 @@
     </div>
     <div class="containerDASH">
         <h1> <span style="font-size: 60px;">Análise Coletiva dos Pontos de Coleta</span> <br>
-            Última coleta de dados: 06:00 30/04/2025</h1>
+            Última coleta de dados: <span id="dataUltimaColeta">--/--/----</span><span id="horaUltimaColeta">--:--</span></h1>
         <div class="dash">
             <div class="grafico1">
-                <h1 id="maiorNivelTitulo">Pontos com <span style="color: #ff0000;">maior nível</span> de lixo nos
-                    últimos 7 dias</h1>
+                <h1 id="maiorNivelTitulo">3 Pontos com <span style="color: #ff0000;">maior nível</span> de lixo nos
+                    últimos <span id="tituloFiltro1">7 dias</span></h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart1"></canvas>
                     </div>
                     <div class="button">
                         <select oninput="filtrarGrafico(1, this.value)" id="filtroMaiorNivelPonto">
-                            <option value="semana">Última semana</option>
-                            <option value="mes">Último mês</option>
+                            <option value="semana">Últimos 7 dias</option>
+                            <option value="mes">Últimos 30 dias</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="grafico2">
-                <h1 id="menorNivelTitulo">Pontos com <span style="color: white;">menor nível</span> de lixo nos últimos
-                    7 dias</h1>
+                <h1 id="menorNivelTitulo">3 Pontos com <span style="color: white;">menor nível</span> de lixo nos
+                    últimos <span id="tituloFiltro2">7 dias</span></h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart2"></canvas>
                     </div>
                     <div class="button">
-                        <select oninput="obterDadosGrafico(2)" id="filtroMenorNivelPonto">
-                            <option value="semana">Última semana</option>
-                            <option value="mês">Último mês</option>
+                        <select oninput="filtrarGrafico(2, this.value)" id="filtroMenorNivelPonto">
+                            <option value="semana">Últimos 7 dias</option>
+                            <option value="mes">Últimos 30 dias</option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h1><span style="font-size: 60px;">Dados de Ocupação por Ponto</span><br>
-            Última coleta de dados: 06:00 30/04/2025</h1>
         <div class="dash">
-            <h1 id="sensorEspecificoTitulo">Nível de lixo médio <span style="color: white;">por período</span>
-                – Rua A – Últimos 7 dias</h1>
+            <h1 id="sensorEspecificoTitulo">Nível de lixo médio <span style="color: white;">por período</span> - Últimos
+                <span id="tituloFiltro3">7 dias</span></h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart3"></canvas>
                 </div>
                 <div class="button">
-                    <select id="filtroPontoMediana" oninput="obterDadosGrafico()">
-                        <option value="ruaA">Rua A</option>
-                        <option value="ruaB">Rua B</option>
-                        <option value="ruaC">Rua C</option>
-                        <option value="ruaD">Rua D</option>
-                        <option value="ruaE">Rua E</option>
-                        <option value="ruaF">Rua F</option>
-                    </select>
-
-                    <select id="filtroPeriodoMediana" oninput="obterDadosGrafico()">
-                        <option value="7dias">Últimos 7 dias</option>
-                        <option value="mês">Último mês</option>
+                    <select id="filtroPeriodoMediana" oninput="filtrarGrafico(3, this.value)">
+                        <option value="semana">Últimos 7 dias</option>
+                        <option value="mes">Últimos 30 dias</option>
                     </select>
                 </div>
             </div>
-            <h1 id="medianaHorarioTitulo">Nível de lixo médio <span style="color: white;">por horário</span> - Rua A -
-                Últimos 7 dias</h1>
+            <h1 id="medianaHorarioTitulo">Nível de lixo médio <span style="color: white;">por horário</span> - Últimos <span id="tituloFiltro4">7 dias</span></h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart4"></canvas>
                 </div>
                 <div class="button">
-                    <select id="filtroPontoMedianaHorario" oninput="obterDadosGrafico()">
-                        <option value="ruaA">Rua A</option>
-                        <option value="ruaB">Rua B</option>
-                        <option value="ruaC">Rua C</option>
-                        <option value="ruaD">Rua D</option>
-                        <option value="ruaE">Rua E</option>
-                        <option value="ruaF">Rua F</option>
-
-                    </select>
-
-                    <select id="filtroPeriodoMedianaHorario" oninput="obterDadosGrafico()">
-                        <option value="7dias">Últimos 7 dias</option>
-                        <option value="mês">Último mês</option>
+                    <select id="filtroPeriodoMedianaHorario" oninput="filtrarGrafico(4, this.value)">
+                        <option value="semana">Últimos 7 dias</option>
+                        <option value="mes">Últimos 30 dias</option>
                     </select>
                 </div>
             </div>
@@ -141,6 +119,39 @@
 </body>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    const idEmpresa = sessionStorage.ID_EMPRESA;
+
+    // RECUPERANDO OS CANVAS
+    const ctx1 = document.getElementById('myChart1');
+    const ctx2 = document.getElementById('myChart2');
+    const ctx3 = document.getElementById('myChart3');
+    const ctx4 = document.getElementById('myChart4');
+
+    // CRIANDO VARIÁVEIS DOS GRÁFICOS INICIAIS
+    var graficoAtualCtx1;
+    var graficoAtualCtx2;
+    var graficoAtualCtx3;
+    var graficoAtualCtx4;
+
+    function ultimaColeta() {
+        fetch(`/graficosDash/dataHoraUltimaColeta/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        dataUltimaColeta.innerHTML = `${resposta[0].dataMedicao} - `
+                        horaUltimaColeta.innerHTML = `${resposta[0].horaMedicao}`
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+        }
 
     function sair() {
         sessionStorage.clear();
@@ -156,7 +167,7 @@
     function obterDadosGrafico() {
         for (let idGrafico = 1; idGrafico <= 4; idGrafico++) {
             console.log(idGrafico);
-            fetch(`/graficosDash/ultimas/${idGrafico}`, { cache: 'no-store' }).then(function (response) {
+            fetch(`/graficosDash/ultimas/${idGrafico}/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -184,23 +195,7 @@
 
         // Criando estrutura para plotar gráfico - dados
         let legenda = 'Nível do lixo';
-        let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
-            'rgb(204, 0, 0)',
-            'rgb(255, 102, 102)',
-            'rgb(51, 51, 51)',
-            'rgb(160, 160, 160)',
-            'rgb(240, 240, 240)'];
-        let coresGraficoBarra = ['rgb(204, 0, 0)'];
-        let coresGrafico = [];
-        if (idGrafico == 1) {
-            coresGrafico = coresGraficoBarra;
-        } else if (idGrafico == 2) {
-            coresGrafico = coresGraficoBarra;
-        } else if (idGrafico == 3) {
-            coresGrafico = coresGraficoBarra;
-        } else if (idGrafico == 4) {
-            coresGrafico = coresGraficoBarra;
-        }
+        let coresGrafico = ['rgb(240, 128, 0)'];
 
         let dados = {
             labels: labels,
@@ -255,17 +250,9 @@
 
         // Criando estrutura para plotar gráfico - config
         let tipoGrafico = 'bar';
-        // if (idGrafico == 1) {
-        //     tipoGrafico = 'bar';
-        // } else if (idGrafico == 2) {
-        //     tipoGrafico = 'bar';
-        // } else if (idGrafico == 3) {
-        //     tipoGrafico = 'doughnut';
-        // } else if (idGrafico == 4) {
-        //     tipoGrafico = 'doughnut';
-        // } else if (idGrafico == 5) {
-        //     tipoGrafico = 'bar';
-        // }
+        if (idGrafico == 4) {
+            tipoGrafico = 'line';
+        }
 
         const config = {
             type: tipoGrafico,
@@ -275,22 +262,27 @@
         Chart.defaults.color = '#000';
 
         // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChart${idGrafico}`),
-            config
-        );
+        if (idGrafico == 1) {
+            graficoAtualCtx1 = new Chart(ctx1, config);
+        } else if (idGrafico == 2) {
+            graficoAtualCtx2 = new Chart(ctx2, config);
+        } else if (idGrafico == 3) {
+            graficoAtualCtx3 = new Chart(ctx3, config);
+        } else if (idGrafico == 4) {
+            graficoAtualCtx4 = new Chart(ctx4, config);
+        }
     }
 
 
     function filtrarGrafico(idGrafico, filtro) {
         console.log(filtro);
-        fetch(`/graficosDash/att/${filtro}/${idGrafico}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/graficosDash/att/${filtro}/${idGrafico}/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
                     console.log(idGrafico);
-                    plotarAttGrafico(resposta, idGrafico);
+                    plotarAttGrafico(resposta, idGrafico, filtro);
 
                 });
             } else {
@@ -303,32 +295,18 @@
     }
 
 
-    function plotarAttGrafico(resposta, idGrafico) {
+    function plotarAttGrafico(resposta, idGrafico, filtro) {
 
         console.log('iniciando plotagem do gráfico...');
+
+        let tituloFiltro = document.getElementById(`tituloFiltro${idGrafico}`);
 
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
         // Criando estrutura para plotar gráfico - dados
         let legenda = 'Nível do lixo';
-        let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
-            'rgb(204, 0, 0)',
-            'rgb(255, 102, 102)',
-            'rgb(51, 51, 51)',
-            'rgb(160, 160, 160)',
-            'rgb(240, 240, 240)'];
-        let coresGraficoBarra = ['rgb(204, 0, 0)'];
-        let coresGrafico = [];
-        if (idGrafico == 1) {
-            coresGrafico = coresGraficoBarra;
-        } else if (idGrafico == 2) {
-            coresGrafico = coresGraficoBarra;
-        } else if (idGrafico == 3) {
-            coresGrafico = coresGraficoBarra;
-        } else if (idGrafico == 4) {
-            coresGrafico = coresGraficoBarra;
-        }
+        let coresGrafico = ['rgb(240, 128, 0)'];
 
         let dados = {
             labels: labels,
@@ -371,17 +349,9 @@
 
         // Criando estrutura para plotar gráfico - config
         let tipoGrafico = 'bar';
-        // if (idGrafico == 1) {
-        //     tipoGrafico = 'bar';
-        // } else if (idGrafico == 2) {
-        //     tipoGrafico = 'bar';
-        // } else if (idGrafico == 3) {
-        //     tipoGrafico = 'doughnut';
-        // } else if (idGrafico == 4) {
-        //     tipoGrafico = 'doughnut';
-        // } else if (idGrafico == 5) {
-        //     tipoGrafico = 'bar';
-        // }
+        if (idGrafico == 4) {
+            tipoGrafico = 'line';
+        }
 
         const config = {
             type: tipoGrafico,
@@ -390,10 +360,33 @@
 
         Chart.defaults.color = '#000';
         // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idGrafico}`),
-            config
-        );        
+        if (idGrafico == 1) {
+            if (graficoAtualCtx1) {
+                graficoAtualCtx1.destroy();
+            }
+            graficoAtualCtx1 = new Chart(ctx1, config);
+        } else if (idGrafico == 2) {
+            if (graficoAtualCtx2) {
+                graficoAtualCtx2.destroy();
+            }
+            graficoAtualCtx2 = new Chart(ctx2, config);
+        } else if (idGrafico == 3) {
+            if (graficoAtualCtx3) {
+                graficoAtualCtx3.destroy();
+            }
+            graficoAtualCtx3 = new Chart(ctx3, config);
+        } else if (idGrafico == 4) {
+            if (graficoAtualCtx4) {
+                graficoAtualCtx4.destroy();
+            }
+            graficoAtualCtx4 = new Chart(ctx4, config);
+        }
+
+        if (filtro == 'semana') {
+            tituloFiltro.innerHTML = '7 dias';
+        } else if (filtro == 'mes') {
+            tituloFiltro.innerHTML = '30 dias';
+        }
     }
 </script>
 
