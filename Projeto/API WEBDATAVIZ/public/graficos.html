@@ -53,34 +53,47 @@
     </div>
     <div class="containerDASH">
         <h1> <span style="font-size: 60px;">Análise Coletiva dos Pontos de Coleta</span> <br>
-            Última coleta de dados: <span id="dataUltimaColeta">--/--/----</span><span id="horaUltimaColeta">--:--</span></h1>
+            Última coleta de dados: <span id="dataUltimaColeta">--/--/----</span><span
+                id="horaUltimaColeta">--:--</span></h1>
         <div class="dash">
             <div class="grafico1">
-                <h1 id="maiorNivelTitulo">3 Pontos com <span style="color: #ff0000;">maior nível</span> de lixo nos
-                    últimos <span id="tituloFiltro1">7 dias</span></h1>
+                <h1 id="maiorNivelTitulo">3 <span id="tituloFiltroGrupo1">pontos de coleta</span> com maior média de nível de lixo <span
+                        id="tituloFiltroTempo1">nos
+                        últimos 7 dias</span></h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart1"></canvas>
                     </div>
                     <div class="button">
-                        <select oninput="filtrarGrafico(1, this.value)" id="filtroMaiorNivelPonto">
+                        <select oninput="filtrarGrafico(1, filtroTempo1.value, this.value)" id="filtroGrupo1">
+                            <option value="ponto">Pontos de coleta</option>
+                            <option value="rota">Rotas</option>
+                        </select>
+                        <select oninput="filtrarGrafico(1, this.value, filtroGrupo1.value)" id="filtroTempo1">
                             <option value="semana">Últimos 7 dias</option>
                             <option value="mes">Últimos 30 dias</option>
+                            <option value="allTime">Todos os tempos</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="grafico2">
-                <h1 id="menorNivelTitulo">3 Pontos com <span style="color: white;">menor nível</span> de lixo nos
-                    últimos <span id="tituloFiltro2">7 dias</span></h1>
+                <h1 id="menorNivelTitulo">3 <span id="tituloFiltroGrupo2">pontos de coleta</span> com menor média de nível de lixo <span
+                        id="tituloFiltroTempo2">nos
+                        últimos 7 dias</span></h1>
                 <div class="conteudo">
                     <div class="chart">
                         <canvas id="myChart2"></canvas>
                     </div>
                     <div class="button">
-                        <select oninput="filtrarGrafico(2, this.value)" id="filtroMenorNivelPonto">
+                        <select oninput="filtrarGrafico(2, filtroTempo2.value, this.value)" id="filtroGrupo2">
+                            <option value="ponto">Pontos de coleta</option>
+                            <option value="rota">Rotas</option>
+                        </select>
+                        <select oninput="filtrarGrafico(2, this.value, filtroGrupo2.value)" id="filtroTempo2">
                             <option value="semana">Últimos 7 dias</option>
                             <option value="mes">Últimos 30 dias</option>
+                            <option value="allTime">Todos os tempos</option>
                         </select>
                     </div>
                 </div>
@@ -88,8 +101,9 @@
         </div>
 
         <div class="dash">
-            <h1 id="sensorEspecificoTitulo">Nível de lixo médio <span style="color: white;">por período</span> - Últimos
-                <span id="tituloFiltro3">7 dias</span></h1>
+            <h1 id="sensorEspecificoTitulo">Nível de lixo médio por período - <span id="tituloFiltroTempo3">Últimos
+                    7 dias</span>
+            </h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart3"></canvas>
@@ -98,10 +112,13 @@
                     <select id="filtroPeriodoMediana" oninput="filtrarGrafico(3, this.value)">
                         <option value="semana">Últimos 7 dias</option>
                         <option value="mes">Últimos 30 dias</option>
+                        <option value="allTime">Todos os tempos</option>
                     </select>
                 </div>
             </div>
-            <h1 id="medianaHorarioTitulo">Nível de lixo médio <span style="color: white;">por horário</span> - Últimos <span id="tituloFiltro4">7 dias</span></h1>
+            <h1 id="medianaHorarioTitulo">Nível de lixo médio por horário - <span id="tituloFiltroTempo4">Últimos 7
+                    dias</span>
+            </h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart4"></canvas>
@@ -110,6 +127,7 @@
                     <select id="filtroPeriodoMedianaHorario" oninput="filtrarGrafico(4, this.value)">
                         <option value="semana">Últimos 7 dias</option>
                         <option value="mes">Últimos 30 dias</option>
+                        <option value="allTime">Todos os tempos</option>
                     </select>
                 </div>
             </div>
@@ -135,23 +153,23 @@
 
     function ultimaColeta() {
         fetch(`/graficosDash/dataHoraUltimaColeta/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        resposta.reverse();
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
-                        dataUltimaColeta.innerHTML = `${resposta[0].dataMedicao} - `
-                        horaUltimaColeta.innerHTML = `${resposta[0].horaMedicao}`
+                    dataUltimaColeta.innerHTML = `${resposta[0].dataMedicao} - `
+                    horaUltimaColeta.innerHTML = `${resposta[0].horaMedicao}`
 
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
-                .catch(function (error) {
-                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
                 });
-        }
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
 
     function sair() {
         sessionStorage.clear();
@@ -274,15 +292,16 @@
     }
 
 
-    function filtrarGrafico(idGrafico, filtro) {
-        console.log(filtro);
-        fetch(`/graficosDash/att/${filtro}/${idGrafico}/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+    function filtrarGrafico(idGrafico, filtroTempo, filtroGrupo) {
+        console.log(filtroTempo);
+        console.log(filtroGrupo);
+        fetch(`/graficosDash/att/${filtroTempo}/${filtroGrupo}/${idGrafico}/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
                     console.log(idGrafico);
-                    plotarAttGrafico(resposta, idGrafico, filtro);
+                    plotarAttGrafico(resposta, idGrafico, filtroTempo, filtroGrupo);
 
                 });
             } else {
@@ -295,11 +314,12 @@
     }
 
 
-    function plotarAttGrafico(resposta, idGrafico, filtro) {
+    function plotarAttGrafico(resposta, idGrafico, filtroTempo, filtroGrupo) {
 
         console.log('iniciando plotagem do gráfico...');
 
-        let tituloFiltro = document.getElementById(`tituloFiltro${idGrafico}`);
+        let tituloFiltroTempo = document.getElementById(`tituloFiltroTempo${idGrafico}`);
+        let tituloFiltroGrupo = document.getElementById(`tituloFiltroGrupo${idGrafico}`);
 
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
@@ -325,10 +345,16 @@
         console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        if (idGrafico == 1 || idGrafico == 2 || idGrafico == 3) {
+        if (idGrafico == 1 && filtroGrupo == 'ponto' || idGrafico == 2 && filtroGrupo == 'ponto' || idGrafico == 3 && filtroGrupo == 'ponto') {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
                 labels.push(registro.logradouro);
+                dados.datasets[0].data.push(registro.media);
+            }
+        } if (idGrafico == 1 && filtroGrupo == 'rota' || idGrafico == 2 && filtroGrupo == 'rota' || idGrafico == 3 && filtroGrupo == 'rota') {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.rota);
                 dados.datasets[0].data.push(registro.media);
             }
         } else if (idGrafico == 4) {
@@ -382,10 +408,18 @@
             graficoAtualCtx4 = new Chart(ctx4, config);
         }
 
-        if (filtro == 'semana') {
-            tituloFiltro.innerHTML = '7 dias';
-        } else if (filtro == 'mes') {
-            tituloFiltro.innerHTML = '30 dias';
+        if (filtroTempo == 'semana') {
+            tituloFiltroTempo.innerHTML = 'nos últimos 7 dias';
+        } else if (filtroTempo == 'mes') {
+            tituloFiltroTempo.innerHTML = 'nos últimos 30 dias';
+        } else if (filtroTempo == 'allTime') {
+            tituloFiltroTempo.innerHTML = 'na história'
+        }
+
+        if (filtroGrupo == 'rota') {
+            tituloFiltroGrupo.innerHTML = 'rotas';
+        } else if (filtroGrupo == 'ponto') {
+            tituloFiltroGrupo.innerHTML = 'pontos de coleta';
         }
     }
 </script>

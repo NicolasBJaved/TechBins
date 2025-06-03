@@ -37,11 +37,18 @@ function buscarUltimasMedidas(req, res) {
 
 function atualizarGrafico(req, res) {
 
-    var filtro = req.params.filtro;
+    var filtroTempo = req.params.filtroTempo;
+    var filtroGrupo = req.params.filtroGrupo;
     var idGrafico = req.params.idGrafico;
     var idEmpresa = req.params.idEmpresa;
+    var tempoFiltro;
+    if (filtroTempo == 'mes') {
+        tempoFiltro = 30;
+    } else if (filtroTempo == 'semana') {
+        tempoFiltro = 7;
+    }
 
-    graficosDashModel.atualizarGrafico(filtro, idGrafico, idEmpresa).then(function (resultado) {
+    graficosDashModel.atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoFiltro).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

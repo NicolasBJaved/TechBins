@@ -11,7 +11,7 @@ router.get("/ultimas/:idGrafico/:idEmpresa", function (req, res) {
     graficosDashController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/att/:filtro/:idGrafico/:idEmpresa", function (req, res) {
+router.get("/att/:filtroTempo/:filtroGrupo/:idGrafico/:idEmpresa", function (req, res) {
     graficosDashController.atualizarGrafico(req, res);
 });
 
