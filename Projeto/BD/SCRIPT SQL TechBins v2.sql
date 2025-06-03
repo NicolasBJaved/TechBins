@@ -77,13 +77,11 @@ CREATE TABLE registro (
 CREATE TABLE rota (
     idRota INT PRIMARY KEY AUTO_INCREMENT,
     idEmpresa INT NOT NULL,
-    idRepresentante INT NOT NULL,
     nomeRota VARCHAR(45) NOT NULL,
     dataRota DATE NOT NULL,
     status VARCHAR(20),
     observacoes TEXT,
-    FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa),
-    FOREIGN KEY (idRepresentante) REFERENCES representante(idRepresentante)
+    FOREIGN KEY (idEmpresa) REFERENCES empresa(idEmpresa)
 );
 
 CREATE TABLE rotaPontoColeta (
@@ -224,52 +222,20 @@ VALUES
 (4, 'Patrícia Lima', 'patricia.lima@corpus.com.br', 'senha123', '45678901234', 'S', NULL), -- id 7
 (4, 'Fernando Reis', 'fernando.reis@corpus.com.br', 'senha456', '45678901235', 'N', 7);
 
-INSERT INTO rota (idEmpresa, idRepresentante, nomeRota, dataRota, status, observacoes)
-VALUES (1, 1, "Rota Pinheiros", '2025-05-20', 'Agendada', 'Coleta da região oeste de SP');
+INSERT INTO rota (idEmpresa, nomeRota, dataRota, status, observacoes)
+VALUES 
+(1, "Rota Pinheiros", '2025-05-20', 'Agendada', 'Coleta da região oeste de SP'),
+(1, "Rota Mooca", '2025-06-05', 'Agendada', 'Coleta da região leste de SP'),
+(1, "Rota Vila Mariana", '2025-06-10', 'Agendada', 'Coleta da região centro-sul de SP');
 
 INSERT INTO rotaPontoColeta (idRota, idPontoColeta, ordem)
 VALUES 
 (1, 1000, 1),
 (1, 1001, 2),
-(1, 1002, 3);
-
--- Rua A (Ponto 1000, lixeiras 10000 a 10004)[
-INSERT INTO registro (idSensor, distancia, dataHoraMedicao) VALUES
-(100000, 20, '2025-05-20 08:00:00'),
-(100001, 30, '2025-05-20 08:01:00'),
-(100002, 25, '2025-05-20 08:02:00'),
-(100003, 22, '2025-05-20 08:03:00'),
-(100004, 28, '2025-05-20 08:04:00');
-
--- Rua B (Ponto 1001, lixeiras 10005 a 10009)
-INSERT INTO registro (idSensor, distancia, dataHoraMedicao) VALUES
-(100005, 35, '2025-05-20 08:05:00'),
-(100006, 32, '2025-05-20 08:06:00'),
-(100007, 30, '2025-05-20 08:07:00'),
-(100008, 34, '2025-05-20 08:08:00'),
-(100009, 33, '2025-05-20 08:09:00');
-
--- Rua C (Ponto 1002, lixeiras 10010 a 10014)
-INSERT INTO registro (idSensor, distancia, dataHoraMedicao) VALUES
-(100010, 18, '2025-05-20 08:10:00'),
-(100011, 20, '2025-05-20 08:11:00'),
-(100012, 22, '2025-05-20 08:12:00'),
-(100013, 19, '2025-05-20 08:13:00'),
-(100014, 21, '2025-05-20 08:14:00');
-
-select reg.*, pto.idEmpresa as 'Identificador da Empresa', pto.logradouro as 'Logradouro', pto.numero as 'Número', pto.cidade as 'Cidade',
-case
-when distancia <= 18 then '5'
-when distancia <= 36 then '4'
-when distancia <= 54 then '3'
-when distancia <= 72 then '2'
-when distancia <= 90 then '1'
-else 'Distância acima do previsto'
-end as 'Nível do Lixo'
-from registro reg
-inner join sensor sen on sen.idSensor = reg.idSensor
-inner join lixeira lix on lix.idLixeira = sen.idLixeira
-inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta;
+(2, 1002, 1),
+(2, 1003, 2),
+(3, 1004, 1),
+(3, 1005, 2);
 
 /* FAZENDO INSERT PARA NOSSA EMPRESA PARA REALIZAR SUPORTE*/
 INSERT INTO empresa (idEmpresa, nomeEmpresa, cnpj, email_contato, telefone_contato)
@@ -287,7 +253,8 @@ INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, c
 -- Criando view para fazer os selects da página de gráficos
 create or replace view view_nivelLixo
 as
-select reg.*, pto.idEmpresa as 'Identificador da Empresa', pto.logradouro as logradouro, pto.numero as 'Número', pto.cidade as 'Cidade',
+select reg.*, rota.idRota as idRota, rota.nomeRota as nomeRota, pto.idEmpresa as idEmpresa, pto.logradouro as logradouro, 
+pto.numero as 'Número', pto.cidade as 'Cidade',
 case
 when distancia <= 18 then '5'
 when distancia <= 36 then '4'
@@ -299,6 +266,10 @@ end as nivel_lixo
 from registro reg
 inner join sensor sen on sen.idSensor = reg.idSensor
 inner join lixeira lix on lix.idLixeira = sen.idLixeira
-inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta;
+inner join pontoColeta pto on pto.idPontoColeta = lix.idPontoColeta
+inner join rotaPontoColeta rpc on rpc.idPontoColeta = pto.idPontoColeta
+inner join rota on rota.idRota = rpc.idRota;
 
 select * from representante;
+
+select * from view_nivelLixo;
