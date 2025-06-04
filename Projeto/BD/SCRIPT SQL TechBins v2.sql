@@ -54,7 +54,6 @@ CREATE TABLE pontoColeta (
 CREATE TABLE lixeira (
     idLixeira INT PRIMARY KEY AUTO_INCREMENT,
     idPontoColeta INT NOT NULL,
-    dataUltimaColeta DATE,
     CONSTRAINT fk_LixeiraPontoColeta FOREIGN KEY (idPontoColeta) REFERENCES pontoColeta(idPontoColeta)
 ) AUTO_INCREMENT = 10000;
 
@@ -98,17 +97,13 @@ CREATE TABLE rotaPontoColeta (
 INSERT INTO empresa (nomeEmpresa, cnpj, email_contato, telefone_contato)
 VALUES 
 ('Eco SPTech', '12345678000100', 'contato@ecosptech.com.br', '1140028922'),
-('Loga - Logística Ambiental', '23456789000111', 'contato@loga.com.br', '1130032100'),
-('Sustentare Saneamento S/A', '34567890000122', 'contato@sustentare.com.br', '1135001500'),
-('Corpus Saneamento e Obras Ltda', '45678901000133', 'sac@corpus.com.br', '1131116200');
+('Loga - Logística Ambiental', '23456789000111', 'contato@loga.com.br', '1130032100');
 
 -- Inserindo endereços de empresa (com idEnderecoEmpresa começando em 100 e idEmpresa fictício 1 a 4)
 INSERT INTO enderecoEmpresa (logradouro, idEmpresa, numero, complemento, bairro, cidade, estado, cep)
 VALUES
 ('Rua Haddock Lobo', 1, 595, NULL, 'Cerqueira César', 'São Paulo', 'SP', '01414001'),
-('Avenida Paulista', 2, 1578, NULL, 'Bela Vista', 'São Paulo', 'SP', '01310100'),
-('Rua Vergueiro', 3, 2951, 'Sala 10', 'Vila Mariana', 'São Paulo', 'SP', '04101000'),
-('Rua da Consolação', 4, 987, NULL, 'Consolação', 'São Paulo', 'SP', '01302000');
+('Avenida Paulista', 2, 1578, NULL, 'Bela Vista', 'São Paulo', 'SP', '01310100');
 
 -- Inserindo pontos de coleta (com idPontoColeta começando em 1000)
 INSERT INTO pontoColeta (idEmpresa, logradouro, numero, complemento, bairro, cidade, estado, cep)
@@ -119,45 +114,77 @@ VALUES
 (1, 'Rua D', 200, NULL, 'Capão Redondo', 'São Paulo', 'SP', '23459079'), -- ponto de coleta 1003
 (1, 'Rua E', 600, NULL, 'Capão Redondo', 'São Paulo', 'SP', '27673459'), -- ponto de coleta 1004
 (1, 'Rua F', 700, NULL, 'Capão Redondo', 'São Paulo', 'SP', '28654589'), -- ponto de coleta 1005
-(2, 'Rua Augusta', 3000, NULL, 'Cerqueira César', 'São Paulo', 'SP', '01412000'),
-(3, 'Avenida Faria Lima', 400, NULL, 'Itaim Bibi', 'São Paulo', 'SP', '04538000'),
-(4, 'Rua Heitor Penteado', 321, NULL, 'Sumaré', 'São Paulo', 'SP', '01246000');
+(2, 'Rua Tuiuti', 1234, NULL, 'Tatuapé', 'São Paulo', 'SP', '03302000'),
+(2, 'Rua Emílio Mallet', 890, NULL, 'Tatuapé', 'São Paulo', 'SP', '03320000'),
+(2, 'Rua Voluntários da Pátria', 3001, NULL, 'Santana', 'São Paulo', 'SP', '02011000'),
+(2, 'Rua Alfredo Pujol', 456, NULL, 'Santana', 'São Paulo', 'SP', '02017000'),
+(2, 'Avenida Corifeu de Azevedo Marques', 5200, NULL, 'Butantã', 'São Paulo', 'SP', '05582000'),
+(2, 'Rua Camargo', 150, NULL, 'Butantã', 'São Paulo', 'SP', '05508001');
 
-INSERT INTO lixeira (idPontoColeta, dataUltimaColeta)
+
+INSERT INTO lixeira (idPontoColeta)
 VALUES
-(1000, '2025-04-24'), -- lixeira 1 = ponto de coleta 1000 (Rua A)
-(1000, '2025-04-24'), -- lixeira 2 = ponto de coleta 1000 (Rua A)
-(1000, '2025-04-24'), -- lixeira 3 = ponto de coleta 1000 (Rua A)
-(1000, '2025-04-24'), -- lixeira 4 = ponto de coleta 1000 (Rua A)
-(1000, '2025-04-24'), -- lixeira 5 = ponto de coleta 1000 (Rua A)
-(1001, '2025-04-23'),
-(1001, '2025-04-23'),
-(1001, '2025-04-23'),
-(1001, '2025-04-23'),
-(1001, '2025-04-23'),
-(1002, '2025-04-24'),
-(1002, '2025-04-24'),
-(1002, '2025-04-24'),
-(1002, '2025-04-24'),
-(1002, '2025-04-24'),
-(1003, '2025-04-22'),
-(1003, '2025-04-22'),
-(1003, '2025-04-22'),
-(1003, '2025-04-22'),
-(1003, '2025-04-22'),
-(1004, '2025-04-24'),
-(1004, '2025-04-24'),
-(1004, '2025-04-24'),
-(1004, '2025-04-24'),
-(1004, '2025-04-24'),
-(1005, '2025-04-23'),
-(1005, '2025-04-23'),
-(1005, '2025-04-23'),
-(1005, '2025-04-23'),
-(1005, '2025-04-23'),
-(1006, '2025-04-24'),
-(1007, '2025-04-23'),
-(1008, '2025-04-22');
+(1000), -- lixeira 1 = ponto de coleta 1000 (Rua A)
+(1000), -- lixeira 2 = ponto de coleta 1000 (Rua A)
+(1000), -- lixeira 3 = ponto de coleta 1000 (Rua A)
+(1000), -- lixeira 4 = ponto de coleta 1000 (Rua A)
+(1000), -- lixeira 5 = ponto de coleta 1000 (Rua A)
+(1001),
+(1001),
+(1001),
+(1001),
+(1001),
+(1002),
+(1002),
+(1002),
+(1002),
+(1002),
+(1003),
+(1003),
+(1003),
+(1003),
+(1003),
+(1004),
+(1004),
+(1004),
+(1004),
+(1004),
+(1005),
+(1005),
+(1005),
+(1005),
+(1005),
+(1006),
+(1006),
+(1006),
+(1006),
+(1006),
+(1007),
+(1007),
+(1007),
+(1007),
+(1007),
+(1008),
+(1008),
+(1008),
+(1008),
+(1008),
+(1009),
+(1009),
+(1009),
+(1009),
+(1009),
+(1010),
+(1010),
+(1010),
+(1010),
+(1010),
+(1011),
+(1011),
+(1011),
+(1011),
+(1011);
+
 
 INSERT INTO sensor (idLixeira)
 values
@@ -190,13 +217,37 @@ values
 (10026), 
 (10027),
 (10028),
-(10029);
-
-INSERT INTO sensor (idLixeira, status)
-values
-(10030, 'Inativo'), 
-(10031, 'Inativo'), 
-(10032, 'Inativo');
+(10029),
+(10030), 
+(10031), 
+(10032), 
+(10033), 
+(10034),
+(10035), 
+(10036), 
+(10037),
+(10038), 
+(10039),
+(10040), 
+(10041), 
+(10042), 
+(10043), 
+(10044),
+(10045), 
+(10046), 
+(10047),
+(10048),
+(10049),
+(10050), 
+(10051), 
+(10052), 
+(10053), 
+(10054),
+(10055), 
+(10056), 
+(10057),
+(10058),
+(10059);
 
 -- Eco SPTech (empresa 1)
 INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
@@ -210,23 +261,14 @@ VALUES
 (2, 'Luciana Prado', 'luciana.prado@loga.com.br', 'senha123', '23456789012', 'S', NULL), -- id 3
 (2, 'Diego Costa', 'diego.costa@loga.com.br', 'senha456', '23456789013', 'N', 3);
 
--- Sustentare (empresa 3)
-INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
-VALUES 
-(3, 'Carlos Mendes', 'carlos.mendes@sustentare.com.br', 'senha123', '34567890123', 'S', NULL), -- id 5
-(3, 'Juliana Rocha', 'juliana.rocha@sustentare.com.br', 'senha456', '34567890124', 'N', 5);
-
--- Corpus (empresa 4)
-INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, podeAdicionarRepresentantes, idRepresentanteChefe)
-VALUES 
-(4, 'Patrícia Lima', 'patricia.lima@corpus.com.br', 'senha123', '45678901234', 'S', NULL), -- id 7
-(4, 'Fernando Reis', 'fernando.reis@corpus.com.br', 'senha456', '45678901235', 'N', 7);
-
 INSERT INTO rota (idEmpresa, nomeRota, dataRota, status, observacoes)
 VALUES 
 (1, "Rota Pinheiros", '2025-05-20', 'Agendada', 'Coleta da região oeste de SP'),
 (1, "Rota Mooca", '2025-06-05', 'Agendada', 'Coleta da região leste de SP'),
-(1, "Rota Vila Mariana", '2025-06-10', 'Agendada', 'Coleta da região centro-sul de SP');
+(1, "Rota Vila Mariana", '2025-06-10', 'Agendada', 'Coleta da região centro-sul de SP'),
+(2, "Rota Tatuapé", '2025-06-15', 'Agendada', 'Coleta na região do Tatuapé e arredores'),
+(2, "Rota Santana", '2025-06-16', 'Agendada', 'Coleta na região norte de SP - Santana'),
+(2, "Rota Butantã", '2025-06-17', 'Agendada', 'Coleta na região oeste de SP - Butantã');
 
 INSERT INTO rotaPontoColeta (idRota, idPontoColeta, ordem)
 VALUES 
@@ -235,20 +277,30 @@ VALUES
 (2, 1002, 1),
 (2, 1003, 2),
 (3, 1004, 1),
-(3, 1005, 2);
+(3, 1005, 2),
+(4, 1006, 1),
+(4, 1007, 2),
+(5, 1008, 1),
+(5, 1009, 2),
+(6, 1010, 1),
+(6, 1011, 2);
+
+
 
 /* FAZENDO INSERT PARA NOSSA EMPRESA PARA REALIZAR SUPORTE*/
 INSERT INTO empresa (idEmpresa, nomeEmpresa, cnpj, email_contato, telefone_contato)
 			values (99999 ,'Suporte TECHBINS', 12349998000100, 'suporte@techbins.com', '11998739090');
             
 INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, idRepresentanteChefe, podeAdicionarRepresentantes)
-			values (99999, 'Lucas Marques de Aquino', 'lucas.aquino@suporte.com', 'lucas123', '55372499987', null, 'S');
-INSERT INTO representante (idEmpresa, nomeRepresentante, email_contato, senha, cpf, idRepresentanteChefe, podeAdicionarRepresentantes)
-			values (99999, 'Leonardo Borges Fernandes', 'leonardo.borges@suporte.com', 'leo123', '58972499987', null, 'S'),
+			values (99999, 'Lucas Marques de Aquino', 'lucas.aquino@suporte.com', 'lucas123', '55372499987', null, 'S'),
+			       (99999, 'Leonardo Borges Fernandes', 'leonardo.borges@suporte.com', 'leo123', '58972499987', null, 'S'),
 				   (99999, 'Bruno Prado de Araujo', 'bruno.prado@suporte.com', 'bruno123', '55310099987', null, 'S'),
                    (99999, 'Guilherme Martins Nascimento', 'guilherme.martins@suporte.com', 'gui123', '00272499987', null, 'S'),
                    (99999, 'Fernanda Henckel Hirai de Araújo', 'fernada.henckel@suporte.com', 'fer123', '10572888987', null, 'S'),
                    (99999, 'Nicolas Barboza Javed', 'nicolas.javed@suporte.com', 'nicolas123', '98745699987', null, 'S');
+                   
+INSERT INTO enderecoEmpresa (logradouro, idEmpresa, numero, complemento, bairro, cidade, estado, cep)
+values             ('Rua Haddock Lobo', 99999, 595, NULL, 'Cerqueira César', 'São Paulo', 'SP', '01414001');
 
 -- Criando view para fazer os selects da página de gráficos
 create or replace view view_nivelLixo
