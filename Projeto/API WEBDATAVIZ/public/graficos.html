@@ -101,30 +101,15 @@
         </div>
 
         <div class="dash">
-            <h1 id="sensorEspecificoTitulo">Nível de lixo médio por período - <span id="tituloFiltroTempo3">Últimos
-                    7 dias</span>
+            <h1 id="medianaHorarioTitulo">Nível de lixo médio por horário - <span id="tituloFiltroTempo3">Últimos 7
+                    dias</span>
             </h1>
             <div class="conteudo">
                 <div class="chart">
                     <canvas id="myChart3"></canvas>
                 </div>
                 <div class="button">
-                    <select id="filtroPeriodoMediana" oninput="filtrarGrafico(3, this.value)">
-                        <option value="semana">Últimos 7 dias</option>
-                        <option value="mes">Últimos 30 dias</option>
-                        <option value="allTime">Todos os tempos</option>
-                    </select>
-                </div>
-            </div>
-            <h1 id="medianaHorarioTitulo">Nível de lixo médio por horário - <span id="tituloFiltroTempo4">Últimos 7
-                    dias</span>
-            </h1>
-            <div class="conteudo">
-                <div class="chart">
-                    <canvas id="myChart4"></canvas>
-                </div>
-                <div class="button">
-                    <select id="filtroPeriodoMedianaHorario" oninput="filtrarGrafico(4, this.value)">
+                    <select id="filtroPeriodoMedianaHorario" oninput="filtrarGrafico(3, this.value)">
                         <option value="semana">Últimos 7 dias</option>
                         <option value="mes">Últimos 30 dias</option>
                         <option value="allTime">Todos os tempos</option>
@@ -143,13 +128,11 @@
     const ctx1 = document.getElementById('myChart1');
     const ctx2 = document.getElementById('myChart2');
     const ctx3 = document.getElementById('myChart3');
-    const ctx4 = document.getElementById('myChart4');
 
     // CRIANDO VARIÁVEIS DOS GRÁFICOS INICIAIS
     var graficoAtualCtx1;
     var graficoAtualCtx2;
     var graficoAtualCtx3;
-    var graficoAtualCtx4;
 
     function ultimaColeta() {
         fetch(`/graficosDash/dataHoraUltimaColeta/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
@@ -247,12 +230,6 @@
         } else if (idGrafico == 3) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                labels.push(registro.logradouro);
-                dados.datasets[0].data.push(registro.media);
-            }
-        } else if (idGrafico == 4) {
-            for (i = 0; i < resposta.length; i++) {
-                var registro = resposta[i];
                 labels.push(registro.horario);
                 dados.datasets[0].data.push(registro.media);
             }
@@ -268,7 +245,7 @@
 
         // Criando estrutura para plotar gráfico - config
         let tipoGrafico = 'bar';
-        if (idGrafico == 4) {
+        if (idGrafico == 3) {
             tipoGrafico = 'line';
         }
 
@@ -286,8 +263,6 @@
             graficoAtualCtx2 = new Chart(ctx2, config);
         } else if (idGrafico == 3) {
             graficoAtualCtx3 = new Chart(ctx3, config);
-        } else if (idGrafico == 4) {
-            graficoAtualCtx4 = new Chart(ctx4, config);
         }
     }
 
@@ -345,19 +320,19 @@
         console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        if (idGrafico == 1 && filtroGrupo == 'ponto' || idGrafico == 2 && filtroGrupo == 'ponto' || idGrafico == 3 && filtroGrupo == 'ponto') {
+        if (idGrafico == 1 && filtroGrupo == 'ponto' || idGrafico == 2 && filtroGrupo == 'ponto') {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
                 labels.push(registro.logradouro);
                 dados.datasets[0].data.push(registro.media);
             }
-        } if (idGrafico == 1 && filtroGrupo == 'rota' || idGrafico == 2 && filtroGrupo == 'rota' || idGrafico == 3 && filtroGrupo == 'rota') {
+        } if (idGrafico == 1 && filtroGrupo == 'rota' || idGrafico == 2 && filtroGrupo == 'rota') {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
                 labels.push(registro.rota);
                 dados.datasets[0].data.push(registro.media);
             }
-        } else if (idGrafico == 4) {
+        } else if (idGrafico == 3) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
                 labels.push(registro.horario);
@@ -375,7 +350,7 @@
 
         // Criando estrutura para plotar gráfico - config
         let tipoGrafico = 'bar';
-        if (idGrafico == 4) {
+        if (idGrafico == 3) {
             tipoGrafico = 'line';
         }
 
@@ -401,11 +376,6 @@
                 graficoAtualCtx3.destroy();
             }
             graficoAtualCtx3 = new Chart(ctx3, config);
-        } else if (idGrafico == 4) {
-            if (graficoAtualCtx4) {
-                graficoAtualCtx4.destroy();
-            }
-            graficoAtualCtx4 = new Chart(ctx4, config);
         }
 
         if (filtroTempo == 'semana') {

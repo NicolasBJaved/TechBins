@@ -30,15 +30,6 @@ function buscarUltimasMedidas(idGrafico, idEmpresa) {
     }
 
     if (idGrafico == 3) {
-        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
-        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND idEmpresa = ${idEmpresa}
-        GROUP BY logradouro;`;
-        console.log("Executando a instrução SQL: \n" + instrucaoSql);
-        return database.executar(instrucaoSql);
-    }
-
-    if (idGrafico == 4) {
         var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND idEmpresa = ${idEmpresa}
@@ -131,24 +122,6 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
     }
 
     if (filtroTempo != 'allTime' && idGrafico == 3) {
-        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
-        WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
-        GROUP BY logradouro;`;
-        console.log("Executando a instrução SQL: \n" + instrucaoSql);
-        return database.executar(instrucaoSql);
-    }
-
-    if (filtroTempo == 'allTime' && idGrafico == 3) {
-        var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
-        WHERE idEmpresa = ${idEmpresa}
-        GROUP BY logradouro;`;
-        console.log("Executando a instrução SQL: \n" + instrucaoSql);
-        return database.executar(instrucaoSql);
-    }
-
-    if (filtroTempo != 'allTime' && idGrafico == 4) {
         var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
@@ -158,7 +131,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
         return database.executar(instrucaoSql);
     }
 
-    if (filtroTempo == 'allTime' && idGrafico == 4) {
+    if (filtroTempo == 'allTime' && idGrafico == 3) {
         var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
         FROM view_nivelLixo
         WHERE idEmpresa = ${idEmpresa}
