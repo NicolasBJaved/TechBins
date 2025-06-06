@@ -73,7 +73,8 @@
                 </div>
             </div> -->
         </div>
-
+        <div id="div_alerta">
+        </div>
     </div>
 </body>
 
@@ -149,12 +150,18 @@
             console.log("ENTROU NO THEN")
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
+                    let ListaID = [];
+                    let encontar = false;
                     for (var i = 0; i < resposta.length; i++) {
                         var cor = null;
                         if (resposta[i].media_nivel_lixo <= 18) {
                             cor = "red";
+                            ListaID.push(resposta[i].pc.idPontoColeta);
+                            encontar = true;
                         } else if (resposta[i].media_nivel_lixo <= 36) {
                             cor = "yellow";
+                            ListaID.push(resposta[i].pc.idPontoColeta);
+                            encontar = true;
                         } else if (resposta[i].media_nivel_lixo <= 54) {
                             cor = "green";
                         } else if (resposta[i].media_nivel_lixo <= 72) {
@@ -167,9 +174,23 @@
                             <li style="background-color: ${cor}; border-radius:10%;"><img src="./imgs/trash-512.webp" alt=""></li>
                         `
                     }
+                    if (encontar == true) {
+                        div_alerta.innerHTML = `
+                            <div class="alerta-lixo">
+                            <div class="alerta-lixo" id="alertaLixo">
+                            <button class="fechar-alerta" onclick="fecharAlerta()">×</button>
+                            <span>Alerta:</span> Pontos de Coletas com <span>Urgência</span>:<br>
+                            <span>${ListaID}</span>
+                            </div>
+                        `
+                    }
                 })
             }
         })
+    }
+
+    function fecharAlerta() {
+        document.getElementById('alertaLixo').style.display = 'none';
     }
 </script>
 

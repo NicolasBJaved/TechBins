@@ -39,6 +39,7 @@ function mediaCincoPontos(idUsuario, rotasList){
         SELECT 
                 pc.logradouro,
                 ro.idRota,
+                pc.idPontoColeta
                 ROUND(AVG(r.distancia), 2) AS media_nivel_lixo
             FROM representante rep
             INNER JOIN empresa e ON rep.idEmpresa = e.idEmpresa
@@ -49,7 +50,7 @@ function mediaCincoPontos(idUsuario, rotasList){
             INNER JOIN sensor s ON l.idLixeira = s.idLixeira
             INNER JOIN registro r ON s.idSensor = r.idSensor
             WHERE rpc.idRota IN (${rotasList}) 
-            GROUP BY pc.logradouro, ro.idRota
+            GROUP BY pc.logradouro, ro.idRota, pc.idPontoColeta
             ORDER BY media_nivel_lixo DESC LIMIT ${rotasList.length * 5};
         `;
     console.log("Executando a instrução SQL: ", instrucao);

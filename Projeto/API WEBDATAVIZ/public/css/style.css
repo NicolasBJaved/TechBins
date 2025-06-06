@@ -37,7 +37,7 @@ button {
 }
 
 
-.button h2{
+.button h2 {
     margin: 0;
 }
 
@@ -125,7 +125,7 @@ select {
     border-bottom: solid 7px #155C3A;
 }
 
-.sobreNos .div_texto{
+.sobreNos .div_texto {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -144,7 +144,7 @@ select {
     font-size: 20px;
 }
 
-.containerHome .sobreNos .div_imagem img{
+.containerHome .sobreNos .div_imagem img {
     width: 700px;
     border-radius: 10px;
     border: solid 2px #155C3A;
@@ -166,16 +166,16 @@ select {
     border-bottom: solid 7px #155C3A;
 }
 
-.containerHome .diagramaNegocio h1{
+.containerHome .diagramaNegocio h1 {
     font-size: 60px;
 }
 
-.containerHome .diagramaNegocio h2{
+.containerHome .diagramaNegocio h2 {
     font-size: 30px;
     color: #69AD6E;
 }
 
-.containerHome .diagramaNegocio img{
+.containerHome .diagramaNegocio img {
     margin-bottom: 20px;
 }
 
@@ -212,7 +212,7 @@ select {
     align-items: center;
 }
 
-.containerHome .beneficiosTitulo h1{
+.containerHome .beneficiosTitulo h1 {
     text-align: center;
     font-size: 50px;
 }
@@ -244,7 +244,7 @@ select {
     margin-right: 20px;
 }
 
-.containerHome .sobreSimulador .div_imagem img{
+.containerHome .sobreSimulador .div_imagem img {
     width: 700px;
     border-radius: 10px;
     border: solid 2px #155C3A;
@@ -257,7 +257,7 @@ select {
 }
 
 /* Rodapé */
-.footer{
+.footer {
     color: white;
     background-color: #155C3A;
     height: 130px;
@@ -266,7 +266,7 @@ select {
     justify-content: space-around;
 }
 
-.redes-sociais{
+.redes-sociais {
     display: flex;
     flex-direction: column;
     height: 100px;
@@ -283,11 +283,11 @@ select {
     width: 150px;
 }
 
-.footer ul li img{
+.footer ul li img {
     width: 25px;
 }
 
-.footer .logo img{
+.footer .logo img {
     width: 200px;
 }
 
@@ -299,7 +299,7 @@ select {
     margin: 0;
 }
 
-.footer .contato{
+.footer .contato {
     display: flex;
     flex-direction: column;
     height: 80px;
@@ -316,7 +316,7 @@ select {
     background-color: #0e3824cc;
 }
 
-.bannerSN img{
+.bannerSN img {
     height: 125px;
 }
 
@@ -336,7 +336,7 @@ select {
     font-size: 20px;
 }
 
-.containerSN #sustentabilidade{
+.containerSN #sustentabilidade {
     width: 330px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -365,7 +365,7 @@ select {
     border-bottom: solid 7px #155C3A;
 }
 
-.containerSN .MVV .MVVConteudo{
+.containerSN .MVV .MVVConteudo {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -375,7 +375,7 @@ select {
     width: 70%;
 }
 
-.containerSN .MVV .div_texto{
+.containerSN .MVV .div_texto {
     width: 600px;
 }
 
@@ -397,7 +397,7 @@ select {
     height: 800px;
 }
 
-.containerSN .conteudo_equipe{
+.containerSN .conteudo_equipe {
     background-color: #267652a0;
     border: solid 2px #155C3A;
     width: 80%;
@@ -424,7 +424,7 @@ select {
     justify-content: space-around;
 }
 
-.bannerSobreNos{
+.bannerSobreNos {
     width: 100%;
     height: 200px;
     margin-top: 100px;
@@ -435,7 +435,7 @@ select {
     color: white;
 }
 
-.container_conteudo_SN1{
+.container_conteudo_SN1 {
     width: 100%;
     height: 800px;
     display: flex;
@@ -444,7 +444,7 @@ select {
     justify-content: space-around;
 }
 
-.container_conteudo_SN2{
+.container_conteudo_SN2 {
     width: 100%;
     height: 900px;
     display: flex;
@@ -453,25 +453,25 @@ select {
 }
 
 
-.SN{
+.SN {
     height: 1100px;
 }
 
-.conteudo_SN1{
+.conteudo_SN1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 75%;
 }
 
-.conteudo_SN2{
+.conteudo_SN2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 80%;
 }
 
-.SN_texto{
+.SN_texto {
     width: 800px;
     display: flex;
     flex-direction: column;
@@ -524,7 +524,7 @@ select {
 /* Cadastro */
 
 
-.div_nav_cadastro{
+.div_nav_cadastro {
     background-color: #155C3A;
     position: fixed;
     top: 0;
@@ -536,14 +536,14 @@ select {
     align-items: center;
 }
 
-.div_nav_cadastro .links{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        list-style-type: none;
-        width: 700px;
-        margin-right: -70px;
-        margin-top: 0;
+.div_nav_cadastro .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+    width: 700px;
+    margin-right: -70px;
+    margin-top: 0;
 }
 
 .containerLCS #cadastroResposta {
@@ -581,32 +581,32 @@ select {
     width: 100%;
 }
 
-.corUrgencia5{
+.corUrgencia5 {
     margin: 0;
     padding: 0;
     font-size: 40px;
     color: #ff0000
 }
 
-.corUrgencia4{
+.corUrgencia4 {
     margin: 0;
     font-size: 40px;
     color: yellow;
 }
 
-.corUrgencia3{
+.corUrgencia3 {
     margin: 0;
     font-size: 40px;
     color: #15ff00;
 }
 
-.corUrgencia2{
+.corUrgencia2 {
     margin: 0;
     font-size: 40px;
     color: #15ff00;
 }
 
-.perfil{
+.perfil {
     border: 1px solid white;
     border-radius: 5px;
     padding: 15px;
@@ -632,8 +632,8 @@ select {
     margin-top: 0;
 }
 
-.containerDASH .dash ul li{
-    background-color:#1c7c4e;
+.containerDASH .dash ul li {
+    background-color: #1c7c4e;
     padding-left: 20px;
     padding-right: 20px;
     border: 1px solid black;
@@ -641,11 +641,11 @@ select {
     height: 90px;
 }
 
-.containerDASH .dash ul{
+.containerDASH .dash ul {
     margin: 1px;
 }
 
-.pontosMaiorNivelAtual{
+.pontosMaiorNivelAtual {
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -659,22 +659,22 @@ select {
     padding-bottom: 10px;
 }
 
-.margin0{
+.margin0 {
     margin: 0;
 }
 
-.padding0{
+.padding0 {
     padding: 0;
 }
 
-.conteudoNivelAtualKPI{
+.conteudoNivelAtualKPI {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: fit-content;
 }
 
-.conteudoGraficoNivelAtual{
+.conteudoGraficoNivelAtual {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -682,53 +682,53 @@ select {
     width: 100%;
 }
 
-.conteudoGraficoNivelAtual .conteudo{
+.conteudoGraficoNivelAtual .conteudo {
     width: 100%;
 }
 
-.legendaEGraficoNivelAtual{
+.legendaEGraficoNivelAtual {
     width: 70%;
 }
 
-.conteudoLegenda{
+.conteudoLegenda {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
 }
 
-.retangulo{
+.retangulo {
     margin: 0;
     padding: 0;
-    width: 30px;         
-    height: 10px;        
+    width: 30px;
+    height: 10px;
 }
 
-.legenda{
+.legenda {
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
-.legenda .legendaNivel{
+.legenda .legendaNivel {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.legenda .legendaNivel1 p{
+.legenda .legendaNivel1 p {
     margin: 0;
     padding: 0;
 }
 
-.pontoMaiorNívelPeriodo{
+.pontoMaiorNívelPeriodo {
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
 
-.conteudoMaiorNivelPeriodo{
+.conteudoMaiorNivelPeriodo {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -740,8 +740,8 @@ select {
     border-radius: 10px;
 }
 
-.containerDASH .dash ul .ajustar{
-    background-color:#1c7c4e;
+.containerDASH .dash ul .ajustar {
+    background-color: #1c7c4e;
     padding-left: 40px;
     padding-right: 40px;
     border: 1px solid black;
@@ -768,41 +768,41 @@ select {
     justify-content: space-around;
 }
 
-.referencias .valores .nivel h2{
+.referencias .valores .nivel h2 {
     background-color: #1c7c4e;
     border: 1px solid black;
     border-radius: 10px;
 }
 
 
-.referencias .explicacaoCores p{
+.referencias .explicacaoCores p {
     background-color: #1c7c4e;
     border: 1px solid black;
     border-radius: 10px;
 }
 
-.distancia{
+.distancia {
     display: flex;
     flex-direction: column;
 }
 
-.distancia p{
+.distancia p {
     margin-top: 15px;
 }
 
-.distancia h5{
+.distancia h5 {
     margin-bottom: 10px;
 }
 
 /* NOVA DASHBOARD */
 
-.containerDashboard{
+.containerDashboard {
     height: 100vh;
     display: flex;
     justify-content: center;
 }
 
-.containerDashboard .rotas{
+.containerDashboard .rotas {
     width: 80%;
     display: flex;
     justify-content: space-around;
@@ -810,7 +810,7 @@ select {
     margin-top: 100px;
 }
 
-.containerDashboard .rota{
+.containerDashboard .rota {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -820,15 +820,15 @@ select {
     border-radius: 10px;
 }
 
-.containerDashboard .rota .tituloENivel{
+.containerDashboard .rota .tituloENivel {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color:#155C3A;
+    background-color: #155C3A;
 }
 
-.containerDashboard .lixeiras{
+.containerDashboard .lixeiras {
     display: flex;
     justify-content: center;
     background-color: #69AD6E;
@@ -836,8 +836,7 @@ select {
     height: 100px;
 }
 
-
-.containerDashboard .lixeiras ul{
+.containerDashboard .lixeiras ul {
     padding: 0;
     display: flex;
     align-items: center;
@@ -850,7 +849,45 @@ select {
     background-color: red;
 }
 
-.containerDashboard .lixeiras ul li  img{
+.containerDashboard .lixeiras ul li img {
     width: 30px;
     height: 30px;
+}
+
+.alerta-lixo {
+    position: fixed;
+    background-color: #ca3636;
+    align-self: center;
+    color: #ffffff;
+    border-left: 10px solid #8c0000;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.3);
+    max-width: 550px;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    transition: transform 0.2s ease;
+}
+
+.alerta-lixo:hover {
+    transform: scale(1.05);
+}
+
+.alerta-lixo span {
+    font-weight: bold;
+}
+
+.fechar-alerta {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fechar-alerta:hover {
+    color: #f2dede;
 }
