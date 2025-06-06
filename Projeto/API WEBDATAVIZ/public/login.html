@@ -92,7 +92,7 @@
 
         if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
-            respostaLogin.innerHTML = "Preencha todos os campos.";
+            respostaLogin.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             // finalizarAguardar();
             return false;
         }
@@ -118,12 +118,9 @@
             if (resposta.ok) {
                 console.log(resposta);
 
-                respostaLogin.innerHTML = `Login realizado com sucesso!<br>Redirecionando para as Dashboards...`;
-
-                resposta.json().then(function(json) {
+                resposta.json().then(json => {
                     console.log(json);
-                    console.log("ENVIO: " + json.email);
-                    console.log("ENVIO: " + json.nome);
+                    console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idRepresentante;
@@ -136,7 +133,7 @@
                     }, 1000); // apenas para exibir o loading
                     } else{
                         setTimeout(function () {
-                            window.location.href = "newDashboard.html";
+                            window.location.href = "dashboard.html";
                         }, 1000); // apenas para exibir o loading
                     }
 
@@ -145,8 +142,6 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
-                respostaLogin.innerHTML = "Email e/ou senha inválido(s).";
 
                 resposta.text().then(texto => {
                     console.error(texto);

@@ -83,7 +83,7 @@
     function buscarDadosRotas() {
         rotas.innerHTML = "";
         //var idUsuario = sessionStorage.ID_USUARIO;
-        var idUsuario = 1;
+        var idUsuario = 3;
 
         fetch("/dashboard/mediaRota", {
             method: "POST",
@@ -156,11 +156,11 @@
                         var cor = null;
                         if (resposta[i].media_nivel_lixo <= 18) {
                             cor = "red";
-                            ListaID.push(resposta[i].pc.idPontoColeta);
+                            ListaID.push(resposta[i].idPontoColeta);
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo <= 36) {
                             cor = "yellow";
-                            ListaID.push(resposta[i].pc.idPontoColeta);
+                            ListaID.push(resposta[i].idPontoColeta);
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo <= 54) {
                             cor = "green";
