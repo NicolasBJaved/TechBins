@@ -76,11 +76,14 @@
 
     </div>
 </body>
+
 <script>
+    var rotasList = [];
     function buscarDadosRotas() {
         rotas.innerHTML = "";
         //var idUsuario = sessionStorage.ID_USUARIO;
         var idUsuario = 1;
+
         fetch("/dashboard/mediaRota", {
             method: "POST",
             headers: {
@@ -110,6 +113,8 @@
                             mediaGeralNivel = 1;
                             cor = "green";
                         }
+                        console.log("PUSH: " + resposta[i].idRota)
+                        rotasList.push(resposta[i].idRota);
                         rotas.innerHTML += `
                             <div class="rota">
                                 <div style="color: ${cor}" class="tituloENivel">
@@ -124,21 +129,24 @@
                             </div>
                         `
                     }
+                    mediaCincoPontos(idUsuario);
                 })
-                mediaCincoPontos(idUsuario);
             }
         })
     }
 
     function mediaCincoPontos(idUsuario) {
+        console.log("ROTAS LIST LENGHT: " + rotasList.length)
         fetch("/dashboard/mediaCincoPontos", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             }, body: JSON.stringify({
-                idUsuarioServer: idUsuario
+                idUsuarioServer: idUsuario,
+                rotasListServer: rotasList
             }),
         }).then(function (resposta) {
+            console.log("ENTROU NO THEN")
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
                     for (var i = 0; i < resposta.length; i++) {
