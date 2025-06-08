@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
 </head>
 
-<body onload="addRep()">
+<body onload="addRep()" >
     <div class="div_nav">
         <div class="links_dash">
             <div class="perfil">
@@ -51,8 +51,19 @@
 
     </div>
 
+<div class="containerDashboard">
+    <div id="rotas" class="rotas">   
+    </div>
+        <div id="div_alerta">
+    </div>
+</div>
+
+
 </body>
 <script>
+    buscarDadosRotas();
+
+    
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function sair() {
@@ -64,6 +75,120 @@
         if (sessionStorage.PODE_ADICIONAR == 'N') {
             cadastro.style.display = "none";
         }
+    }
+
+     var rotasList = [];
+    function buscarDadosRotas() {
+        rotas.innerHTML = "";
+        //var idUsuario = sessionStorage.ID_USUARIO;
+        var idUsuario = 3;
+
+        fetch("/dashboard/mediaRota", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            }, body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            }),
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    for (var i = 0; i < resposta.length; i++) {
+                        var mediaGeralNivel = 0;
+                        var cor = null;
+                        if (resposta[i].media_geral_rota <= 18) {
+                            cor = "red";
+                            mediaGeralNivel = 5;
+                        } else if (resposta[i].media_geral_rota <= 36) {
+                            mediaGeralNivel = 4;
+                            cor = "yellow";
+                        } else if (resposta[i].media_geral_rota <= 54) {
+                            mediaGeralNivel = 3;
+                            cor = "green";
+                        } else if (resposta[i].media_geral_rota <= 72) {
+                            mediaGeralNivel = 2;
+                            cor = "green";
+                        } else if (resposta[i].media_geral_rota <= 90) {
+                            mediaGeralNivel = 1;
+                            cor = "green";
+                        }
+                        console.log("PUSH: " + resposta[i].idRota)
+                        rotasList.push(resposta[i].idRota);
+                        rotas.innerHTML += `
+                            <div class="rota">
+                                <div style="color: ${cor}" class="tituloENivel">
+                                    <h1 style="margin:0">${resposta[i].nomeRota}</h1>
+                                    <h1>${mediaGeralNivel}</h1>
+                                </div>
+                                <div class="lixeiras">
+                                    <ul id="lixeira${resposta[i].idRota}">
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        `
+                    }
+                    mediaCincoPontos(idUsuario);
+                })
+            }
+        })
+    }
+
+    function mediaCincoPontos(idUsuario) {
+        console.log("ROTAS LIST LENGHT: " + rotasList.length)
+        fetch("/dashboard/mediaCincoPontos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            }, body: JSON.stringify({
+                idUsuarioServer: idUsuario,
+                rotasListServer: rotasList
+            }),
+        }).then(function (resposta) {
+            console.log("ENTROU NO THEN")
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    let ListaID = [];
+                    let encontar = false;
+                    for (var i = 0; i < resposta.length; i++) {
+                        var cor = null;
+                        if (resposta[i].media_nivel_lixo <= 18) {
+                            cor = "red";
+                            ListaID.push(resposta[i].idPontoColeta);
+                            encontar = true;
+                        } else if (resposta[i].media_nivel_lixo <= 36) {
+                            cor = "yellow";
+                            ListaID.push(resposta[i].idPontoColeta);
+                            encontar = true;
+                        } else if (resposta[i].media_nivel_lixo <= 54) {
+                            cor = "green";
+                        } else if (resposta[i].media_nivel_lixo <= 72) {
+                            cor = "green";
+                        } else if (resposta[i].media_nivel_lixo <= 90) {
+                            cor = "green";
+                        }
+                        var lixeira = document.getElementById("lixeira" + resposta[i].idRota);
+                        lixeira.innerHTML += `
+                            <li style="background-color: ${cor}; border-radius:10%;"><img src="./imgs/trash-512.webp" alt=""></li>
+                        `
+                    }
+                    if (encontar == true) {
+                        div_alerta.innerHTML = `
+                            <div class="alerta-lixo">
+                            <div class="alerta-lixo" id="alertaLixo">
+                            <button class="fechar-alerta" onclick="fecharAlerta()">×</button>
+                            <span>Alerta:</span> Pontos de Coletas com <span>Urgência</span>:<br>
+                            <span>${ListaID}</span>
+                            </div>
+                        `
+                    }
+                })
+            }
+        })
+    }
+
+    function fecharAlerta() {
+        document.getElementById('alertaLixo').style.display = 'none';
     }
 
 </script>
