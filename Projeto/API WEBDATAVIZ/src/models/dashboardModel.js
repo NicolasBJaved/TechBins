@@ -24,7 +24,8 @@ function mediaRota(idUsuario) {
             ) r2 ON r1.idSensor = r2.idSensor AND r1.dataHoraMedicao = r2.ultima_data
         ) AS ultimos_registros ON s.idSensor = ultimos_registros.idSensor
         WHERE rep.idRepresentante = ${idUsuario}
-        GROUP BY ro.idRota, ro.nomeRota;
+        GROUP BY ro.idRota, ro.nomeRota
+        ORDER BY media_geral_rota desc;
     `;
     console.log("Executando a instrução SQL: ", instrucao);
     return database.executar(instrucao);

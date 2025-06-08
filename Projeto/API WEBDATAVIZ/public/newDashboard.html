@@ -54,7 +54,7 @@
 <div class="containerDashboard">
     <div id="rotas" class="rotas">   
     </div>
-        <div id="div_alerta">
+    <div id="div_alerta">
     </div>
 </div>
 
@@ -66,22 +66,12 @@
     
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    function sair() {
-        sessionStorage.clear();
-        window.location = "../index.html";
-    }
 
-    function addRep() {
-        if (sessionStorage.PODE_ADICIONAR == 'N') {
-            cadastro.style.display = "none";
-        }
-    }
 
      var rotasList = [];
     function buscarDadosRotas() {
         rotas.innerHTML = "";
-        var idUsuario = sessionStorage.ID_USUARIO;
-
+        var idUsuario = 3;
         fetch("/dashboard/mediaRota", {
             method: "POST",
             headers: {
@@ -92,31 +82,34 @@
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
+                    console.log(resposta)
                     for (var i = 0; i < resposta.length; i++) {
                         var mediaGeralNivel = 0;
                         var cor = null;
-                        if (resposta[i].media_geral_rota <= 18) {
+                       if (resposta[i].media_geral_rota >= 90) {
                             cor = "red";
                             mediaGeralNivel = 5;
-                        } else if (resposta[i].media_geral_rota <= 36) {
+                        } else if (resposta[i].media_geral_rota >= 72) {
+                            cor = "orange";
                             mediaGeralNivel = 4;
+                        } else if (resposta[i].media_geral_rota >= 54) {
                             cor = "yellow";
-                        } else if (resposta[i].media_geral_rota <= 54) {
                             mediaGeralNivel = 3;
+                        } else if (resposta[i].media_geral_rota >= 36) {
                             cor = "green";
-                        } else if (resposta[i].media_geral_rota <= 72) {
                             mediaGeralNivel = 2;
+                        } else if (resposta[i].media_geral_rota >= 18) {
                             cor = "green";
-                        } else if (resposta[i].media_geral_rota <= 90) {
                             mediaGeralNivel = 1;
-                            cor = "green";
                         }
+                        console.log("MEDIA GERAL ROTA: " + resposta[i].media_geral_rota)
                         console.log("PUSH: " + resposta[i].idRota)
                         rotasList.push(resposta[i].idRota);
+                        console.log("ROTAS LIST: ", rotasList)
                         rotas.innerHTML += `
                             <div class="rota">
                                 <div style="color: ${cor}" class="tituloENivel">
-                                    <h1 style="margin:0">${resposta[i].nomeRota}</h1>
+                                    <h1 style="margin:15px">${resposta[i].nomeRota}</h1>
                                     <h1>${mediaGeralNivel}</h1>
                                 </div>
                                 <div class="lixeiras">
@@ -147,31 +140,35 @@
             console.log("ENTROU NO THEN")
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
+                    console.log("RESPOSTA: ", resposta)
                     let ListaID = [];
                     let encontar = false;
                     for (var i = 0; i < resposta.length; i++) {
                         var cor = null;
-                        if (resposta[i].media_nivel_lixo <= 18) {
+                        if (resposta[i].media_nivel_lixo >= 90) {
                             cor = "red";
                             ListaID.push(resposta[i].idPontoColeta);
                             encontar = true;
-                        } else if (resposta[i].media_nivel_lixo <= 36) {
-                            cor = "yellow";
+                        } else if (resposta[i].media_nivel_lixo >= 72) {
+                            cor = "orange";
                             ListaID.push(resposta[i].idPontoColeta);
                             encontar = true;
-                        } else if (resposta[i].media_nivel_lixo <= 54) {
+                        } else if (resposta[i].media_nivel_lixo >= 54) {
+                            cor = "yellow";
+                        } else if (resposta[i].media_nivel_lixo >= 36) {
                             cor = "green";
-                        } else if (resposta[i].media_nivel_lixo <= 72) {
-                            cor = "green";
-                        } else if (resposta[i].media_nivel_lixo <= 90) {
+                        } else if (resposta[i].media_nivel_lixo >= 18) {
                             cor = "green";
                         }
+                        console.log("MEDIA NIVEL LIXO: " + resposta[i].media_nivel_lixo)
                         var lixeira = document.getElementById("lixeira" + resposta[i].idRota);
+                        console.log("LIXEIRA: ", lixeira)
                         lixeira.innerHTML += `
                             <li style="background-color: ${cor}; border-radius:10%;"><img src="./imgs/trash-512.webp" alt=""></li>
                         `
                     }
                     if (encontar == true) {
+                        console.log(ListaID)
                         div_alerta.innerHTML = `
                             <div class="alerta-lixo">
                             <div class="alerta-lixo" id="alertaLixo">
@@ -189,7 +186,16 @@
     function fecharAlerta() {
         document.getElementById('alertaLixo').style.display = 'none';
     }
+    function sair() {
+        sessionStorage.clear();
+        window.location = "../index.html";
+    }
 
+    function addRep() {
+        if (sessionStorage.PODE_ADICIONAR == 'N') {
+            cadastro.style.display = "none";
+        }
+    }
 </script>
 
 </html>
