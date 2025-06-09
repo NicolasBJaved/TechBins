@@ -45,7 +45,7 @@
                 <input type="text" placeholder="seuemail@provedor.com" id="email_input">
                 <p>Senha</p>
                 <input type="password" placeholder="***********" id="senha_input">
-                <button onclick="entrar()">Entrar</button>
+                <button onclick="entrar()" id="botao_login">Entrar</button>
                 <div id="respostaLogin"></div>
             </div>
         </div>
@@ -83,6 +83,7 @@
 
 <script>
 
+    let tentativas = 0;
 
     function entrar() {
         // aguardar();
@@ -102,6 +103,12 @@
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
+
+        if (tentativas >= 3) {
+            respostaLogin.innerHTML = "Número máximo de tentativas atingido. Tente novamente mais tarde!";
+            return;
+        }
+
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -129,11 +136,11 @@
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
                     sessionStorage.PODE_ADICIONAR = json.podeAdicionarRepresentantes;
 
-                    if(sessionStorage.ID_EMPRESA == 99999){
+                    if (sessionStorage.ID_EMPRESA == 99999) {
                         setTimeout(function () {
-                        window.location.href = "suporte.html";
-                    }, 1000); // apenas para exibir o loading
-                    } else{
+                            window.location.href = "suporte.html";
+                        }, 1000); // apenas para exibir o loading
+                    } else {
                         setTimeout(function () {
                             window.location.href = "dashboard.html";
                         }, 1000); // apenas para exibir o loading
@@ -142,6 +149,7 @@
                 });
 
             } else {
+                tentativas++;
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
