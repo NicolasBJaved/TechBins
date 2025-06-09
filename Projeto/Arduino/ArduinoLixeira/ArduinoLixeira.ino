@@ -20,7 +20,7 @@ void loop(){ //funcao que sera realizada continuamente
     // Serial.print(";");
     Serial.print("");
     Serial.println(distancia);
-    Serial.print(";");
+    //Serial.print(";");
     // Serial.print("");
     // Serial.println(minimo);
     delay(2000);
