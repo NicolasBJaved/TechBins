@@ -73,7 +73,7 @@ function pontosPorRota(idRota) {
         INNER JOIN registro r ON s.idSensor = r.idSensor
         WHERE rpc.idRota = ${idRota}
         GROUP BY pc.logradouro, pc.bairro, pc.idPontoColeta
-        ORDER BY media_nivel_lixo ;
+        ORDER BY media_nivel_lixo;
     `;
     return database.executar(instrucao);
 }
