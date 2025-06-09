@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
 </head>
 
-<body onload="addRep()" >
+<body onload="addRep(), buscarDadosRotas()">
     <div class="div_nav">
         <div class="links_dash">
             <div class="perfil">
@@ -51,24 +51,21 @@
 
     </div>
 
-<div class="containerDashboard">
-    <div id="rotas" class="rotas">   
+    <div class="containerDashboard" id="containerDashboard">
+        <div id="rotas" class="rotas">
+        </div>
+        <div id="div_alerta">
+        </div>
     </div>
-    <div id="div_alerta">
-    </div>
-</div>
 
 
 </body>
 <script>
-    buscarDadosRotas();
-
-    
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+    var conteudoDashboard = "";
 
-
-     var rotasList = [];
+    var rotasList = [];
     function buscarDadosRotas() {
         rotas.innerHTML = "";
         var idUsuario = 3;
@@ -86,22 +83,22 @@
                     for (var i = 0; i < resposta.length; i++) {
                         var mediaGeralNivel = 0;
                         var cor = null;
-                    if (resposta[i].media_geral_rota >= 90) {
-                        cor = "lawngreen";
-                        mediaGeralNivel = 1;
-                    } else if (resposta[i].media_geral_rota > 72 && resposta[i].media_geral_rota <= 90) {
-                        cor = "lawngreen";
-                        mediaGeralNivel = 2;
-                    } else if (resposta[i].media_geral_rota > 54 && resposta[i].media_geral_rota <= 72) {
-                        cor = "yellow";
-                        mediaGeralNivel = 3;
-                    } else if (resposta[i].media_geral_rota > 18 && resposta[i].media_geral_rota <= 54) {
-                        cor = "orange";
-                        mediaGeralNivel = 4;
-                    } else if (resposta[i].media_geral_rota >= 0 && resposta[i].media_geral_rota <= 18)  {
-                        cor = "red";
-                        mediaGeralNivel = 5;
-                    }
+                        if (resposta[i].media_geral_rota >= 90) {
+                            cor = "lawngreen";
+                            mediaGeralNivel = 1;
+                        } else if (resposta[i].media_geral_rota > 72 && resposta[i].media_geral_rota <= 90) {
+                            cor = "lawngreen";
+                            mediaGeralNivel = 2;
+                        } else if (resposta[i].media_geral_rota > 54 && resposta[i].media_geral_rota <= 72) {
+                            cor = "lawngreen";
+                            mediaGeralNivel = 3;
+                        } else if (resposta[i].media_geral_rota > 18 && resposta[i].media_geral_rota <= 54) {
+                            cor = "yellow";
+                            mediaGeralNivel = 4;
+                        } else if (resposta[i].media_geral_rota >= 0 && resposta[i].media_geral_rota <= 18) {
+                            cor = "red";
+                            mediaGeralNivel = 5;
+                        }
                         console.log("MEDIA GERAL ROTA: " + resposta[i].media_geral_rota)
                         console.log("PUSH: " + resposta[i].idRota)
                         rotasList.push(resposta[i].idRota);
@@ -150,11 +147,12 @@
                             ListaID.push(resposta[i].idPontoColeta);
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo > 18 && resposta[i].media_nivel_lixo <= 36) {
-                            cor = "orange";
+                            cor = "yellow";
                             ListaID.push(resposta[i].idPontoColeta);
+                            console.log("ENCONTRAR TRUE")
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo > 36 && resposta[i].media_nivel_lixo <= 54) {
-                            cor = "yellow";
+                            cor = "lawngreen";
                         } else if (resposta[i].media_nivel_lixo > 54 && resposta[i].media_nivel_lixo <= 72) {
                             cor = "lawngreen";
                         } else if (resposta[i].media_nivel_lixo > 72 && resposta[i].media_nivel_lixo <= 100) {
@@ -167,33 +165,44 @@
                             <li style="background-color: ${cor}; border-radius:10%;"><img src="./imgs/trash-512.webp" alt=""></li>
                         `
                     }
+                    conteudoDashboard = document.getElementById("containerDashboard").innerHTML;
                     if (encontar == true) {
                         console.log(ListaID)
-                        div_alerta.innerHTML = `
-                            <div class="alerta-lixo">
-                            <div class="alerta-lixo" id="alertaLixo">
-                            <button class="fechar-alerta" onclick="fecharAlerta()">×</button>
-                            <span>Alerta:</span> Pontos de Coletas com <span>Urgência</span>:<br>
-                            <span>${ListaID}</span>
-                            </div>
-                        `
+                        console.log("ENTROU NO ENCONTRAR TRUE")
+                        mostrarAlerta(ListaID);
                     }
+
                 })
             }
         })
     }
 
-    function abrirDetalheRota(idRota, nomeRota) {
-   
-    sessionStorage.setItem('idRotaSelecionada', idRota);
-    sessionStorage.setItem('nomeRotaSelecionada', nomeRota);
-    window.location.href = "detalheRota.html";
-}
-
-
-    function fecharAlerta() {
-        document.getElementById('alertaLixo').style.display = 'none';
+    function mostrarAlerta(ListaID) {
+        console.log("ENTROU NO MOSTRAR ALERTA")
+        containerDashboard.innerHTML = `
+            <div class="alerta-lixo" id="alertaLixo">
+                <button class="fechar-alerta" onclick="fecharAlerta()">×</button>
+                <span>Alerta:</span> Pontos de Coletas com <span>Urgência</span>:<br>
+                <span>${ListaID}</span>
+                <button class="fecharAlerta" onclick="fecharAlerta()">Fechar</button>
+            </div>
+        `
+        document.getElementById('alertaLixo').style.display = 'block';
     }
+
+    function fecharAlerta(){
+        document.getElementById('alertaLixo').style.display = 'none';
+        console.log("CONTEUDO PÁGINA: " + conteudoDashboard);
+        containerDashboard.innerHTML = conteudoDashboard;
+    }
+
+    function abrirDetalheRota(idRota, nomeRota) {
+
+        sessionStorage.setItem('idRotaSelecionada', idRota);
+        sessionStorage.setItem('nomeRotaSelecionada', nomeRota);
+        window.location.href = "detalheRota.html";
+    }
+
     function sair() {
         sessionStorage.clear();
         window.location = "../index.html";
