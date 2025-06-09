@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function buscarDataHoraUltimaColeta(idEmpresa) {
-    var instrucaoSql = `SELECT DATE_FORMAT(dataHoraMedicao, '%d/%m/%Y') as dataMedicao, TIME(dataHoraMedicao) as horaMedicao FROM view_nivelLixo
+    var instrucaoSql = `SELECT DATE_FORMAT(dataHoraMedicao, '%d/%m/%Y') as dataMedicao, TIME(dataHoraMedicao) as horaMedicao FROM view_nivellixo
     WHERE idEmpresa = ${idEmpresa}
     ORDER BY dataHoraMedicao DESC LIMIT 1;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -11,7 +11,7 @@ function buscarDataHoraUltimaColeta(idEmpresa) {
 function buscarUltimasMedidas(idGrafico, idEmpresa) {
     if (idGrafico == 1) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media DESC LIMIT 3;`;
@@ -21,7 +21,7 @@ function buscarUltimasMedidas(idGrafico, idEmpresa) {
 
     if (idGrafico == 2) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media ASC LIMIT 3;`;
@@ -31,7 +31,7 @@ function buscarUltimasMedidas(idGrafico, idEmpresa) {
 
     if (idGrafico == 3) {
         var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') = 7 AND idEmpresa = ${idEmpresa}
         GROUP BY TIME(dataHoraMedicao)
         ORDER BY horario DESC`;
@@ -43,7 +43,7 @@ function buscarUltimasMedidas(idGrafico, idEmpresa) {
 function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoFiltro) {
     if (filtroTempo != 'allTime' && filtroGrupo == 'ponto' && idGrafico == 1) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media desc limit 3`;
@@ -53,7 +53,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo != 'allTime' && filtroGrupo == 'rota' && idGrafico == 1) {
         var instrucaoSql = `SELECT nomeRota as rota, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
         GROUP BY rota
         ORDER BY media desc limit 3`;
@@ -63,7 +63,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo == 'allTime' && filtroGrupo == 'ponto' && idGrafico == 1) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media DESC LIMIT 3;`;
@@ -73,7 +73,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo == 'allTime' && filtroGrupo == 'rota' && idGrafico == 1) {
         var instrucaoSql = `SELECT nomeRota as rota, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE idEmpresa = ${idEmpresa}
         GROUP BY rota
         ORDER BY media DESC LIMIT 3;`;
@@ -83,7 +83,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo != 'allTime' && filtroGrupo == 'ponto' && idGrafico == 2) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media ASC limit 3`;
@@ -93,7 +93,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo != 'allTime' && filtroGrupo == 'rota' && idGrafico == 2) {
         var instrucaoSql = `SELECT nomeRota as rota, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivelixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
         GROUP BY rota
         ORDER BY media ASC limit 3`;
@@ -103,7 +103,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo == 'allTime' && filtroGrupo == 'ponto' && idGrafico == 2) {
         var instrucaoSql = `SELECT logradouro, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE idEmpresa = ${idEmpresa}
         GROUP BY logradouro
         ORDER BY media ASC LIMIT 3;`;
@@ -113,7 +113,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
      if (filtroTempo == 'allTime' && filtroGrupo == 'rota' && idGrafico == 2) {
         var instrucaoSql = `SELECT nomeRota as rota, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE idEmpresa = ${idEmpresa}
         GROUP BY rota
         ORDER BY media ASC LIMIT 3;`;
@@ -123,7 +123,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo != 'allTime' && idGrafico == 3) {
         var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
         GROUP BY TIME(dataHoraMedicao)
         ORDER BY horario DESC`;
@@ -133,7 +133,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo == 'allTime' && idGrafico == 3) {
         var instrucaoSql = `SELECT TIME(dataHoraMedicao) as horario, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelLixo
+        FROM view_nivellixo
         WHERE idEmpresa = ${idEmpresa}
         GROUP BY TIME(dataHoraMedicao)
         ORDER BY horario DESC`;
