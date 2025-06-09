@@ -82,6 +82,18 @@ select {
     margin-right: -100px;
 }
 
+.links .agora_link a{
+    color: rgb(255, 255, 255);
+}
+
+.links li a{
+    color: rgb(209, 208, 208);
+}
+
+.links li a:hover{
+    color: rgb(255, 255, 255);
+}
+
 .linksLogin {
     display: flex;
     align-items: center;
