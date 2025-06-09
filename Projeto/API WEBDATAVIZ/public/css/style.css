@@ -854,10 +854,21 @@ select {
     height: 30px;
 }
 
-.alerta-lixo {
+#div_alerta {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.alerta-lixo {
+    position: relative;
     background-color: #ca3636;
-    align-self: center;
     color: #ffffff;
     border-left: 10px solid #8c0000;
     padding: 30px 40px;
@@ -869,14 +880,6 @@ select {
     transition: transform 0.2s ease;
 }
 
-.alerta-lixo:hover {
-    transform: scale(1.05);
-}
-
-.alerta-lixo span {
-    font-weight: bold;
-}
-
 .fechar-alerta {
     position: absolute;
     top: 10px;
@@ -886,6 +889,10 @@ select {
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 20px;
 }
 
 .fechar-alerta:hover {
