@@ -173,6 +173,11 @@ button {
     min-height: 500px; 
 }
 
+.containerDashboard .rota:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 .containerDashboard .rota {
     display: flex;
     flex-direction: column;
@@ -264,4 +269,13 @@ button {
 
 .fechar-alerta:hover {
     color: #f2dede;
+}
+
+
+#tituloRota {
+    text-align: center;
+}
+
+#listaPontos span{
+    text-align: center;
 }

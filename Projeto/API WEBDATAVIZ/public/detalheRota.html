@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhe da Rota</title>
+    <link rel="stylesheet" href="./css/newDash.css">
+</head>
+<body>
+    <h1 id="tituloRota"></h1>
+    <ul id="listaPontos"></ul>
+
+    <script>
+        const idRota = sessionStorage.getItem('idRotaSelecionada');
+        const nomeRota = sessionStorage.getItem('nomeRotaSelecionada');
+        document.getElementById('tituloRota').innerText = `Pontos de Coleta da Rota: ${nomeRota}`;
+
+        fetch("/dashboard/pontosPorRota", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ idRotaServer: idRota })
+        })
+        .then(res => res.json())
+        .then(pontos => {
+            console.log(pontos);
+            const ul = document.getElementById('listaPontos');
+            pontos.forEach(ponto => {
+                let cor = "green";
+                if (ponto.media_nivel_lixo >= 90) {
+                    cor = "red";
+                } else if (ponto.media_nivel_lixo >= 72) {
+                    cor = "orange";
+                } else if (ponto.media_nivel_lixo >= 54) {
+                    cor = "yellow";
+                }
+                ul.innerHTML += `
+                    <li style="background-color:${cor}; border-radius:10%; margin:10px; display:flex; text-align:center; padding:10px;">
+                        <img src="./imgs/trash-512.webp" alt="Lixeira" style="width:30px; height:30px; margin-right:10px;">
+                        <span>
+                            ${ponto.logradouro} - ${ponto.bairro} 
+                            <b style="margin-left:10px;">Nível: ${ponto.media_nivel_lixo}</b>
+                        </span>
+                    </li>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

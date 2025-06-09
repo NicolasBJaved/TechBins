@@ -22,7 +22,16 @@ function mediaCincoPontos(req, res){
     });
 }
 
+function pontosPorRota(req, res) {
+    var idRota = req.body.idRotaServer;
+    dashboardModel.pontosPorRota(idRota)
+    .then(function (resultado) {
+        res.status(200).json(resultado);
+    });
+}
+
 module.exports ={
     mediaRota,
-    mediaCincoPontos
+    mediaCincoPontos,
+    pontosPorRota
 }

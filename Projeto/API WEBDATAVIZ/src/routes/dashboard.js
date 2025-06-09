@@ -13,4 +13,8 @@ router.post("/mediaCincoPontos", function (req, res) {
 }
 );
 
+router.post("/pontosPorRota", function (req, res) {
+    dashboardController.pontosPorRota(req, res);
+});
+
 module.exports = router;

@@ -58,7 +58,27 @@ function mediaCincoPontos(idUsuario, rotasList){
     return database.executar(instrucao);
 }
 
+function pontosPorRota(idRota) {
+    var instrucao = `
+        SELECT
+            pc.logradouro,
+            pc.bairro,
+            pc.idPontoColeta,
+            ROUND(AVG(r.distancia), 2) AS media_nivel_lixo
+        FROM rotaPontoColeta rpc
+        INNER JOIN pontoColeta pc ON rpc.idPontoColeta = pc.idPontoColeta
+        INNER JOIN lixeira l ON pc.idPontoColeta = l.idPontoColeta
+        INNER JOIN sensor s ON l.idLixeira = s.idLixeira
+        INNER JOIN registro r ON s.idSensor = r.idSensor
+        WHERE rpc.idRota = ${idRota}
+        GROUP BY pc.logradouro, pc.bairro, pc.idPontoColeta
+        ORDER BY media_nivel_lixo DESC;
+    `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
     mediaRota,
-    mediaCincoPontos
+    mediaCincoPontos,
+    pontosPorRota
 }
