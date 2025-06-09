@@ -19,7 +19,7 @@
      // conexão com o banco de dados MySQL
      let poolBancoDados = mysql.createPool(
          {
-             host: '127.0.0.1',
+             host: '10.18.33.189', // MUDAR PARA IP DA PESSOA
              user: 'techbins',
              password: 'Techbins1234!', // MUDAR PARA '1234' QUANDO FOR USAR O MYSQL LOCAL ou para 'Techbins1234!' QUANDO FOR NA VM
              database: 'techbins',
