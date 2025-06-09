@@ -279,3 +279,38 @@ button {
 #listaPontos span{
     text-align: center;
 }
+
+
+/*  Aqui começa o detalhePonto */
+
+
+#tituloPonto {
+    display: flex;
+    text-align: center;
+}
+
+.lixeira-info  {
+    display: flex;
+}
+
+.lixeira-item {
+    border-radius: 10%;
+    margin: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    width: 30%;
+}
+
+.lixeira-img {
+    width: 80px;
+    height: 80px;
+}
+
+
+.lixeira-nivel-1 { background-color: lawngreen; }
+.lixeira-nivel-2 { background-color: lawngreen; }
+.lixeira-nivel-3 { background-color: yellow; }
+.lixeira-nivel-4 { background-color: orange; }
+.lixeira-nivel-5 { background-color: red; }

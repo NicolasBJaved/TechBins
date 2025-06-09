@@ -39,7 +39,8 @@
                 }
 
                 ul.innerHTML += `
-                    <li style="background-color:${cor}; border-radius:10%; margin:10px; display:flex; text-align:center; padding:10px;">
+                    <li onclick="abrirDetalhePonto(${ponto.idPontoColeta}, '${ponto.logradouro}')" 
+                        style="background-color:${cor}; border-radius:10%; margin:10px; display:flex; text-align:center; padding:10px; cursor:pointer;">
                         <img src="./imgs/trash-512.webp" alt="Lixeira" style="width:30px; height:30px; margin-right:10px;">
                         <span>
                             ${ponto.logradouro} - ${ponto.bairro} 
@@ -49,6 +50,13 @@
                 `;
             });
         });
+
+function abrirDetalhePonto(idPontoColeta, logradouro) {
+    sessionStorage.setItem('idPontoColetaSelecionado', idPontoColeta);
+    sessionStorage.setItem('logradouroSelecionado', logradouro);
+    window.location.href = "detalhePonto.html";
+}
+
     </script>
 </body>
 </html>

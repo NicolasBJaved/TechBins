@@ -78,8 +78,28 @@ function pontosPorRota(idRota) {
     return database.executar(instrucao);
 }
 
+function lixeirasPorPonto(idPontoColeta) {
+    var instrucao = `
+        SELECT 
+            l.idLixeira,
+            ROUND(r.distancia, 2) AS nivel
+        FROM lixeira l
+        INNER JOIN sensor s ON l.idLixeira = s.idLixeira
+        INNER JOIN (
+            SELECT idSensor, MAX(dataHoraMedicao) AS ultima_data
+            FROM registro
+            GROUP BY idSensor
+        ) ult ON s.idSensor = ult.idSensor
+        INNER JOIN registro r ON s.idSensor = r.idSensor AND r.dataHoraMedicao = ult.ultima_data
+        WHERE l.idPontoColeta = ${idPontoColeta}
+        ORDER BY l.idLixeira;
+    `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
     mediaRota,
     mediaCincoPontos,
-    pontosPorRota
+    pontosPorRota,
+    lixeirasPorPonto
 }

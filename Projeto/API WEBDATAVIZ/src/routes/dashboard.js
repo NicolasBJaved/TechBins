@@ -17,4 +17,9 @@ router.post("/pontosPorRota", function (req, res) {
     dashboardController.pontosPorRota(req, res);
 });
 
+
+router.post("/lixeirasPorPonto", function(req, res){
+    dashboardController.lixeirasPorPonto(req,res);
+})
+
 module.exports = router;
