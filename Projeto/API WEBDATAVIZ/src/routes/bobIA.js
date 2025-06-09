@@ -30,7 +30,7 @@ async function gerarResposta(mensagem) {
 }
 
 router.post("/perguntar", async function (req, res) {
-    console.log("Entrou na rota /perguntar");
+    console.log("Entrou na rota /perguntar");   
     const pergunta = req.body.pergunta;
 
     try {
