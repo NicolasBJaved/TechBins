@@ -52,7 +52,7 @@ function mediaCincoPontos(idUsuario, rotasList){
             INNER JOIN registro r ON s.idSensor = r.idSensor
             WHERE rpc.idRota IN (${rotasList}) 
             GROUP BY pc.logradouro, ro.idRota, pc.idPontoColeta
-            ORDER BY media_nivel_lixo DESC LIMIT ${rotasList.length * 5};
+            ORDER BY media_nivel_lixo DESC;
         `;
     console.log("Executando a instrução SQL: ", instrucao);
     return database.executar(instrucao);

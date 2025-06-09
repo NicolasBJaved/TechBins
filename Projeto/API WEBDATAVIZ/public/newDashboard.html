@@ -107,7 +107,7 @@
                         rotasList.push(resposta[i].idRota);
                         console.log("ROTAS LIST: ", rotasList)
                         rotas.innerHTML += `
-                            <div class="rota">
+                            <div class="rota" onclick="abrirDetalheRota(${resposta[i].idRota}, '${resposta[i].nomeRota}')">
                                 <div style="color: ${cor}" class="tituloENivel">
                                     <h1 style="margin:15px">${resposta[i].nomeRota}</h1>
                                     <h1>${mediaGeralNivel}</h1>
@@ -149,15 +149,15 @@
                             cor = "red";
                             ListaID.push(resposta[i].idPontoColeta);
                             encontar = true;
-                        } else if (resposta[i].media_nivel_lixo >= 72) {
+                        } else if (resposta[i].media_nivel_lixo >= 72   && resposta[i].media_nivel_lixo <= 90) {
                             cor = "orange";
                             ListaID.push(resposta[i].idPontoColeta);
                             encontar = true;
-                        } else if (resposta[i].media_nivel_lixo >= 54) {
+                        } else if (resposta[i].media_nivel_lixo >= 54 && resposta[i].media_nivel_lixo <= 72) {
                             cor = "yellow";
-                        } else if (resposta[i].media_nivel_lixo >= 36) {
+                        } else if (resposta[i].media_nivel_lixo >= 36 && resposta[i].media_nivel_lixo <= 54) {
                             cor = "green";
-                        } else if (resposta[i].media_nivel_lixo >= 18) {
+                        } else if (resposta[i].media_nivel_lixo <= 18   && resposta[i].media_nivel_lixo >= 0) {
                             cor = "green";
                         }
                         console.log("MEDIA NIVEL LIXO: " + resposta[i].media_nivel_lixo)
@@ -182,6 +182,14 @@
             }
         })
     }
+
+    function abrirDetalheRota(idRota, nomeRota) {
+   
+    sessionStorage.setItem('idRotaSelecionada', idRota);
+    sessionStorage.setItem('nomeRotaSelecionada', nomeRota);
+    window.location.href = "detalheRota.html";
+}
+
 
     function fecharAlerta() {
         document.getElementById('alertaLixo').style.display = 'none';
