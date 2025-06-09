@@ -41,6 +41,7 @@ function mediaCincoPontos(idUsuario, rotasList){
                 pc.logradouro,
                 ro.idRota,
                 pc.idPontoColeta,
+                ro.nomeRota,
                 ROUND(AVG(r.distancia), 2) AS media_nivel_lixo
                 FROM representante rep
                 INNER JOIN empresa e ON rep.idEmpresa = e.idEmpresa

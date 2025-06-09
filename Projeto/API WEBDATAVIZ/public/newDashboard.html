@@ -138,17 +138,18 @@
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
                     console.log("RESPOSTA: ", resposta)
-                    let ListaID = [];
+                    let listaRotas = [];
+                    let listaResposta = [];
                     let encontar = false;
                     for (var i = 0; i < resposta.length; i++) {
                         var cor = null;
                         if (resposta[i].media_nivel_lixo <= 18 && resposta[i].media_nivel_lixo >= 0) {
                             cor = "red";
-                            ListaID.push(resposta[i].idPontoColeta);
+                            listaResposta.push(resposta[i]);
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo > 18 && resposta[i].media_nivel_lixo <= 36) {
                             cor = "yellow";
-                            ListaID.push(resposta[i].idPontoColeta);
+                            listaResposta.push(resposta[i]);
                             console.log("ENCONTRAR TRUE")
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo > 36 && resposta[i].media_nivel_lixo <= 54) {
@@ -167,9 +168,9 @@
                     }
                     conteudoDashboard = document.getElementById("containerDashboard").innerHTML;
                     if (encontar == true) {
-                        console.log(ListaID)
+                        console.log(listaResposta)
                         console.log("ENTROU NO ENCONTRAR TRUE")
-                        mostrarAlerta(ListaID);
+                        mostrarAlerta(listaResposta);
                     }
 
                 })
@@ -177,20 +178,45 @@
         })
     }
 
-    function mostrarAlerta(ListaID) {
+    function mostrarAlerta(listaResposta) {
         console.log("ENTROU NO MOSTRAR ALERTA")
         containerDashboard.innerHTML = `
             <div class="alerta-lixo" id="alertaLixo">
                 <button class="fechar-alerta" onclick="fecharAlerta()">×</button>
-                <span>Alerta:</span> Pontos de Coletas com <span>Urgência</span>:<br>
-                <span>${ListaID}</span>
-                <button class="fecharAlerta" onclick="fecharAlerta()">Fechar</button>
+                <div class="alertaTitulo">
+                    <div>
+                        <span>Alerta:</span> Pontos de Coletas com <span>Urgência</span>:<br>
+                    </div>
+                    <div>
+                        <div id="listaRotas" class="listaRotas">
+                        </div>
+                    </div>
+                </div>
             </div>
         `
+
+        var arrayRotas = [];
+
+        var contador = 0;
+        for (var i = 0; i < listaResposta.length; i++) {
+            if (!arrayRotas.includes(listaResposta[i].nomeRota)) {
+                arrayRotas.push(listaResposta[i].nomeRota);
+                listaRotas.innerHTML += `
+                    <div id="rota${listaResposta[i].idRota}" class ="rota"><h2>${arrayRotas[contador]}</h2></div>
+                `
+                contador++;
+            }
+        }
+
+        for (var i = 0; i < listaResposta.length; i++) {
+            document.getElementById("rota" + listaResposta[i].idRota).innerHTML += `
+                <p>${listaResposta[i].logradouro}</p><br>
+            `
+        }
         document.getElementById('alertaLixo').style.display = 'block';
     }
 
-    function fecharAlerta(){
+    function fecharAlerta() {
         document.getElementById('alertaLixo').style.display = 'none';
         console.log("CONTEUDO PÁGINA: " + conteudoDashboard);
         containerDashboard.innerHTML = conteudoDashboard;
