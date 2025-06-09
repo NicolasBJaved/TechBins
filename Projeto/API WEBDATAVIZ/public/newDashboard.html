@@ -184,12 +184,8 @@
             <div class="alerta-lixo" id="alertaLixo">
                 <button class="fechar-alerta" onclick="fecharAlerta()">×</button>
                 <div class="alertaTitulo">
-                    <div>
-                        <span>Alerta:</span> Pontos de Coletas com <span>Urgência</span>:<br>
-                    </div>
-                    <div>
-                        <div id="listaRotas" class="listaRotas">
-                        </div>
+                    <h1>Pontos de Coletas com <span>Urgência:</span></h1><br>
+                    <div id="listaRotas" class="listaRotas">
                     </div>
                 </div>
             </div>
@@ -210,7 +206,7 @@
 
         for (var i = 0; i < listaResposta.length; i++) {
             document.getElementById("rota" + listaResposta[i].idRota).innerHTML += `
-                <p>${listaResposta[i].logradouro}</p><br>
+                ${listaResposta[i].logradouro} <br>
             `
         }
         document.getElementById('alertaLixo').style.display = 'block';
