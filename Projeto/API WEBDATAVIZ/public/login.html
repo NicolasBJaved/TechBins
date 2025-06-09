@@ -28,7 +28,7 @@
             <li>
                 <a href="simulador.html" class="link_nav">Simulador Financeiro</a>
             </li>
-            <li>
+            <li class="agora_link">
                 <a href="login.html" class="link_nav">Login</a>
             </li>
         </ul>
@@ -83,6 +83,7 @@
 
 <script>
 
+    let tentativas = 0;
 
     function entrar() {
         // aguardar();
@@ -102,6 +103,12 @@
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
+
+        if (tentativas >= 3) {
+            respostaLogin.innerHTML = "Número máximo de tentativas atingido. Tente novamente mais tarde!";
+            return;
+        }
+
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -127,19 +134,20 @@
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
                     sessionStorage.PODE_ADICIONAR = json.podeAdicionarRepresentantes;
 
-                    if(sessionStorage.ID_EMPRESA == 99999){
+                    if (sessionStorage.ID_EMPRESA == 99999) {
                         setTimeout(function () {
-                        window.location.href = "suporte.html";
-                    }, 1000); // apenas para exibir o loading
-                    } else{
+                            window.location.href = "suporte.html";
+                        }, 1000); // apenas para exibir o loading
+                    } else {
                         setTimeout(function () {
-                            window.location.href = "dashboard.html";
+                            window.location.href = "newDashboard.html";
                         }, 1000); // apenas para exibir o loading
                     }
 
                 });
 
             } else {
+                tentativas++;
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
