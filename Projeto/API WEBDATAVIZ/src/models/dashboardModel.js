@@ -10,8 +10,8 @@ function mediaRota(idUsuario) {
             ROUND(AVG(ultimos_registros.distancia), 2) AS media_geral_rota
         FROM representante rep
         INNER JOIN rota ro ON rep.idEmpresa = ro.idEmpresa
-        INNER JOIN rotaPontoColeta rpc ON ro.idRota = rpc.idRota
-        INNER JOIN pontoColeta pc ON rpc.idPontoColeta = pc.idPontoColeta
+        INNER JOIN rotapontocoleta rpc ON ro.idRota = rpc.idRota
+        INNER JOIN pontocoleta pc ON rpc.idPontoColeta = pc.idPontoColeta
         INNER JOIN lixeira l ON pc.idPontoColeta = l.idPontoColeta
         INNER JOIN sensor s ON l.idLixeira = s.idLixeira
         INNER JOIN (
@@ -37,22 +37,23 @@ function mediaCincoPontos(idUsuario, rotasList){
     console.log("ROTAS LIST: " + rotasList.length);
     var listResposta = []
         var instrucao = `
-        SELECT 
+            SELECT 
                 pc.logradouro,
                 ro.idRota,
                 pc.idPontoColeta,
                 ROUND(AVG(r.distancia), 2) AS media_nivel_lixo
-            FROM representante rep
-            INNER JOIN empresa e ON rep.idEmpresa = e.idEmpresa
-            INNER JOIN rota ro ON ro.idEmpresa = e.idEmpresa
-            INNER JOIN rotaPontoColeta rpc ON rpc.idRota = ro.idRota
-            INNER JOIN pontoColeta pc ON rpc.idPontoColeta = pc.idPontoColeta
-            INNER JOIN lixeira l ON pc.idPontoColeta = l.idPontoColeta
-            INNER JOIN sensor s ON l.idLixeira = s.idLixeira
-            INNER JOIN registro r ON s.idSensor = r.idSensor
-            WHERE rpc.idRota IN (${rotasList}) 
-            GROUP BY pc.logradouro, ro.idRota, pc.idPontoColeta
-            ORDER BY media_nivel_lixo DESC;
+                FROM representante rep
+                INNER JOIN empresa e ON rep.idEmpresa = e.idEmpresa
+                INNER JOIN rota ro ON ro.idEmpresa = e.idEmpresa
+                INNER JOIN rotapontocoleta rpc ON rpc.idRota = ro.idRota
+                INNER JOIN pontocoleta pc ON rpc.idPontoColeta = pc.idPontoColeta
+                INNER JOIN lixeira l ON pc.idPontoColeta = l.idPontoColeta
+                INNER JOIN sensor s ON l.idLixeira = s.idLixeira
+                INNER JOIN registro r ON s.idSensor = r.idSensor
+                WHERE rpc.idRota IN (${rotasList}) 
+                GROUP BY pc.logradouro, ro.idRota, pc.idPontoColeta
+                ORDER BY media_nivel_lixo DESC;
+
         `;
     console.log("Executando a instrução SQL: ", instrucao);
     return database.executar(instrucao);
@@ -65,8 +66,8 @@ function pontosPorRota(idRota) {
             pc.bairro,
             pc.idPontoColeta,
             ROUND(AVG(r.distancia), 2) AS media_nivel_lixo
-        FROM rotaPontoColeta rpc
-        INNER JOIN pontoColeta pc ON rpc.idPontoColeta = pc.idPontoColeta
+        FROM rotapontocoleta rpc
+        INNER JOIN pontocoleta pc ON rpc.idPontoColeta = pc.idPontoColeta
         INNER JOIN lixeira l ON pc.idPontoColeta = l.idPontoColeta
         INNER JOIN sensor s ON l.idLixeira = s.idLixeira
         INNER JOIN registro r ON s.idSensor = r.idSensor
