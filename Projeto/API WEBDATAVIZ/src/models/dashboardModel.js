@@ -25,7 +25,7 @@ function mediaRota(idUsuario) {
         ) AS ultimos_registros ON s.idSensor = ultimos_registros.idSensor
         WHERE rep.idRepresentante = ${idUsuario}
         GROUP BY ro.idRota, ro.nomeRota
-        ORDER BY media_geral_rota desc;
+        ORDER BY media_geral_rota ;
     `;
     console.log("Executando a instrução SQL: ", instrucao);
     return database.executar(instrucao);
@@ -52,7 +52,7 @@ function mediaCincoPontos(idUsuario, rotasList){
                 INNER JOIN registro r ON s.idSensor = r.idSensor
                 WHERE rpc.idRota IN (${rotasList}) 
                 GROUP BY pc.logradouro, ro.idRota, pc.idPontoColeta
-                ORDER BY media_nivel_lixo DESC;
+                ORDER BY media_nivel_lixo ;
 
         `;
     console.log("Executando a instrução SQL: ", instrucao);
@@ -73,7 +73,7 @@ function pontosPorRota(idRota) {
         INNER JOIN registro r ON s.idSensor = r.idSensor
         WHERE rpc.idRota = ${idRota}
         GROUP BY pc.logradouro, pc.bairro, pc.idPontoColeta
-        ORDER BY media_nivel_lixo DESC;
+        ORDER BY media_nivel_lixo ;
     `;
     return database.executar(instrucao);
 }

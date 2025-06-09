@@ -24,14 +24,20 @@
             console.log(pontos);
             const ul = document.getElementById('listaPontos');
             pontos.forEach(ponto => {
-                let cor = "green";
-                if (ponto.media_nivel_lixo >= 90) {
+                
+                if(ponto.media_nivel_lixo <= 18 && ponto.media_nivel_lixo >= 0){
                     cor = "red";
-                } else if (ponto.media_nivel_lixo >= 72) {
-                    cor = "orange";
-                } else if (ponto.media_nivel_lixo >= 54) {
-                    cor = "yellow";
                 }
+                else if (ponto.media_nivel_lixo > 18 && ponto.media_nivel_lixo <= 36) {
+                    cor = "orange";
+                } else if (ponto.media_nivel_lixo > 36 && ponto.media_nivel_lixo <= 54) {
+                    cor = "yellow";
+                } else if (ponto.media_nivel_lixo > 54 && ponto.media_nivel_lixo <= 72) {
+                    cor = "lawngreen";
+                } else if(ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 100){
+                    cor = "lawngreen";
+                }
+
                 ul.innerHTML += `
                     <li style="background-color:${cor}; border-radius:10%; margin:10px; display:flex; text-align:center; padding:10px;">
                         <img src="./imgs/trash-512.webp" alt="Lixeira" style="width:30px; height:30px; margin-right:10px;">
