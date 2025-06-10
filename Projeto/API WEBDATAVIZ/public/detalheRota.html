@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="./css/newDash.css">
 </head>
 <body>
+    <div class="divTitulo" id="div_titulo">Dashboard</div>
     <h1 id="tituloRota"></h1>
     <ul id="listaPontos"></ul>
 
     <script>
         const idRota = sessionStorage.getItem('idRotaSelecionada');
         const nomeRota = sessionStorage.getItem('nomeRotaSelecionada');
+        div_titulo.innerHTML = `<h2>Dashboard da Rota ${nomeRota}</h2>`;
         document.getElementById('tituloRota').innerText = `Pontos de Coleta da Rota: ${nomeRota}`;
 
         fetch("/dashboard/pontosPorRota", {

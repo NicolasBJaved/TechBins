@@ -305,6 +305,15 @@ button {
     text-align: center;
 }
 
+.divTitulo {
+    text-align: center;
+    margin: 5px 5px 5px 180px;
+}
+
+.divTitulo h2{
+    font-size: 60px;
+    margin: 0;
+}
 
 /*  Aqui começa o detalhePonto */
 
