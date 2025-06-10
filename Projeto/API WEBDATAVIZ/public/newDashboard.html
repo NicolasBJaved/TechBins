@@ -22,7 +22,7 @@
                 <li>
                     <a href="index.html" class="link_nav">Home</a>
                 </li>
-                <li>
+                <li class="agora">
                     <a href="newDashboard.html" class="link_nav">Dashboards</a>
                 </li>
                 <li>
@@ -30,14 +30,15 @@
                 </li>
 
                 <li>
-                    <a href="rotas.html" class="link_nav">Rotas</a>
+                    <a href="rotas.html" class="link_nav">Otimização de Rotas</a>
                 </li>
                 <li>
                     <a href="cadastro.html" class="link_nav" id="cadastro">Adicionar representante</a>
                 </li>
                 <li>
                     <a href="https://sptech-team-vbjwf7te.atlassian.net/servicedesk/customer/portal/1" target="_blank"
-                        class="link_nav">Algum problema? <br> Contate-nos</a>
+                        class="link_nav">Algum problema? <br> 
+                        <span style="text-decoration: underline;">Contate-nos</span></a>
                 </li>
             </ul>
 
@@ -83,17 +84,21 @@
                     for (var i = 0; i < resposta.length; i++) {
                         var mediaGeralNivel = 0;
                         var cor = null;
-                        if (resposta[i].media_geral_rota >= 90) {
+                        if(resposta[i].media_geral_rota > 90){
+                            resposta[i].media_geral_rota = 90;
+                        }
+
+                        if (resposta[i].media_geral_rota >= 72 && reposta[i].media_geral_rota <= 90) {
                             cor = "lawngreen";
                             mediaGeralNivel = 1;
-                        } else if (resposta[i].media_geral_rota > 72 && resposta[i].media_geral_rota <= 90) {
-                            cor = "lawngreen";
-                            mediaGeralNivel = 2;
                         } else if (resposta[i].media_geral_rota > 54 && resposta[i].media_geral_rota <= 72) {
                             cor = "lawngreen";
-                            mediaGeralNivel = 3;
-                        } else if (resposta[i].media_geral_rota > 18 && resposta[i].media_geral_rota <= 54) {
+                            mediaGeralNivel = 2;
+                        } else if (resposta[i].media_geral_rota > 36 && resposta[i].media_geral_rota <= 54) {
                             cor = "yellow";
+                            mediaGeralNivel = 3;
+                        } else if (resposta[i].media_geral_rota > 18 && resposta[i].media_geral_rota <= 36) {
+                            cor = "red";
                             mediaGeralNivel = 4;
                         } else if (resposta[i].media_geral_rota >= 0 && resposta[i].media_geral_rota <= 18) {
                             cor = "red";
@@ -142,21 +147,24 @@
                     let listaResposta = [];
                     let encontar = false;
                     for (var i = 0; i < resposta.length; i++) {
+                        if(resposta[i].media_nivel_lixo > 90){
+                            resposta[i].media_nivel_lixo = 90;
+                        }
                         var cor = null;
                         if (resposta[i].media_nivel_lixo <= 18 && resposta[i].media_nivel_lixo >= 0) {
                             cor = "red";
                             listaResposta.push(resposta[i]);
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo > 18 && resposta[i].media_nivel_lixo <= 36) {
-                            cor = "yellow";
+                            cor = "red";
                             listaResposta.push(resposta[i]);
                             console.log("ENCONTRAR TRUE")
                             encontar = true;
                         } else if (resposta[i].media_nivel_lixo > 36 && resposta[i].media_nivel_lixo <= 54) {
-                            cor = "lawngreen";
+                            cor = "yellow";
                         } else if (resposta[i].media_nivel_lixo > 54 && resposta[i].media_nivel_lixo <= 72) {
                             cor = "lawngreen";
-                        } else if (resposta[i].media_nivel_lixo > 72 && resposta[i].media_nivel_lixo <= 100) {
+                        } else if (resposta[i].media_nivel_lixo > 72 && resposta[i].media_nivel_lixo <= 90) {
                             cor = "lawngreen";
                         }
                         console.log("MEDIA NIVEL LIXO: " + resposta[i].media_nivel_lixo)

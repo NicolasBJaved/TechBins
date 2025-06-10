@@ -4,13 +4,13 @@
 
 
 main {
-    margin-left: 250px; 
+    margin-left: 250px;
     padding: 20px;
 }
 
 body {
     background: #F7EDE1;
-background: radial-gradient(circle, rgba(247, 237, 225, 1) 43%, rgba(162, 205, 166, 1) 86%, rgba(130, 186, 133, 1) 100%);
+    background: radial-gradient(circle, rgba(247, 237, 225, 1) 43%, rgba(162, 205, 166, 1) 86%, rgba(130, 186, 133, 1) 100%);
     font-family: "Exo 2", sans-serif;
 }
 
@@ -22,7 +22,7 @@ background: radial-gradient(circle, rgba(247, 237, 225, 1) 43%, rgba(162, 205, 1
     top: 0;
     width: 250px;
     height: 100vh;
-    background-color: #155C3A; 
+    background-color: #155C3A;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -51,10 +51,18 @@ background: radial-gradient(circle, rgba(247, 237, 225, 1) 43%, rgba(162, 205, 1
     margin: 20px 0;
 }
 
+.links li a {
+    color: rgb(210, 210, 210);
+}
+
+.links .agora a{
+    color: rgb(255, 255, 255);
+}
+
 .link_nav {
     text-decoration: none;
-    color: white;
     font-size: 18px;
+    font-weight: bold;
     display: block;
     padding: 10px 15px;
     border-radius: 10px;
@@ -63,6 +71,7 @@ background: radial-gradient(circle, rgba(247, 237, 225, 1) 43%, rgba(162, 205, 1
 
 .link_nav:hover {
     background-color: #333;
+    color: white;
 }
 
 .perfil {
@@ -166,11 +175,11 @@ button {
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: center;
     align-items: flex-start;
-    gap: 10px 30px; 
+    gap: 10px 30px;
     margin-top: 100px;
-    min-height: 500px; 
+    min-height: 500px;
 }
 
 .containerDashboard .rota:hover {
@@ -193,9 +202,9 @@ button {
     align-items: center;
     width: 100%;
     border-top-left-radius: 10px;
-     border-top: 2px solid black;
-     border-left: 2px solid black;
-        border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
     border-top-right-radius: 10px;
     background-color: #155C3A;
 }
@@ -232,7 +241,7 @@ button {
 }
 
 .alerta-lixo {
-   display: none;
+    display: none;
     background-color: #ca3636;
     display: flex;
     flex-direction: column;
@@ -248,13 +257,13 @@ button {
     line-height: 1.6;
 }
 
-.alerta-lixo .alertaTitulo{
+.alerta-lixo .alertaTitulo {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.alerta-lixo .listaRotas{
+.alerta-lixo .listaRotas {
     display: flex;
     justify-content: center;
     height: 100%;
@@ -262,7 +271,7 @@ button {
     flex-wrap: wrap;
 }
 
-.alerta-lixo .rota{
+.alerta-lixo .rota {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -292,7 +301,7 @@ button {
     text-align: center;
 }
 
-#listaPontos span{
+#listaPontos span {
     text-align: center;
 }
 
@@ -305,7 +314,7 @@ button {
     text-align: center;
 }
 
-.lixeira-info  {
+.lixeira-info {
     display: flex;
 }
 
@@ -325,15 +334,30 @@ button {
 }
 
 
-.lixeira-nivel-1 { background-color: lawngreen; }
-.lixeira-nivel-2 { background-color: lawngreen; }
-.lixeira-nivel-3 { background-color: yellow; }
-.lixeira-nivel-4 { background-color: orange; }
-.lixeira-nivel-5 { background-color: red; }
+.lixeira-nivel-1 {
+    background-color: lawngreen;
+}
+
+.lixeira-nivel-2 {
+    background-color: lawngreen;
+}
+
+.lixeira-nivel-3 {
+    background-color: yellow;
+}
+
+.lixeira-nivel-4 {
+    background-color: orange;
+}
+
+.lixeira-nivel-5 {
+    background-color: red;
+}
 
 /* BOB IA */
 .main {
-    margin-left: 250px; /* largura da navbar */
+    margin-left: 250px;
+    /* largura da navbar */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -346,7 +370,7 @@ button {
     text-align: center;
     border: 2px #155C3A solid;
     height: 500px;
-    background-color:  #267652a0;
+    background-color: #267652a0;
     border-radius: 5%;
 }
 
@@ -406,49 +430,53 @@ button:hover {
 /* PAGINA ROTAS */
 
 .campo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 80%;
-  margin-left: 350px;
-  padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 350px;
+    padding: 20px;
 }
 
 .campo h2 {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #000000;
-  font-size: 40px;
-  font-weight: bold;
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 0px;
 }
 
-.texto_esquerda, .texto_direita {
-  width: 45%;
-  padding: 20px;
+.texto_esquerda,
+.texto_direita {
+    width: 45%;
+    padding: 20px;
 }
 
-.texto_esquerda h2, .texto_direita h2 {
-font-size: 33px;
-  color: #000000;
-  margin-bottom: 15px;
-  font-weight: bold;
+.texto_esquerda h2,
+.texto_direita h2 {
+    font-size: 33px;
+    color: #000000;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
-.texto_esquerda p, .texto_direita p {
-  line-height: 1.6;
-  font-size: 23px;
-  margin-bottom: 10px;
+.texto_esquerda p,
+.texto_direita p {
+    line-height: 1.6;
+    font-size: 23px;
+    margin-bottom: 10px;
 }
 
 .texto_direita img {
-  width: 100%;
-  max-width: 400px;
-  display: block;
-  margin: 20px auto;
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 20px auto;
 }
 
-.texto_esquerda span, .texto_direita span {
-    font-size: 25px;
+.texto_esquerda span,
+.texto_direita span {
+    font-size: 26px;
     font-weight: bold;
 }

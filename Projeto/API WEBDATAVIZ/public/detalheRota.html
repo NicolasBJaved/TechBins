@@ -24,18 +24,24 @@
             console.log(pontos);
             const ul = document.getElementById('listaPontos');
             pontos.forEach(ponto => {
-                
+                let nivel;
                 if(ponto.media_nivel_lixo <= 18 && ponto.media_nivel_lixo >= 0){
                     cor = "red";
+                    nivel = 5;
                 }
                 else if (ponto.media_nivel_lixo > 18 && ponto.media_nivel_lixo <= 36) {
-                    cor = "yellow";
+                    cor = "red";
+                    nivel = 4;
                 } else if (ponto.media_nivel_lixo > 36 && ponto.media_nivel_lixo <= 54) {
-                    cor = "lawngreen";
+                    cor = "yellow";
+                    nivel = 3;
+
                 } else if (ponto.media_nivel_lixo > 54 && ponto.media_nivel_lixo <= 72) {
                     cor = "lawngreen";
+                    nivel = 2;
                 } else if(ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 100){
                     cor = "lawngreen";
+                    nivel = 1;
                 }
 
                 ul.innerHTML += `
@@ -44,7 +50,7 @@
                         <img src="./imgs/trash-512.webp" alt="Lixeira" style="width:30px; height:30px; margin-right:10px;">
                         <span>
                             ${ponto.logradouro} - ${ponto.bairro} 
-                            <b style="margin-left:10px;">Nível: ${ponto.media_nivel_lixo}</b>
+                            <b style="margin-left:10px;">Nível: ${nivel}</b>
                         </span>
                     </li>
                 `;

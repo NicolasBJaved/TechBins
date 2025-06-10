@@ -26,16 +26,16 @@
             lixeiras.forEach(lixeira => {
                 let cor = "gray";
                 let nivel = 0;
-                if (lixeira.nivel >= 90) {
+                if (lixeira.nivel >= 72 && lixeira.nivel <= 90) {
                     cor = "lawngreen";
                     nivel = 1;
-                } else if (lixeira.nivel > 72 && lixeira.nivel < 90) {
+                } else if (lixeira.nivel > 54 && lixeira.nivel < 72) {
                     cor = "lawngreen";
                     nivel = 2;
-                } else if (lixeira.nivel > 54 && lixeira.nivel <= 72) {
+                } else if (lixeira.nivel > 36 && lixeira.nivel <= 54) {
                     cor = "yellow";
                     nivel = 3;
-                } else if (lixeira.nivel > 18 && lixeira.nivel <= 54) {
+                } else if (lixeira.nivel > 18 && lixeira.nivel <= 36) {
                     cor = "orange";
                     nivel = 4;
                 } else if (lixeira.nivel >= 0 && lixeira.nivel <= 18) {
