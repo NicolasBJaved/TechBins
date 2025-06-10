@@ -37,13 +37,13 @@
                 </li>
                 <li>
                     <a href="https://sptech-team-vbjwf7te.atlassian.net/servicedesk/customer/portal/1" target="_blank"
-                        class="link_nav">Algum problema? <br> 
+                        class="link_nav">Algum problema? <br>
                         <span style="text-decoration: underline;">Contate-nos</span></a>
                 </li>
             </ul>
         </div>
         <div onclick="sair()">
-            <h1>Sair ></h1>
+            <h1>Sair</h1>
         </div>
         <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
     </div>
@@ -70,11 +70,29 @@
                 situação:</p>
             <img src="./imgs/rota-removebg-preview.png" alt="Foto Exemplo Rota">
 
-            <p>Nesse cenário, nossa recomendação é <span>priorizar</span> a coleta nos pontos <span>1, 2 e 3</span>. Essa ação resulta em
-            uma <span>otimização</span> do trajeto, o que se traduz diretamente em uma <span>redução</span> <br>dos custos operacionais.
+            <p>Nesse cenário, nossa recomendação é <span>priorizar</span> a coleta nos pontos <span>1, 2 e 3</span>.
+                Essa ação resulta em
+                uma <span>otimização</span> do trajeto, o que se traduz diretamente em uma <span>redução</span> <br>dos
+                custos operacionais.
             </p>
         </div>
     </div>
 </body>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function sair() {
+        sessionStorage.clear();
+        window.location = "../index.html";
+    }
+
+    // Função para identificar se o usuário pode adicionar representantes. Caso não, o link do cadastro não aparece na navbar
+    function addRep() {
+        if (sessionStorage.PODE_ADICIONAR == 'N') {
+            cadastro.style.display = "none";
+        }
+    }
+</script>
 
 </html>
