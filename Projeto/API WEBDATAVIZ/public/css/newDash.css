@@ -137,7 +137,7 @@ body {
     padding-bottom: 30px;
 }
 
-input {
+.containerLCS input {
     border-radius: 10px;
     width: 300px;
     height: 30px;
@@ -145,7 +145,7 @@ input {
     font-family: "Exo 2", Segoe UI;
 }
 
-button {
+.containerLCS button {
     margin: 20px;
     width: 100px;
     height: 40px;
@@ -154,6 +154,10 @@ button {
     background-color: #416B44;
     font-family: "Exo 2", Segoe UI;
     cursor: pointer;
+}
+
+.containerLCS button:hover {
+    background-color: #2e3f2f;
 }
 
 /* Gráficos */
@@ -279,15 +283,13 @@ button {
     width: 25%;
 }
 
-
-
 .alerta-lixo span {
     font-weight: bold;
 }
 
 .fechar-alerta {
     position: absolute;
-    top: 45px;
+    top: 55px;
     right: 150px;
     background: none;
     border: none;
@@ -395,14 +397,14 @@ textarea[type="text"] {
 }
 
 select,
-button {
+#botao_suporte {
     padding: 8px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-button {
+#botao_suporte {
     background-color: #416B44;
     color: #FFFFFF;
     border: none;
@@ -410,7 +412,7 @@ button {
     height: 50px;
 }
 
-button:hover {
+#botao_suporte:hover {
     background-color: #2e3f2f;
 }
 
