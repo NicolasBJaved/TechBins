@@ -166,7 +166,7 @@
     }
 
     function obterDadosGrafico() {
-        for (let idGrafico = 1; idGrafico <= 4; idGrafico++) {
+        for (let idGrafico = 1; idGrafico <= 3; idGrafico++) {
             console.log(idGrafico);
             fetch(`/graficosDash/ultimas/${idGrafico}/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
