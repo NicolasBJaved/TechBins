@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <a href="https://sptech-team-vbjwf7te.atlassian.net/servicedesk/customer/portal/1" target="_blank"
-                        class="link_nav">Algum problema? <br> 
+                        class="link_nav">Algum problema? <br>
                         <span style="text-decoration: underline;">Contate-nos</span></a>
                 </li>
             </ul>
@@ -58,8 +58,8 @@
                 id="horaUltimaColeta">--:--</span></h1>
         <div class="dash">
             <div class="grafico1">
-                <h1 id="maiorNivelTitulo">3 <span id="tituloFiltroGrupo1">pontos de coleta</span> com maior média de nível de lixo <span
-                        id="tituloFiltroTempo1">nos
+                <h1 id="maiorNivelTitulo">3 <span id="tituloFiltroGrupo1">pontos de coleta</span> com maior média de
+                    nível de lixo <span id="tituloFiltroTempo1">nos
                         últimos 7 dias</span></h1>
                 <div class="conteudo">
                     <div class="chart">
@@ -79,8 +79,8 @@
                 </div>
             </div>
             <div class="grafico2">
-                <h1 id="menorNivelTitulo">3 <span id="tituloFiltroGrupo2">pontos de coleta</span> com menor média de nível de lixo <span
-                        id="tituloFiltroTempo2">nos
+                <h1 id="menorNivelTitulo">3 <span id="tituloFiltroGrupo2">pontos de coleta</span> com menor média de
+                    nível de lixo <span id="tituloFiltroTempo2">nos
                         últimos 7 dias</span></h1>
                 <div class="conteudo">
                     <div class="chart">
@@ -121,16 +121,15 @@
         </div>
     </div>
 </body>
+
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     const idEmpresa = sessionStorage.ID_EMPRESA;
 
-    // RECUPERANDO OS CANVAS
     const ctx1 = document.getElementById('myChart1');
     const ctx2 = document.getElementById('myChart2');
     const ctx3 = document.getElementById('myChart3');
 
-    // CRIANDO VARIÁVEIS DOS GRÁFICOS INICIAIS
     var graficoAtualCtx1;
     var graficoAtualCtx2;
     var graficoAtualCtx3;
@@ -160,6 +159,7 @@
         window.location = "../index.html";
     }
 
+    // Função para identificar se o usuário pode adicionar representantes. Caso não, o link do cadastro não aparece na navbar
     function addRep() {
         if (sessionStorage.PODE_ADICIONAR == 'N') {
             cadastro.style.display = "none";
@@ -192,10 +192,8 @@
 
         console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
-        // Criando estrutura para plotar gráfico - dados
         let legenda = 'Nível do lixo';
         let coresGrafico = ['rgb(240, 128, 0)'];
 
@@ -215,7 +213,6 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         if (idGrafico == 1) {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
@@ -244,7 +241,6 @@
         console.log(dados.datasets)
         console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
         let tipoGrafico = 'bar';
         if (idGrafico == 3) {
             tipoGrafico = 'line';
@@ -257,7 +253,6 @@
 
         Chart.defaults.color = '#000';
 
-        // Adicionando gráfico criado em div na tela
         if (idGrafico == 1) {
             graficoAtualCtx1 = new Chart(ctx1, config);
         } else if (idGrafico == 2) {
@@ -297,10 +292,8 @@
         let tituloFiltroTempo = document.getElementById(`tituloFiltroTempo${idGrafico}`);
         let tituloFiltroGrupo = document.getElementById(`tituloFiltroGrupo${idGrafico}`);
 
-        // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
-        // Criando estrutura para plotar gráfico - dados
         let legenda = 'Nível do lixo';
         let coresGrafico = ['rgb(240, 128, 0)'];
 
@@ -320,7 +313,6 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         if (idGrafico == 1 && filtroGrupo == 'ponto' || idGrafico == 2 && filtroGrupo == 'ponto') {
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
@@ -349,7 +341,6 @@
         console.log(dados.datasets)
         console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
         let tipoGrafico = 'bar';
         if (idGrafico == 3) {
             tipoGrafico = 'line';
@@ -361,7 +352,6 @@
         };
 
         Chart.defaults.color = '#000';
-        // Adicionando gráfico criado em div na tela
         if (idGrafico == 1) {
             if (graficoAtualCtx1) {
                 graficoAtualCtx1.destroy();

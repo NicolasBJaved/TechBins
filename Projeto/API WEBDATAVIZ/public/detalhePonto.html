@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Detalhe do Ponto de Coleta</title>
@@ -8,22 +9,24 @@
     <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
+
 <body>
     <div class="divTitulo" id="div_titulo">Dashboard</div>
     <h1 id="tituloPonto"></h1>
     <ul id="listaLixeiras"></ul>
+</body>
 
-    <script>
-        const idPonto = sessionStorage.getItem('idPontoColetaSelecionado');
-        const logradouro = sessionStorage.getItem('logradouroSelecionado');
-        div_titulo.innerHTML = `<h2>Dashboard do Ponto ${logradouro}</h2>`;
-        document.getElementById('tituloPonto').innerHTML = `Lixeiras do Ponto: ${logradouro}`;
+<script>
+    const idPonto = sessionStorage.getItem('idPontoColetaSelecionado');
+    const logradouro = sessionStorage.getItem('logradouroSelecionado');
+    div_titulo.innerHTML = `<h2>Dashboard do Ponto ${logradouro}</h2>`;
+    document.getElementById('tituloPonto').innerHTML = `Lixeiras do Ponto: ${logradouro}`;
 
-        fetch("/dashboard/lixeirasPorPonto", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ idPontoServer: idPonto })
-        })
+    fetch("/dashboard/lixeirasPorPonto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idPontoServer: idPonto })
+    })
         .then(res => res.json())
         .then(lixeiras => {
             console.log(lixeiras)
@@ -31,7 +34,7 @@
             lixeiras.forEach(lixeira => {
                 let cor = "gray";
                 let nivel = 0;
-                if(lixeira.nivel > 90){
+                if (lixeira.nivel > 90) {
                     lixeira.nivel = 90;
                 }
 
@@ -61,6 +64,6 @@
                 `;
             });
         });
-    </script>
-</body>
+</script>
+
 </html>

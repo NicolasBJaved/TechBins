@@ -16,95 +16,76 @@
 </head>
 
 <body onload="addRep()">
-  <!--header inicio-->
-
-  <body onload="addRep()">
-    <div class="div_nav">
-      <div class="links_dash">
-        <div class="perfil">
-          <img src="./imgs/userimg.png" alt="foto_perfil" style="border-radius: 30px;" width="50px">
-          <div class="hello">
-            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-          </div>
-        </div>
-        <ul class="links">
-          <li>
-            <a href="index.html" class="link_nav">Home</a>
-          </li>
-          <li>
-            <a href="newDashboard.html" class="link_nav">Dashboards</a>
-          </li>
-          <li>
-            <a href="graficos.html" class="link_nav">Gráficos gerais</a>
-          </li>
-
-          <li>
-            <a href="rotas.html" class="link_nav">Otimização de Rotas</a>
-          </li>
-          <li class="agora">
-            <a href="cadastro.html" class="link_nav" id="cadastro">Adicionar representante</a>
-          </li>
-          <li>
-            <a href="https://sptech-team-vbjwf7te.atlassian.net/servicedesk/customer/portal/1" target="_blank"
-              class="link_nav">Algum problema? <br>
-              <span style="text-decoration: underline;">Contate-nos</span></a>
-          </li>
-        </ul>
-
-
-      </div>
-
-      <div onclick="sair()">
-        <h1>Sair ></h1>
-      </div>
-      <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
-
-    </div>
-
-    <div class="containerLCS">
-      <div class="box">
-        <div>
-          <h1>Adicionar representante</h1>
-        </div>
-        <div class="formulario">
-          <p>Nome do Representante</p>
-          <input type="text" placeholder="Nome" id="nome_input">
-          <p>Email</p>
-          <input type="text" placeholder="representante@email.com" id="email_input">
-          <p>CPF</p>
-          <input type="text" placeholder="XXXXXXXXXXX" id="cpf_input">
-          <p>Senha</p>
-          <input type="password" placeholder="***********" id="senha_input" onchange="SenhaConfirmar()">
-          <div id="div_senha"></div>
-          <p>Confirmar senha</p>
-          <input type="password" placeholder="***********" id="confirmacao_senha_input">
-          <button onclick="cadastrar()">Cadastrar</button>
-          <div id="cadastroResposta"></div>
+  <div class="div_nav">
+    <div class="links_dash">
+      <div class="perfil">
+        <img src="./imgs/userimg.png" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+        <div class="hello">
+          <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
         </div>
       </div>
+      <ul class="links">
+        <li>
+          <a href="index.html" class="link_nav">Home</a>
+        </li>
+        <li>
+          <a href="newDashboard.html" class="link_nav">Dashboards</a>
+        </li>
+        <li>
+          <a href="graficos.html" class="link_nav">Gráficos gerais</a>
+        </li>
+
+        <li>
+          <a href="rotas.html" class="link_nav">Otimização de Rotas</a>
+        </li>
+        <li class="agora">
+          <a href="cadastro.html" class="link_nav" id="cadastro">Adicionar representante</a>
+        </li>
+        <li>
+          <a href="https://sptech-team-vbjwf7te.atlassian.net/servicedesk/customer/portal/1" target="_blank"
+            class="link_nav">Algum problema? <br>
+            <span style="text-decoration: underline;">Contate-nos</span></a>
+        </li>
+      </ul>
     </div>
 
-    <!-- </div> -->
-    <!-- <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div> -->
-    <!-- <div id="div_erros_login"></div> -->
-    <!-- </div>
+    <div onclick="sair()">
+      <h1>Sair ></h1>
     </div>
-  </div> -->
+    <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
+  </div>
 
-    <!--footer inicio-->
+  <div class="containerLCS">
+    <div class="box">
+      <div>
+        <h1>Adicionar representante</h1>
+      </div>
+      <div class="formulario">
+        <p>Nome do Representante</p>
+        <input type="text" placeholder="Nome" id="nome_input">
+        <p>Email</p>
+        <input type="text" placeholder="representante@email.com" id="email_input">
+        <p>CPF</p>
+        <input type="text" placeholder="XXXXXXXXXXX" id="cpf_input">
+        <p>Senha</p>
+        <input type="password" placeholder="***********" id="senha_input" onchange="SenhaConfirmar()">
+        <div id="div_senha"></div>
+        <p>Confirmar senha</p>
+        <input type="password" placeholder="***********" id="confirmacao_senha_input">
+        <button onclick="cadastrar()">Cadastrar</button>
+        <div id="cadastroResposta"></div>
+      </div>
+    </div>
+  </div>
 
-    <!--footer fim-->
-  </body>
+</body>
 
 </html>
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  // let listaEmpresasCadastradas = [];
+  // Função de validação do cmapo de confirmar senha.
   function SenhaConfirmar() {
     var senhaVar = senha_input.value;
     if (senhaVar.length < 7) {
@@ -115,17 +96,11 @@
   }
 
   function cadastrar() {
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var codigoVar = codigo_input.value;
     var cpfVar = cpf_input.value;
-    // var idEmpresaVincular;
 
     var idEmpresaVar = sessionStorage.ID_EMPRESA;
     var idRepresentanteChefeVar = sessionStorage.ID_USUARIO;
@@ -135,11 +110,6 @@
     let senhaTemEspaco = senhaVar.includes(' ');
     let confirmarSenhaTemEspaco = confirmacaoSenhaVar.includes(' ');
 
-
-
-
-
-    // Verificando se há algum campo em branco
     if (nomeVar == '' || emailVar == '' || cpfVar == '' || senhaVar == '' || confirmacaoSenhaVar == '') {
       cadastroResposta.innerHTML = `Por favor, preencha todos os campos.`
     } else if (emailTemArroba == false) {
@@ -151,24 +121,13 @@
     } else if (cpfVar.length != 11) {
       cadastroResposta.innerHTML = `O CPF deve conter 11 dígitos.`
     }
-    // else {
-    //     cadastroResposta.innerHTML = `<b>
-    //     Cadastro realizado com sucesso!</b><br><br>
-    //     <a href="login.html">Login</a>
 
-    //     `
-    // }
-
-
-    // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
@@ -205,6 +164,7 @@
     window.location = "../index.html";
   }
 
+  // Função para identificar se o usuário pode adicionar representantes. Caso não, o link do cadastro não aparece na navbar
   function addRep() {
     if (sessionStorage.PODE_ADICIONAR == 'N') {
       cadastro.style.display = "none";

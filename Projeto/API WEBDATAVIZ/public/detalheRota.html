@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Detalhe da Rota</title>
     <link rel="stylesheet" href="./css/newDash.css">
 </head>
+
 <body>
     <div class="divTitulo" id="div_titulo">Dashboard</div>
     <h1 id="tituloRota"></h1>
     <ul id="listaPontos"></ul>
+</body>
 
-    <script>
-        const idRota = sessionStorage.getItem('idRotaSelecionada');
-        const nomeRota = sessionStorage.getItem('nomeRotaSelecionada');
-        div_titulo.innerHTML = `<h2>Dashboard da Rota ${nomeRota}</h2>`;
-        document.getElementById('tituloRota').innerText = `Pontos de Coleta da Rota: ${nomeRota}`;
+<script>
+    const idRota = sessionStorage.getItem('idRotaSelecionada');
+    const nomeRota = sessionStorage.getItem('nomeRotaSelecionada');
+    div_titulo.innerHTML = `<h2>Dashboard da Rota ${nomeRota}</h2>`;
+    document.getElementById('tituloRota').innerText = `Pontos de Coleta da Rota: ${nomeRota}`;
 
-        fetch("/dashboard/pontosPorRota", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ idRotaServer: idRota })
-        })
+    fetch("/dashboard/pontosPorRota", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idRotaServer: idRota })
+    })
         .then(res => res.json())
         .then(pontos => {
             console.log(pontos);
@@ -29,11 +32,11 @@
                 let nivel;
 
                 let cor;
-                if(ponto.media_nivel_lixo > 90){
+                if (ponto.media_nivel_lixo > 90) {
                     ponto.media_nivel_lixo = 90;
                 }
 
-                if(ponto.media_nivel_lixo <= 18 && ponto.media_nivel_lixo >= 0){
+                if (ponto.media_nivel_lixo <= 18 && ponto.media_nivel_lixo >= 0) {
                     cor = "red";
                     nivel = 5;
                 }
@@ -47,7 +50,7 @@
                 } else if (ponto.media_nivel_lixo > 54 && ponto.media_nivel_lixo <= 72) {
                     cor = "lawngreen";
                     nivel = 2;
-                } else if(ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 90){
+                } else if (ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 90) {
                     cor = "lawngreen";
                     nivel = 1;
                 }
@@ -65,12 +68,11 @@
             });
         });
 
-function abrirDetalhePonto(idPontoColeta, logradouro) {
-    sessionStorage.setItem('idPontoColetaSelecionado', idPontoColeta);
-    sessionStorage.setItem('logradouroSelecionado', logradouro);
-    window.location.href = "detalhePonto.html";
-}
+    function abrirDetalhePonto(idPontoColeta, logradouro) {
+        sessionStorage.setItem('idPontoColetaSelecionado', idPontoColeta);
+        sessionStorage.setItem('logradouroSelecionado', logradouro);
+        window.location.href = "detalhePonto.html";
+    }
+</script>
 
-    </script>
-</body>
 </html>
