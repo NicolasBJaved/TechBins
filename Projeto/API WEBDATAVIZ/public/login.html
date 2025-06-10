@@ -154,6 +154,8 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
+                respostaLogin.innerHTML = `Email e/ou Senha inválidos!`;
+
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);
