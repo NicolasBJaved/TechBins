@@ -51,10 +51,18 @@ body {
     margin: 20px 0;
 }
 
+.links li a {
+    color: rgb(210, 210, 210);
+}
+
+.links .agora a{
+    color: rgb(255, 255, 255);
+}
+
 .link_nav {
     text-decoration: none;
-    color: white;
     font-size: 18px;
+    font-weight: bold;
     display: block;
     padding: 10px 15px;
     border-radius: 10px;
@@ -63,6 +71,7 @@ body {
 
 .link_nav:hover {
     background-color: #333;
+    color: white;
 }
 
 .perfil {
