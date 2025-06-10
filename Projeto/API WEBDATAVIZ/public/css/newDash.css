@@ -42,7 +42,7 @@ body {
 .links {
     list-style: none;
     padding: 0;
-    margin-top: 150px;
+    margin-top: 30px;
     width: 100%;
     text-align: center;
 }
@@ -51,10 +51,18 @@ body {
     margin: 20px 0;
 }
 
+.links li a {
+    color: rgb(210, 210, 210);
+}
+
+.links .agora a{
+    color: rgb(255, 255, 255);
+}
+
 .link_nav {
     text-decoration: none;
-    color: white;
     font-size: 18px;
+    font-weight: bold;
     display: block;
     padding: 10px 15px;
     border-radius: 10px;
@@ -63,6 +71,7 @@ body {
 
 .link_nav:hover {
     background-color: #333;
+    color: white;
 }
 
 .perfil {
@@ -94,7 +103,7 @@ body {
     padding: 10px 15px;
     border-radius: 10px;
     transition: background-color 0.3s;
-    margin-top: 120px;
+    margin-top: 80px;
 }
 
 .div_nav h1:hover {
@@ -345,6 +354,7 @@ button {
     background-color: red;
 }
 
+/* BOB IA */
 .main {
     margin-left: 250px;
     /* largura da navbar */
@@ -400,7 +410,7 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
     background-color: #D0D3D4;
-    border: 1px solid #63666A;
+    border: 1px solid #155C3A;
     text-align: left;
     display: none;
 }
