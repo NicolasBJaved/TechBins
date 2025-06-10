@@ -86,6 +86,7 @@
         }
     }
 
+    // Função para, caso o usuário esteja logado, apareça o nome e a foto de perfil na navbar.
     function carregarPerfil() {
         if (sessionStorage.ID_USUARIO != null && sessionStorage.ID_USUARIO != undefined) {
             login.innerHTML = `

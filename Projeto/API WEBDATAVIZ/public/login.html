@@ -7,15 +7,10 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" type="imagex/png" href="./imgs/logoSemEscrita_techbins-removebg-preview.ico">
-
     <script src="./js/sessao.js"></script>
-
 </head>
 
 <body>
-
-    <!--Header-->
-
     <div class="div_nav">
         <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
         <ul class="links">
@@ -34,7 +29,6 @@
         </ul>
     </div>
 
-
     <div class="containerLCS">
         <div class="box">
             <div>
@@ -50,12 +44,6 @@
             </div>
         </div>
     </div>
-    <!-- <div id="div_aguardar" class="loading-div">
-        <img src="./assets/circle-loading.gif" id="loading-gif">
-    </div>
-
-    <div id="div_erros_login"></div> -->
-
 
     <div class="footer">
         <div class="redes-sociais">
@@ -75,31 +63,21 @@
             <p>+55 (11) 999999999</p>
         </div>
     </div>
-
-
 </body>
 
 </html>
 
 <script>
-
     let tentativas = 0;
 
     function entrar() {
-        // aguardar();
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
             respostaLogin.innerHTML = "Preencha todos os campos.";
-            // finalizarAguardar();
             return false;
         }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -140,11 +118,11 @@
                     if (sessionStorage.ID_EMPRESA == 99999) {
                         setTimeout(function () {
                             window.location.href = "suporte.html";
-                        }, 1000); // apenas para exibir o loading
+                        }, 1000);
                     } else {
                         setTimeout(function () {
                             window.location.href = "newDashboard.html";
-                        }, 1000); // apenas para exibir o loading
+                        }, 1000);
                     }
 
                 });
@@ -167,15 +145,5 @@
         })
 
         return false;
-
-
-
     }
-
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
-
-
-
 </script>
