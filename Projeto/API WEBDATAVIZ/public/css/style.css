@@ -512,6 +512,8 @@ select {
     background-color: #267652a0;
     border-radius: 10px;
     border: solid 2px #155C3A;
+    margin-bottom: 150px;
+    margin-top: 80px;
 }
 
 .containerLCS .box .formulario {
