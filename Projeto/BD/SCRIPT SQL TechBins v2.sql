@@ -325,3 +325,5 @@ inner join rota on rota.idRota = rpc.idRota;
 select * from representante;
 
 select * from view_nivelLixo;
+
+update representante set email_contato = 'fernanda.henckel@suporte.com' where idRepresentante = 9;
