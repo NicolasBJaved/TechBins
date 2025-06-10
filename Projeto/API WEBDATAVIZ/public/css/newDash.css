@@ -401,3 +401,53 @@ button:hover {
     flex-direction: column;
     align-items: center;
 }
+
+/* PAGINA ROTAS */
+
+.campo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: 350px;
+  padding: 20px;
+}
+
+.campo h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #000000;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.texto_esquerda, .texto_direita {
+  width: 45%;
+  padding: 20px;
+}
+
+.texto_esquerda h2, .texto_direita h2 {
+font-size: 33px;
+  color: #000000;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.texto_esquerda p, .texto_direita p {
+  line-height: 1.6;
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.texto_direita img {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  margin: 20px auto;
+}
+
+.texto_esquerda span, .texto_direita span {
+    font-size: 25px;
+    font-weight: bold;
+}
