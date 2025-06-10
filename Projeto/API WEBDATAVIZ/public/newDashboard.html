@@ -240,6 +240,7 @@
         window.location = "../index.html";
     }
 
+    // Função para identificar se o usuário pode adicionar representantes. Caso não, o link do cadastro não aparece na navbar
     function addRep() {
         if (sessionStorage.PODE_ADICIONAR == 'N') {
             cadastro.style.display = "none";

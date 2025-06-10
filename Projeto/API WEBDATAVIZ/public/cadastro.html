@@ -85,8 +85,7 @@
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  // let listaEmpresasCadastradas = [];
+  // Função de validação do cmapo de confirmar senha.
   function SenhaConfirmar() {
     var senhaVar = senha_input.value;
     if (senhaVar.length < 7) {
@@ -97,17 +96,11 @@
   }
 
   function cadastrar() {
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var codigoVar = codigo_input.value;
     var cpfVar = cpf_input.value;
-    // var idEmpresaVincular;
 
     var idEmpresaVar = sessionStorage.ID_EMPRESA;
     var idRepresentanteChefeVar = sessionStorage.ID_USUARIO;
@@ -117,7 +110,6 @@
     let senhaTemEspaco = senhaVar.includes(' ');
     let confirmarSenhaTemEspaco = confirmacaoSenhaVar.includes(' ');
 
-    // Verificando se há algum campo em branco
     if (nomeVar == '' || emailVar == '' || cpfVar == '' || senhaVar == '' || confirmacaoSenhaVar == '') {
       cadastroResposta.innerHTML = `Por favor, preencha todos os campos.`
     } else if (emailTemArroba == false) {
@@ -130,15 +122,12 @@
       cadastroResposta.innerHTML = `O CPF deve conter 11 dígitos.`
     }
 
-    // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
