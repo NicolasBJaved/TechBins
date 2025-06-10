@@ -93,7 +93,7 @@ function atualizarGrafico(filtroTempo, filtroGrupo, idGrafico, idEmpresa, tempoF
 
     if (filtroTempo != 'allTime' && filtroGrupo == 'rota' && idGrafico == 2) {
         var instrucaoSql = `SELECT nomeRota as rota, round(avg(nivel_lixo),0) as media 
-        FROM view_nivelixo
+        FROM view_nivellixo
         WHERE timestampdiff(day, dataHoraMedicao, '2025-05-30') <= ${tempoFiltro} AND idEmpresa = ${idEmpresa}
         GROUP BY rota
         ORDER BY media ASC limit 3`;
