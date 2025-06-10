@@ -528,6 +528,10 @@ button:hover {
     background-color: #2e3f2f;
 }
 
+#gif_Loading {
+    width: 50px;
+}
+
 /* Resultado da calculadora financeira */
 
 .containerLCS #div_resultado {

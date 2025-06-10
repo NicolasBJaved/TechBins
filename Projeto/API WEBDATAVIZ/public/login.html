@@ -93,7 +93,7 @@
 
         if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
-            respostaLogin.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            respostaLogin.innerHTML = "Preencha todos os campos.";
             // finalizarAguardar();
             return false;
         }
@@ -105,7 +105,7 @@
         console.log("FORM SENHA: ", senhaVar);
 
         if (tentativas >= 3) {
-            respostaLogin.innerHTML = "Número máximo de tentativas atingido. Tente novamente mais tarde!";
+            respostaLogin.innerHTML = `Número máximo de tentativas atingido.<br> Tente novamente mais tarde!`;
             return;
         }
 
@@ -124,6 +124,9 @@
 
             if (resposta.ok) {
                 console.log(resposta);
+
+                respostaLogin.innerHTML = `Login realizado com sucesso!<br>Redirecionando para a Dashboard...<br>
+                <img src="imgs/circle-loading.gif" id="gif_Loading" alt="Gif de Carregamento">`
 
                 resposta.json().then(json => {
                     console.log(json);
