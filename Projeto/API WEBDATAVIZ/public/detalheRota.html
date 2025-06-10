@@ -25,6 +25,12 @@
             const ul = document.getElementById('listaPontos');
             pontos.forEach(ponto => {
                 let nivel;
+
+                let cor;
+                if(ponto.media_nivel_lixo > 90){
+                    ponto.media_nivel_lixo = 90;
+                }
+
                 if(ponto.media_nivel_lixo <= 18 && ponto.media_nivel_lixo >= 0){
                     cor = "red";
                     nivel = 5;
@@ -39,7 +45,7 @@
                 } else if (ponto.media_nivel_lixo > 54 && ponto.media_nivel_lixo <= 72) {
                     cor = "lawngreen";
                     nivel = 2;
-                } else if(ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 100){
+                } else if(ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 90){
                     cor = "lawngreen";
                     nivel = 1;
                 }
