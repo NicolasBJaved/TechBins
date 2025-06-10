@@ -28,6 +28,10 @@
             lixeiras.forEach(lixeira => {
                 let cor = "gray";
                 let nivel = 0;
+                if(lixeira.nivel > 90){
+                    lixeira.nivel = 90;
+                }
+
                 if (lixeira.nivel >= 72 && lixeira.nivel <= 90) {
                     cor = "lawngreen";
                     nivel = 1;
