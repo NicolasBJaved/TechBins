@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="./css/newDash.css">
 </head>
 <body>
+    <div class="divTitulo" id="div_titulo">Dashboard</div>
     <h1 id="tituloRota"></h1>
     <ul id="listaPontos"></ul>
 
     <script>
         const idRota = sessionStorage.getItem('idRotaSelecionada');
         const nomeRota = sessionStorage.getItem('nomeRotaSelecionada');
+        div_titulo.innerHTML = `<h2>Dashboard da Rota ${nomeRota}</h2>`;
         document.getElementById('tituloRota').innerText = `Pontos de Coleta da Rota: ${nomeRota}`;
 
         fetch("/dashboard/pontosPorRota", {
@@ -25,6 +27,12 @@
             const ul = document.getElementById('listaPontos');
             pontos.forEach(ponto => {
                 let nivel;
+
+                let cor;
+                if(ponto.media_nivel_lixo > 90){
+                    ponto.media_nivel_lixo = 90;
+                }
+
                 if(ponto.media_nivel_lixo <= 18 && ponto.media_nivel_lixo >= 0){
                     cor = "red";
                     nivel = 5;
@@ -39,7 +47,7 @@
                 } else if (ponto.media_nivel_lixo > 54 && ponto.media_nivel_lixo <= 72) {
                     cor = "lawngreen";
                     nivel = 2;
-                } else if(ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 100){
+                } else if(ponto.media_nivel_lixo > 72 && ponto.media_nivel_lixo <= 90){
                     cor = "lawngreen";
                     nivel = 1;
                 }

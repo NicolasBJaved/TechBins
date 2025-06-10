@@ -9,12 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 <body>
+    <div class="divTitulo" id="div_titulo">Dashboard</div>
     <h1 id="tituloPonto"></h1>
     <ul id="listaLixeiras"></ul>
 
     <script>
         const idPonto = sessionStorage.getItem('idPontoColetaSelecionado');
         const logradouro = sessionStorage.getItem('logradouroSelecionado');
+        div_titulo.innerHTML = `<h2>Dashboard do Ponto ${logradouro}</h2>`;
         document.getElementById('tituloPonto').innerHTML = `Lixeiras do Ponto: ${logradouro}`;
 
         fetch("/dashboard/lixeirasPorPonto", {
