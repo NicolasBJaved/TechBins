@@ -332,3 +332,62 @@ button {
 .lixeira-nivel-3 { background-color: yellow; }
 .lixeira-nivel-4 { background-color: orange; }
 .lixeira-nivel-5 { background-color: red; }
+
+.main {
+    margin-left: 250px; /* largura da navbar */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    width: 40%;
+    margin: 50px auto;
+    text-align: center;
+    border: 2px #155C3A solid;
+    height: 500px;
+    background-color:  #267652a0;
+    border-radius: 5%;
+}
+
+.container h1 {
+    color: black;
+}
+
+textarea[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 400px;
+}
+
+select,
+button {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #416B44;
+    color: #FFFFFF;
+    border: none;
+    width: 100px;
+    height: 50px;
+}
+
+button:hover {
+    background-color: #2e3f2f;
+}
+
+#resposta {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #D0D3D4;
+    border: 1px solid #63666A;
+    text-align: left;
+    display: none;
+}
