@@ -15,7 +15,29 @@ background: #F7EDE1;
     height: 1100px;
     font-family: "Inter", sans-serif;
 }
+.linksSuporte {
+    list-style: none;
+    padding: 0;
+    margin-top: 365px;
+    width: 100%;
+    text-align: center;
+    margin-top: 182.5px; 
+    margin-bottom:182.5px;
+}
 
+.div_navSuporte{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #155C3A;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+}
 
 #tituloPonto {
     display: flex;
