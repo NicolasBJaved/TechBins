@@ -76,7 +76,7 @@
     var rotasList = [];
     function buscarDadosRotas() {
         rotas.innerHTML = "";
-        var idUsuario = 3;
+        var idUsuario = sessionStorage.ID_USUARIO;
         fetch("/dashboard/mediaRota", {
             method: "POST",
             headers: {
