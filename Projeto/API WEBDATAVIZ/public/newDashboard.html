@@ -53,13 +53,18 @@
     </div>
     <div class="divTitulo">
         <h2>Dashboard Rotas</h2>
+        <hr>
     </div>
     <div class="containerDashboard" id="containerDashboard">
         <div id="rotas" class="rotas">
         </div>
         <div id="div_alerta">
         </div>
+        <div class="imgmetrica">
+         <img  src="./imgs/metricareal.png" alt="metricas">
+        </div>
     </div>
+
 
 
 </body>
@@ -114,7 +119,7 @@
                             <div class="rota" onclick="abrirDetalheRota(${resposta[i].idRota}, '${resposta[i].nomeRota}')">
                                 <div style="color: ${cor}" class="tituloENivel">
                                     <h1 style="margin:15px">${resposta[i].nomeRota}</h1>
-                                    <h1>${mediaGeralNivel}</h1>
+                                    <h1 style="font-size: 35px">${mediaGeralNivel}</h1>
                                 </div>
                                 <div class="lixeiras">
                                     <ul id="lixeira${resposta[i].idRota}">

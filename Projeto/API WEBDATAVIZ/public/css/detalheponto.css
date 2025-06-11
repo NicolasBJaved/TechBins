@@ -10,17 +10,13 @@ main {
 }
 
 body {
-background: #F7EDE1;
-
-    height: 1100px;
+  background-color: #F7EDE1;
     font-family: "Inter", sans-serif;
+    height: 1000px;
 }
 
 
-#tituloPonto {
-    display: flex;
-    text-align: center;
-}
+
 .div_nav {
     position: fixed;
     left: 0;
@@ -195,20 +191,20 @@ background: #F7EDE1;
     align-items: flex-start;
     gap: 10px 30px;
     margin-top: 100px;
-    margin-left: 150px;
+    margin-left: 100px;
     min-height: 500px;
 }
 
 .containerDashboard .rota:hover {
     cursor: pointer;
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
 .containerDashboard .rota {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 29%;
+    width: 28%;
     border-radius: 10px;
     height: 220px;
 }
@@ -218,11 +214,11 @@ background: #F7EDE1;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border-top-left-radius: 12px;
+    border-top-left-radius: 10px;
     border-top: 3px solid black;
     border-left: 3px solid black;
     border-right: 3px solid black;
-    border-top-right-radius: 12px;
+    border-top-right-radius: 10px;
     background-color: #286849;
     box-shadow: #000000 3px;
 }
@@ -234,8 +230,8 @@ background: #F7EDE1;
     justify-content: center;
     width: 100%;
     height: 100px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .containerDashboard .lixeiras ul {
@@ -258,44 +254,19 @@ background: #F7EDE1;
     height: 30px;
 }
 
-
-.mainRotas {
-    background-color: #a0dfa4;
-    padding: 50px 0;
-    border-radius: 40px;
-    border:#000000 2px solid;
-    width: 40%;
-    margin: 40px auto 0 auto;
-    display: flex;
-    justify-content: center;
-}
-
-#listaPontos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    padding: 0;
-    margin: 0 auto;
-    list-style: none;
-    width: 100%;
-    max-width: 1100px;
-}
 .alerta-lixo {
     display: none;
     background-color: #ca3636;
     display: flex;
     flex-direction: column;
     align-self: center;
-    gap: 20px;
     color: #ffffff;
     border-left: 10px solid #8c0000;
     padding: 30px 40px;
     border-radius: 12px;
     box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.3);
-    width: 65%;
-    height: 65%;
+    width: 80%;
+    height: 80%;
     font-size: 1.8rem;
     line-height: 1.6;
 }
@@ -319,17 +290,7 @@ background: #F7EDE1;
     flex-direction: column;
     align-items: center;
     height: fit-content;
-    width: 30%;
-    margin: 10px;
-    font-size: 20px;
-    padding-bottom: 30px;
-    background-color: #e25b5b;
-    text-align: center;
-    border: #000000 solid 2px;
-}
-
-.alerta-lixo .rota h2 {
-    font-size: 30px;
+    width: 25%;
 }
 
 .alerta-lixo span {
@@ -338,79 +299,35 @@ background: #F7EDE1;
 
 .fechar-alerta {
     position: absolute;
-    top: 250px;
-    right: 300px;
+    top: 55px;
+    right: 150px;
     background: none;
     border: none;
     color: #fff;
     font-size: 100px;
     cursor: pointer;
 }
- 
 
-#tituloRota {
-    text-align: center;
-}
-#listaPontos span {
-    color: #000000;
-}
 
-#listaPontos {
+ #tituloPonto {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-
     padding: 0;
     list-style: none;
     width: 100%;
 }
 
-.divTitulo {
-    text-align: center;
-    margin: 30px 5px 5px 60px;
-}
-
-.divTitulo hr {
-    width: 30%;
-    border: #155C3A 2px solid;
-    background-color: #286849;
-
-}
-
-.divTitulo h2{
-    margin-top: 50px;
-    font-size: 60px;
-    margin: 0;
-}
-
-/*  Aqui começa o detalhePonto */
-
-#tituloPonto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    width: 100%;
-}
-
-#tituloPonto h1 {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-}
-
 .mainLixeiras {
+    border: solid 3px black;
     background-color: #a0dfa4;
-    padding: 60px 0;
-    width: 40%;
-    margin: 40px auto 0 auto;
-    border-radius: 40px;
-    border:#000000 2px solid;
+    padding: 50px;
     display: flex;
+    border-radius: 70px;
+    width: 30%;
+    margin-left: 500px;
     justify-content: center;
 }
 
@@ -422,60 +339,71 @@ background: #F7EDE1;
     padding: 0;
     margin: 0 auto;
     list-style: none;
-    max-width: 900px;
-    width: 100%;
 }
 
-.lixeira-item {
+.divTitulo {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    /* background: #fff; */
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(21, 92, 58, 0.10);
-    padding: 18px 28px;
-    min-width: 280px;
-    max-width: 400px;
+    justify-content: center; 
+    align-items: center;    
+    text-align: center;
+    margin: 30px auto 5px auto; 
     width: 100%;
-    border: 2px solid #000000;
-    cursor: pointer;
-    transition: transform 0.18s,lixeira-item box-shadow 0.18s;
-    font-size: 1.1rem;
 }
 
-.lixeira-item:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 8px 32px rgba(21, 92, 58, 0.18);
-    border-color: #155C3A;
+.divTitulo h2{
+    margin-top: 50px;
+    font-size: 60px;
+    margin: 0;
 }
 
-.lixeira-img {
-    width: 38px;
-    height: 38px;
-    margin-right: 18px;
+/*  Aqui começa o detalhePonto */
+
+
+#tituloPonto {
+    display: flex;
+    text-align: center;
 }
 
 .lixeira-info {
-    color: black;
-    font-weight: 600;
-    text-align: left;
+    display: flex;
 }
 
-.lixeira-nivel {
-    margin-left: 12px;
-    padding: 4px 14px;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    background: #ffe066;
-    color: #8c6d1f;
+.lixeira-item {
+    border-radius: 10%;
+    margin: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    width: 30%;
 }
 
-.lixeira-nivel-1 .lixeira-nivel { background-color: lawngreen; color: black; }
-.lixeira-nivel-2 .lixeira-nivel { background-color: lawngreen; color: black; }
-.lixeira-nivel-3 .lixeira-nivel { background-color: yellow; color: black; }
-.lixeira-nivel-4 .lixeira-nivel { background-color: red; color: black; }
-.lixeira-nivel-5 .lixeira-nivel { background-color: red; color: black; }
+.lixeira-img {
+    width: 80px;
+    height: 80px;
+}
+
+
+.lixeira-nivel-1 {
+    background-color: lawngreen;
+}
+
+.lixeira-nivel-2 {
+    background-color: lawngreen;
+}
+
+.lixeira-nivel-3 {
+    background-color: yellow;
+}
+
+.lixeira-nivel-4 {
+    background-color: orange;
+}
+
+.lixeira-nivel-5 {
+    background-color: red;
+}
+
 /* BOB IA */
 .main {
     margin-left: 250px;

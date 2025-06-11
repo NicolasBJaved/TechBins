@@ -11,16 +11,67 @@
 </head>
 
 <body>
-    <div class="divTitulo" id="div_titulo">Dashboard</div>
-    <h1 id="tituloPonto"></h1>
-    <ul id="listaLixeiras"></ul>
+    <div class="div_nav">
+        <div class="links_dash">
+            <div class="perfil">
+                <img src="./imgs/userimg.png" alt="foto_perfil" style="border-radius: 30px;" width="50px">
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+            </div>
+            <ul class="links">
+                <li>
+                    <a href="index.html" class="link_nav">Home</a>
+                </li>
+                <li class="agora">
+                    <a href="newDashboard.html" class="link_nav">Dashboards</a>
+                </li>
+                <li>
+                    <a href="graficos.html" class="link_nav">Gráficos gerais</a>
+                </li>
+
+                <li>
+                    <a href="rotas.html" class="link_nav">Otimização de Rotas</a>
+                </li>
+                <li>
+                    <a href="cadastro.html" class="link_nav" id="cadastro">Adicionar representante</a>
+                </li>
+                <li>
+                    <a href="https://sptech-team-vbjwf7te.atlassian.net/servicedesk/customer/portal/1" target="_blank"
+                        class="link_nav">Algum problema? <br>
+                        <span style="text-decoration: underline;">Contate-nos</span></a>
+                </li>
+            </ul>
+
+
+        </div>
+
+        <div onclick="sair()">
+            <h1>Sair ></h1>
+        </div>
+        <a href="index.html"><img src="imgs/logo_techbins.png" alt="Logo da TechBins" id="img_logo_nav"></a>
+
+    </div>
+    </div>
+
+
+
+    <!-- <div class="divTitulo" id="div_titulo">Dashboard</div> -->
+    <main>
+        <h1 id="tituloPonto"></h1>
+        <div class="mainLixeiras">
+            <ul id="listaLixeiras"></ul>
+        </div>
+    </main>
 </body>
 
 <script>
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     const idPonto = sessionStorage.getItem('idPontoColetaSelecionado');
     const logradouro = sessionStorage.getItem('logradouroSelecionado');
-    div_titulo.innerHTML = `<h2>Dashboard do Ponto ${logradouro}</h2>`;
-    document.getElementById('tituloPonto').innerHTML = `Lixeiras do Ponto: ${logradouro}`;
+    // div_titulo.innerHTML = `<h2>Dashboard do Ponto ${logradouro}</h2>`;
+    document.getElementById('tituloPonto').innerHTML = `<h1>Lixeiras do Ponto: ${logradouro}</h1>`;
 
     fetch("/dashboard/lixeirasPorPonto", {
         method: "POST",
@@ -48,22 +99,38 @@
                     cor = "yellow";
                     nivel = 3;
                 } else if (lixeira.nivel > 18 && lixeira.nivel <= 36) {
-                    cor = "orange";
+                    cor = "red";
                     nivel = 4;
                 } else if (lixeira.nivel >= 0 && lixeira.nivel <= 18) {
                     cor = "red";
                     nivel = 5;
                 }
                 ul.innerHTML += `
-                    <li class="lixeira-item lixeira-nivel-${nivel}" style="background-color:${cor};">
-                        <img class="lixeira-img" src="./imgs/trash-512.webp" alt="Lixeira">
-                        <h1 class="lixeira-info">
-                            Lixeira ${lixeira.idLixeira} - Nível: <b class="lixeira-nivel">${nivel}</b>
-                        </h1>
-                    </li>
+                
+                   <li class="lixeira-item lixeira-nivel-${nivel}" 
+                    style="background-color:${cor};"
+                    onclick="abrirDetalhePonto(${idPonto}, '${logradouro}')">
+                    <img class="lixeira-img" src="./imgs/trash-512.webp" alt="Lixeira">
+                    <span class="lixeira-info">
+                        Lixeira ${lixeira.idLixeira}
+                        <b class="lixeira-nivel">Nível: ${nivel}</b>
+                    </span>
+                  </li>
                 `;
             });
         });
+
+    function sair() {
+        sessionStorage.clear();
+        window.location = "../index.html";
+    }
+
+    // Função para identificar se o usuário pode adicionar representantes. Caso não, o link do cadastro não aparece na navbar
+    function addRep() {
+        if (sessionStorage.PODE_ADICIONAR == 'N') {
+            cadastro.style.display = "none";
+        }
+    }
 </script>
 
 </html>
